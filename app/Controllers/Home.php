@@ -22,6 +22,7 @@ class Home extends BaseController
 
 
         echo view('layout/header');
+        echo view('layout/sidebar');
         echo view('index', $data);
         echo view('layout/footer');
     }
