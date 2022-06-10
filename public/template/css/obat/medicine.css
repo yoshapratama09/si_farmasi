@@ -1,7 +1,20 @@
-/* .btnTambahObat {
-    background-color: aqua;
-} */
+.labelObat {
+    width: 180px;
+    clear: left;
+    text-align: left;
+    padding-right: 10px;
+}
 
-.hidden {
-    display: none;
+.inputObat,
+.labelObat {
+    float: left;
+}
+
+.inputObat {
+    width: 250px;
+}
+
+#submitObat {
+    margin-top: 110px;
+    margin-left: 0px;
 }
