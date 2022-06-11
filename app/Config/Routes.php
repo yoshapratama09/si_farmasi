@@ -42,6 +42,7 @@ $routes->post('/tambahObat', 'Medicine::tambahObat');
 $routes->get('/delObat/(:num)', 'Medicine::hapusObat/$1');
 $routes->get('/updateObat/(:num)', 'Medicine::halamanUpdateObat/$1');
 $routes->post('/updObat/(:num)', 'Medicine::UpdateObat/$1');
+$routes->get('/login', 'Login::index');
 
 /*
  * --------------------------------------------------------------------
