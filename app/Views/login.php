@@ -24,18 +24,26 @@
                         <h5 class="text-center">Sistem Informasi Farmasi</h5>
                         <h3 class="text-center">RSUD JOMBANG</h3>
                         <div class="card-body p-5">
-                            <form action="../../index3.html" method="post">
+                            
+                            <?php 
+                                if(session()->getFlashdata('msg') !== NULL):       
+                            ?>
+
+                            <p><?php echo session()->getFlashdata('msg'); ?></p>
+                            <?php endif;?>
+
+                            <form action="<?php echo base_url(); ?>/login/loginAuth" method="post">
                                 <div class="input-group mb-3">
-                                    <input type="email" class="form-control text-center" placeholder="Username">
+                                    <input type="text" name="username" class="form-control text-center" placeholder="Username">
                                 </div>
                                 <div class="input-group mb-3">
-                                    <input type="password" class="form-control text-center" placeholder="Password">
+                                    <input type="password" name="password" class="form-control text-center" placeholder="Password">
                                 </div>
                                 <div class="mb-3 text-center">
                                     <button type="submit" class="btn btn-primary">Login</button>
                                 </div>
                             </form>
-
+                            
                             <div class="text-center mt-5">
                                 <p class="">Belum memiliki akun? <a href="#!" class="text-blue-50 fw-bold">Buat Akun</a></p>
                             </div>

@@ -43,6 +43,8 @@ $routes->get('/delObat/(:num)', 'Medicine::hapusObat/$1');
 $routes->get('/updateObat/(:num)', 'Medicine::halamanUpdateObat/$1');
 $routes->post('/updObat/(:num)', 'Medicine::UpdateObat/$1');
 $routes->get('/login', 'Login::index');
+$routes->post('/login/loginAuth', 'Login::loginAuth');
+$routes->get('/logout', 'Login::logout');
 
 /*
  * --------------------------------------------------------------------
