@@ -164,7 +164,7 @@
               <span class="float-right text-muted text-sm">2 days</span>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
+            <a href="#" class="dropdown-item dropdown-footer">Se  e All Notifications</a>
           </div>
         </li>
         <li class="nav-item">
@@ -173,8 +173,8 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
-            <i class="fas fa-th-large"></i>
+          <a class="nav-link" data-widget="" href="#" role="button">
+            <i class="fas fa-power-off"></i>
           </a>
         </li>
       </ul>
