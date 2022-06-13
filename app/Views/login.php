@@ -21,33 +21,45 @@
             <div class="row justify-content-center align-items-center">
                 <div class="col-12 m-5">
                     <div class="card pt-5" style="border-radius: 1rem;">
-                        <h5 class="text-center">Sistem Informasi Farmasi</h5>
-                        <h3 class="text-center">RSUD JOMBANG</h3>
-                        <div class="card-body p-5">
+                        <h5 class="text-center mb-0" >SISTEM INFORMASI FARMASI</h5>
+                        <h3 class="text-center mt-0">RSUD JOMBANG</h3>
+                        <div class="card-body p-5" id="card-body">
+                            <section class="form-login" id="form-login">
+                                <?php 
+                                    if(session()->getFlashdata('msg') !== NULL):       
+                                ?>
+                                <div class="alert alert-danger">
+                                    <strong>Gagal!</strong> <?php echo session()->getFlashdata('msg'); ?>
+                                </div>
+                                <?php endif;?>
+                                
+                                <form action="<?php echo base_url(); ?>/login/loginAuth" method="post">
+                                    <div class="input-group mb-3">
+                                        <input type="text" name="username" class="form-control text-center rounded-lg shadow" placeholder="Username">
+                                    </div>
+                                    <div class="input-group mb-4">
+                                        <input type="password" name="password" class="form-control text-center rounded-lg shadow" placeholder="Password">
+                                    </div>
+                                    <div class="mb-3 text-center">
+                                        <button type="submit" class="btn btn-primary rounded-lg-50 shadow-lg">Login</button>
+                                    </div>
+                                </form>
+                                
+                                <div class="text-center mt-5">
+                                    <p class="">Belum memiliki akun? <a href="#!" class="text-blue-50 fw-bold" id="regis">Buat Akun</a></p>
+                                </div>
+                            </section>
+
+                            <section class="buatAkun" id="buatAkun" style="display: none;">
+                                <div class="text-center mb-3" >
+                                    <h5 class="m-0 p-0" style="font-weight: 500">SILAHKAN MENGHUBUNGI ADMIN IT</h5>
+                                    <h5 class="m-0 p-0" style="font-weight: 500">UNTUK PEMBUATAN AKUN</h5>
+                                </div>
+                                <div class="mb-3 mt-5 text-center">
+                                    <button type="submit" class="btn btn-primary rounded-lg shadow" id="kembali">Kembali</button>
+                                </div>
+                            </section>
                             
-                            <?php 
-                                if(session()->getFlashdata('msg') !== NULL):       
-                            ?>
-
-                            <p><?php echo session()->getFlashdata('msg'); ?></p>
-                            <?php endif;?>
-
-                            <form action="<?php echo base_url(); ?>/login/loginAuth" method="post">
-                                <div class="input-group mb-3">
-                                    <input type="text" name="username" class="form-control text-center" placeholder="Username">
-                                </div>
-                                <div class="input-group mb-3">
-                                    <input type="password" name="password" class="form-control text-center" placeholder="Password">
-                                </div>
-                                <div class="mb-3 text-center">
-                                    <button type="submit" class="btn btn-primary">Login</button>
-                                </div>
-                            </form>
-                            
-                            <div class="text-center mt-5">
-                                <p class="">Belum memiliki akun? <a href="#!" class="text-blue-50 fw-bold">Buat Akun</a></p>
-                            </div>
-
                         </div>
                     </div>
                 </div>
@@ -60,6 +72,7 @@
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="template/js/adminlte.min.js"></script>
+    <script src="template/js/login.js"></script>
 
 </body>
 </html>

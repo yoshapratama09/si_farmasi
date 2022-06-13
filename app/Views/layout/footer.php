@@ -58,6 +58,9 @@
   <!-- <script src="template/js/demo.js"></script> -->
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="<?= base_url('template/js/pages/dashboard.js'); ?>"></script>
+  <script src="<?= base_url('template/js/header.js'); ?>"></script>
+  <!-- SweetAlert2 -->
+  <script src="<?= base_url('plugins/sweetalert2/sweetalert2.min.js'); ?>"></script>
   </body>
 
   </html>

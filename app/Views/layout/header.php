@@ -31,6 +31,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <!-- css obat -->
   <link rel="stylesheet" href="<?= base_url('template/css/obat/medicine.css'); ?>">
+  <!-- SweetAlert2 -->
+  <link rel="stylesheet" href="<?= base_url('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css'); ?>">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -164,7 +166,7 @@
               <span class="float-right text-muted text-sm">2 days</span>
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item dropdown-footer">Se  e All Notifications</a>
+            <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
           </div>
         </li>
         <li class="nav-item">
@@ -173,7 +175,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" data-widget="" href="#" role="button">
+          <a class="nav-link swalExit" id="logout" href="#" role="button">
             <i class="fas fa-power-off"></i>
           </a>
         </li>

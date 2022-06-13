@@ -31,20 +31,25 @@ class Login extends BaseController
         $data = $user->where('employee_username', $username)->first();
 
         if($data){
-            $pass = $data['employee_pass'];
-            $authPass = password_verify($password, $pass);
-            if($password == $pass){
-                $ses_data = [
-                    'id' => $data['employee_id'],
-                    'name' => $data['employee_name'],
-                    'isLoggedIn' => TRUE
-                ];
-                $session->set($ses_data);
-                return redirect()->to(base_url('/'));
-            }else{
-                $session->setFlashData('msg', 'Password anda salah');
+            if(strtolower($data['employee_departemen']) == 'farmasi'){ 
+                $pass = $data['employee_pass'];
+                $authPass = password_verify($password, $pass);
+                if($password == $pass){
+                    $ses_data = [
+                        'id' => $data['employee_id'],
+                        'name' => $data['employee_name'],
+                        'isLoggedIn' => TRUE
+                    ];
+                    $session->set($ses_data);
+                    return redirect()->to(base_url('/'));
+                }else{
+                    $session->setFlashData('msg', 'Password anda salah');
+                    return redirect()->to(base_url('/login'));
+                }
+            }else {
+                $session->setFlashData('msg', 'Anda tidak memiliki hak akses terhadap sistem');
                 return redirect()->to(base_url('/login'));
-            }
+            } 
         }else {
             $session->setFlashData('msg', 'Username tidak ditemukan');
             return redirect()->to(base_url('/login'));
