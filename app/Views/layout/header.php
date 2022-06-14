@@ -33,6 +33,9 @@
   <link rel="stylesheet" href="<?= base_url('template/css/obat/medicine.css'); ?>">
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="<?= base_url('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css'); ?>">
+  <!-- css master data -->
+  <link rel="stylesheet" href="<?= base_url('template/css/masterData.css'); ?>">
+
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

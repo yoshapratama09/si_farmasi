@@ -26,6 +26,7 @@ class Medicine extends BaseController
 
         echo view('layout/header');
         echo view('layout/sidebar');
+        echo view('layout/menuMasterData');
         echo view('layout/menuObat');
         echo view('masterData/daftarObat', $data);
         echo view('layout/footer');
@@ -68,6 +69,7 @@ class Medicine extends BaseController
 
         echo view('layout/header');
         echo view('layout/sidebar');
+        echo view('layout/menuMasterData');
         echo view('layout/menuObat');
         // echo view('masterData/daftarObat', $data);
         echo view('masterData/editObat', $data);
@@ -88,5 +90,56 @@ class Medicine extends BaseController
         $builder->where('medicine_id', $id);
         $builder->update($data);
         return redirect()->to(base_url('/Obat'));
+    }
+
+    public function halamanTambahObat()
+    {
+
+        // $data = [
+        //     'medicine' => $medicine,
+        //     'category' => $category,
+        //     'type' => $type
+        // ];
+
+        echo view('layout/header');
+        echo view('layout/sidebar');
+        echo view('layout/menuMasterData');
+        echo view('layout/menuObat');
+        echo view('masterData/tambahObat');
+        echo view('layout/footer');
+    }
+
+    public function halamanKategoriObat()
+    {
+
+        $category = $this->medicineModel->getKategori();
+
+        $data = [
+            'category' => $category
+        ];
+
+        echo view('layout/header');
+        echo view('layout/sidebar');
+        echo view('layout/menuMasterData');
+        echo view('layout/menuObat');
+        echo view('masterData/kategoriObat', $data);
+        echo view('layout/footer');
+    }
+
+    public function halamanTipeObat()
+    {
+
+        $type = $this->medicineModel->getType();
+
+        $data = [
+            'type' => $type
+        ];
+
+        echo view('layout/header');
+        echo view('layout/sidebar');
+        echo view('layout/menuMasterData');
+        echo view('layout/menuObat');
+        echo view('masterData/TipeObat', $data);
+        echo view('layout/footer');
     }
 }

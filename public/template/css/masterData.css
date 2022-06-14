@@ -1,0 +1,21 @@
+.icon-md {
+    float: right;
+    margin-top: -90px;
+    margin-right: 30px;
+}
+
+.box-rs {
+    background-color: #132BFF;
+}
+
+.box-rs .sbox-rs {
+    background-color: #0D21D3;
+}
+
+.box-asuransi {
+    background-color: #10FF1A;
+}
+
+.box-asuransi .sbox-asuransi {
+    background-color: #0DD315;
+}

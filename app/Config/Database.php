@@ -34,8 +34,8 @@ class Database extends Config
         'DSN'      => '',
         'hostname' => 'localhost',
         'username' => 'root',
-        'password' => '',
-        'database' => 'si_farmasi',
+        'password' => '18',
+        'database' => 'fp_sif',
         'DBDriver' => 'MySQLi',
         'DBPrefix' => '',
         'pConnect' => false,
@@ -47,7 +47,7 @@ class Database extends Config
         'compress' => false,
         'strictOn' => false,
         'failover' => [],
-        'port'     => 4000,
+        'port'     => 3306,
     ];
 
     /**
