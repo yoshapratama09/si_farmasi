@@ -14,9 +14,13 @@
                 <label for="hargaObat" class="labelObat">Harga Obat</label>
                 <input type="text" name="hargaObat" id="hargaObat" class="inputObat">
                 <br>
-                <input type="submit" name="" id="submitObat">
+                <input type="hidden" name="" id="cek" value="<?php echo (isset($value)) ? $value : ''; ?>">
+                <input type="submit" name="submitObat" id="submitObat" value="Submit">
             </form>
         </div>
     </div>
 </div>
 <!-- end form tambah obat -->
+
+
+<script src="<?= base_url('template/js/alertTambah.js'); ?>"></script>

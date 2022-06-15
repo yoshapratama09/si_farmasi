@@ -1,4 +1,5 @@
 <!--button insert-->
+
 <div class="container">
     <div class="row">
         <div class="col-lg-2">
@@ -10,6 +11,5 @@
         <div class="col-lg-2">
             <button type="button" class="btn btn-block btn-primary mb-2 btnTipeObat" id="btnTipeObat" onclick="location.href='/Obat/Tipe'">Tipe Obat</button>
         </div>
-
     </div>
 </div>

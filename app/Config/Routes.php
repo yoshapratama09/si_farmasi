@@ -38,12 +38,19 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/data', 'Data::index');
 $routes->get('/Obat', 'Medicine::index');
+
 $routes->post('/tambahObat', 'Medicine::tambahObat');
 $routes->get('/Obat/Tambah', 'Medicine::halamanTambahObat');
 $routes->get('/Obat/Kategori', 'Medicine::halamanKategoriObat');
 $routes->get('/Obat/Tipe', 'Medicine::halamanTipeObat');
+
+$routes->post('/Obat/Cari', 'Medicine::cariObat');
+
 $routes->get('/delObat/(:num)', 'Medicine::hapusObat/$1');
 $routes->get('/updateObat/(:num)', 'Medicine::halamanUpdateObat/$1');
+
+$routes->post('/Update', 'Medicine::updateObat');
+
 $routes->post('/updObat/(:num)', 'Medicine::UpdateObat/$1');
 $routes->get('/login', 'Login::index');
 $routes->post('/login/loginAuth', 'Login::loginAuth');

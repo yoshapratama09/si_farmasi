@@ -37,9 +37,36 @@ class MedicineModel extends Model
         return $row;
     }
 
+    public function cekObat($id)
+    {
+        $query = $this->db->query("SELECT * FROM medicine WHERE medicine_id = $id");
+
+        $row = $query->getNumRows();
+
+        return $row;
+    }
+
     public function getObatUpd($id)
     {
         $query = $this->db->query("SELECT * FROM medicine WHERE medicine_id = $id");
+
+        $row = $query->getResultArray();
+
+        return $row;
+    }
+
+    // public function updateObat($id, $nama, $stok, $harga)
+    // {
+    //     $query = $this->db->query("UPDATE medicine set medicine_name = $nama, medicine_stock = $stok, medicine_price=$harga WHERE medicine_id = $id");
+
+    //     $row = $query->getRow();
+
+    //     return $row;
+    // }
+
+    public function searchObat($nama)
+    {
+        $query = $this->db->query("SELECT * FROM medicine where medicine_name like '%$nama%'");
 
         $row = $query->getResultArray();
 
