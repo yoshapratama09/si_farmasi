@@ -265,4 +265,4 @@
 </aside>
 
 <!--script sidebar-->
-<script src="template/js/sidebar.js"></script>
+<script src="<?= base_url('template/js/sidebar.js'); ?>"></script>

@@ -55,3 +55,5 @@ $('.btnDel').on('click', function (e) {
     })
 })
 
+$('#tabelObat').load('/Obat #tabelObat')
+

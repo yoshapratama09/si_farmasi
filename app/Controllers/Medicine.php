@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\MedicineModel;
+use CodeIgniter\Config\Services;
+use CodeIgniter\Database\Config;
 
 class Medicine extends BaseController
 {
@@ -34,6 +36,22 @@ class Medicine extends BaseController
 
     public function tambahObat()
     {
+        if (!$this->validate([
+            'idObat' => [
+                'rules' => 'required|numeric|is_unique[medicine.medicine_id]',
+                'errors' => [
+                    'required' => 'Id obat harus diisi',
+                    'is_unique' => 'Obat dengan Id ini sudah tersedia'
+                ]
+            ],
+            'namaObat' => 'required',
+            'stokObat' => 'required|numeric',
+            'hargaObat' => 'required|numeric'
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to(base_url('/Obat/Tambah'))->withInput()->with('validation', $validation);
+        }
+
         $db = db_connect('default');
         $builder = $db->table('medicine');
 
@@ -128,17 +146,16 @@ class Medicine extends BaseController
     public function halamanTambahObat()
     {
 
-        // $data = [
-        //     'medicine' => $medicine,
-        //     'category' => $category,
-        //     'type' => $type
-        // ];
+        // session();
+        $data = [
+            'validation' => \Config\Services::validation()
+        ];
 
         echo view('layout/header');
         echo view('layout/sidebar');
         echo view('masterData/menuMasterData');
         echo view('masterData/menuObat');
-        echo view('masterData/tambahObat');
+        echo view('masterData/tambahObat', $data);
         echo view('layout/footer');
     }
 

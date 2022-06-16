@@ -36,6 +36,7 @@
   <!-- css master data -->
   <link rel="stylesheet" href="<?= base_url('template/css/masterData.css'); ?>">
 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <!-- jQuery -->
   <script src="<?= base_url('plugins/jquery/jquery.min.js'); ?>"></script>
@@ -43,6 +44,8 @@
   <script src="<?= base_url('plugins/sweetalert2/sweetalert2.min.js'); ?>"></script>
   <!-- Toastr -->
   <script src="<?= base_url('plugins/toastr/toastr.min.js'); ?>"></script>
+  <!--script obat-->
+  <!-- <script src="<?= base_url('template/js/medicine.js'); ?>"></script> -->
 
 
 </head>
