@@ -66,7 +66,10 @@ $routes->get('/login', 'Login::index');
 $routes->post('/login/loginAuth', 'Login::loginAuth');
 $routes->get('/logout', 'Login::logout');
 
-$routes->get('/persediaan/opname', 'persediaan::index');
+$routes->get('/persediaan/opname', 'Persediaan::index');
+$routes->get('/persediaan/pHarga', 'Persediaan::penyesuaianHarga');
+$routes->get('/persediaan/dataExp', 'Persediaan::dataExp');
+$routes->get('/persediaan/pStock', 'Persediaan::penyesuaianStok');
 
 /*
  * --------------------------------------------------------------------

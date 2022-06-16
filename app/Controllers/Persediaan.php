@@ -27,7 +27,45 @@ class Persediaan extends BaseController
         echo view('layout/footer');
     }
 
-    public function submit(){
-        
+    public function penyesuaianHarga(){
+        $persediaan = $this->persediaanModel->findAll();
+
+        $data = [
+            'data' => $persediaan
+        ];
+
+        echo view('layout/header');
+        echo view('layout/sidebar');
+        echo view('Persediaan/top_data');
+        echo view('Persediaan/penyesuaian_harga', $data);
+        echo view('layout/footer');
+    }
+
+    public function dataExp(){
+        $persediaan = $this->persediaanModel->findAll();
+
+        $data = [
+            'data' => $persediaan
+        ];
+
+        echo view('layout/header');
+        echo view('layout/sidebar');
+        echo view('Persediaan/top_data');
+        echo view('Persediaan/dataExp', $data);
+        echo view('layout/footer');
+    }
+
+    public function penyesuaianStok(){
+        $persediaan = $this->persediaanModel->findAll();
+
+        $data = [
+            'data' => $persediaan
+        ];
+
+        echo view('layout/header');
+        echo view('layout/sidebar');
+        echo view('Persediaan/top_data');
+        echo view('Persediaan/penyesuaian_stok', $data);
+        echo view('layout/footer');
     }
 }

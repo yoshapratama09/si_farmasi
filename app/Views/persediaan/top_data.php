@@ -43,8 +43,7 @@
                             <p>Daftar Obat Expired</p>
                         </div>
                         <div class="icon icon-md">
-                            <!-- <i class="ion ion-stats-bars"></i> -->
-
+                            <i class="fas fa-solid fa-clock-rotate-left"></i>
                         </div>
                         <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -59,7 +58,7 @@
                             <p>Item In</p>
                         </div>
                         <div class="icon icon-md">
-                            <i class="fas fa-solid fa-arrow-down-to-bracket"></i>
+                            <i class="fas fa-solid fa-cart-arrow-down"></i>
                         </div>
                         <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -74,8 +73,7 @@
                             <p>Item Out</p>
                         </div>
                         <div class="icon icon-md">
-                            <!-- <i class="ion ion-bag"></i> -->
-                            <img src="<?= base_url('template/img/heart-beat.svg'); ?>" alt="">
+                        <i class="fas fa-solid fa-share-from-square"></i>
                         </div>
                         <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
