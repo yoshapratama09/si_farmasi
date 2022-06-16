@@ -1,23 +1,26 @@
 <!-- tabel obat-->
-<div class="container" id="">
-  <div class="row">
+<div class="container-fluid" id="">
+  <div class="row ms-1">
     <div class="col">
-      <h1 class="mb-2">Opname Stok</h1>
+      <h2 class="mb-2">Opname Stok</h2>
       
       <form class="mt-4 mb-4">
         <div class="form-row align-items-center">
             <div class="col-sm-3 my-1">
-            <label class="sr-only" for="inlineFormInputName">ID</label>
-            <input type="text" class="form-control" id="inlineFormInputName" placeholder="ID Obat" data-toggle="modal" data-target="#exampleModalCenter">
+            <label class="sr-only" for="medId">ID</label>
+            <input type="text" class="form-control" id="medId" placeholder="ID Obat" data-toggle="modal" data-target="#exampleModalCenter">
             </div>
             <div class="col-sm-3 my-1">
-            <label class="sr-only" for="inlineFormInputGroupUsername">Nama Obat</label>
+            <label class="sr-only" for="medName">Nama Obat</label>
             <div class="input-group">
-                <input type="text" class="form-control" id="inlineFormInputGroupUsername" placeholder="Nama Obat" data-toggle="modal" data-target="#exampleModalCenter" >
+                <input type="text" class="form-control" id="medName" placeholder="Nama Obat" data-toggle="modal" data-target="#exampleModalCenter" >
             </div>
             </div>
             <div class="col-auto my-1">
-            <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            <div class="col-auto my-1">
+              <button type="submit" class="btn btn-danger" id="clearBtn">Clear</button>
             </div>
         </div>
     </form>
@@ -34,7 +37,13 @@
             </tr>
             </thead>
             <tbody>
-            
+              <!-- <?php foreach ($data as $p) : ?>
+                <tr>
+                    <th scope="row"><?= $p['medicine_id']; ?></th>
+                    <td><?= $p['medicine_name']; ?></td>
+                    <td><?= $p['medicine_stock']; ?></td>
+                </tr>
+              <?php endforeach; ?> -->
             </tbody>
             </tfoot>
         </table>
@@ -53,7 +62,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <table id="example2" class="table table-hover">
+        <table id="table" class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">ID Obat</th>
@@ -63,7 +72,7 @@
             </thead>
             <tbody>
                 <?php foreach ($data as $p) : ?>
-                    <tr>
+                    <tr data-dismiss="modal">
                         <th scope="row"><?= $p['medicine_id']; ?></th>
                         <td><?= $p['medicine_name']; ?></td>
                         <td><?= $p['medicine_stock']; ?></td>
@@ -75,10 +84,9 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Select</button>
       </div>
     </div>
-  </div>
+  </div> 
 </div>
 
-<script src="<?= base_url('template/js/alertTambah.js'); ?>"></script>
+<script src="<?= base_url('template/js/persediaan.js'); ?>"></script>
