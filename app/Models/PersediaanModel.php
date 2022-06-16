@@ -6,15 +6,18 @@ use CodeIgniter\Model;
 
 class PersediaanModel extends Model
 {
-    protected $table      = 'supplier';
-    protected $primaryKey = 'supplier_id';
-    protected $allowedFields = ['supplier_name', 'supplier_address', 'supplier_phone', 'supplier_email', 'supplier_country'];
+    protected $table      = 'medicine';
+    protected $primaryKey = 'medicine_id';
+    protected $allowedFields = ['medicine_id', 'medicine_name', 'medicine_stock', 'medicine_price'];
     protected $useTimestamps = true;
 
-    // public function getSupplier(){
-    //     $db = db_connect();
-    //     $sql = "SELECT * FROM supplier";
-    //     $query = $db->query($sql);
-    //     $result = $query->getRow();     
-    // }
+    public function getMedicine()
+    {
+        $query = $this->db->query("SELECT * FROM medicine");
+
+        $row = $query->getResultArray();
+
+        return $row;
+    }
+
 }

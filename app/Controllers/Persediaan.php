@@ -11,6 +11,7 @@ class Persediaan extends BaseController
     {
         $this->persediaanModel = new PersediaanModel();
     }
+    
     public function index()
     {
         $persediaan = $this->persediaanModel->findAll();
@@ -22,7 +23,11 @@ class Persediaan extends BaseController
         echo view('layout/header');
         echo view('layout/sidebar');
         echo view('Persediaan/top_data');
-        echo view('Persediaan/penyesuaian', $data);
+        echo view('Persediaan/opname', $data);
         echo view('layout/footer');
+    }
+
+    public function submit(){
+        
     }
 }

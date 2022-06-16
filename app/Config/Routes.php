@@ -66,6 +66,8 @@ $routes->get('/login', 'Login::index');
 $routes->post('/login/loginAuth', 'Login::loginAuth');
 $routes->get('/logout', 'Login::logout');
 
+$routes->get('/persediaan/opname', 'persediaan::index');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing

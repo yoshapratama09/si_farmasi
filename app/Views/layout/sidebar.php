@@ -112,13 +112,33 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a href="-" class="nav-link">
-                <p>Penyesuaian</p>
+              <a href="/persediaan/opname" class="nav-link">
+                <p>Opname Stok</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="-" class="nav-link">
-                <p>Item masuk/keluar</p>
+                <p>Penyesuaian Stok</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="-" class="nav-link">
+                <p>Penyesuaian Harga</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="-" class="nav-link">
+                <p>Data Expired</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="-" class="nav-link">
+                <p>Item In</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="-" class="nav-link">
+                <p>Item Out</p>
               </a>
             </li>
           </ul>
