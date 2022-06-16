@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\MedicineModel;
 use CodeIgniter\Config\Services;
 use CodeIgniter\Database\Config;
+use CodeIgniter\Validation\StrictRules\Rules;
 
 class Medicine extends BaseController
 {
@@ -93,10 +94,10 @@ class Medicine extends BaseController
         $medicine = $this->medicineModel->where(['medicine_id' => $id])->first();
         // dd($medicine);
         // exit;
-
         $data = [
             'title' => "Update Obat",
-            'medicine' => $medicine
+            'medicine' => $medicine,
+            'validation' => \Config\Services::validation()
         ];
 
         echo view('layout/header');
@@ -109,6 +110,30 @@ class Medicine extends BaseController
 
     public function updateObat($id)
     {
+        $id = $this->request->getVar('idObat');
+
+        if (!$this->validate([
+
+            'namaObat' => 'required',
+            'stokObat' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => 'stok obat harus diisi',
+                    'numeric' => 'Stok obat harus diiisi dengan angka'
+                ]
+            ],
+            'hargaObat' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => 'stok obat harus diisi',
+                    'numeric' => 'Stok obat harus diiisi dengan angka'
+                ]
+            ]
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->back()->withInput()->with('validation', $validation);
+        }
+
         $db = db_connect('default');
         $builder = $db->table('medicine');
 
