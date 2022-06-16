@@ -48,7 +48,7 @@
                             <img src="<?= base_url('template/img/hand-truck.svg'); ?>" alt="">
 
                         </div>
-                        <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="<?= base_url('/supplier') ?>" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -64,7 +64,7 @@
                             <!-- <i class="ion ion-bag"></i> -->
                             <img src="<?= base_url('template/img/stethoscope.svg'); ?>" alt="">
                         </div>
-                        <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="<?= base_url('/dokter') ?>" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -80,7 +80,7 @@
                             <!-- <i class="ion ion-bag"></i> -->
                             <img src="<?= base_url('template/img/heart-beat.svg'); ?>" alt="">
                         </div>
-                        <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="<?= base_url('/pasien') ?>" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
@@ -88,16 +88,15 @@
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box box-rs">
-                        <div class="inner">
+                        <div class="inner" style="color: white;">
                             <h3>65</h3>
-
                             <p>Daftar Rumah Sakit</p>
                         </div>
                         <div class="icon icon-md">
                             <!-- <i class="ion ion-bag"></i> -->
                             <img src="<?= base_url('template/img/medical-logo.svg'); ?>" alt="">
                         </div>
-                        <a href="#" class="small-box-footer sbox-rs">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="<?= base_url('/rumahsakit') ?>" class="small-box-footer sbox-rs">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -113,7 +112,7 @@
                             <!-- <i class="ion ion-bag"></i> -->
                             <img src="<?= base_url('template/img/wheelchair.svg'); ?>" alt="">
                         </div>
-                        <a href="#" class="small-box-footer sbox-asuransi">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="<?= base_url('/asuransi') ?>" class="small-box-footer sbox-asuransi">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->

@@ -1,242 +1,149 @@
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-    <!-- Info Box -->
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0">Data</h1>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
-
-    <section class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-3 col-sm-6 col-12">
-                <div class="info-box bg-info">
-                    <span class="info-box-icon"><i class="far fa-bookmark"></i></span>
-                <div class="info-box-content">
-                
-                <span class="info-box-text">Supplier</span>
-                <span class="info-box-number">41,410</span>
-
-                <div class="progress">
-                    <div class="progress-bar" style="width: 70%"></div>
-                </div>
-                <span class="progress-description">
-                    70% Increase in 30 Days
-                </span>
-            </div>
-                <!-- /.info-box-content -->
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Data-Data</h1>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="<?= base_url('/data') ?>">Data</a></li>
+                            <li class="breadcrumb-item active">Data</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
         </div>
-        
-        <!-- /.info-box -->
-        </div>
-            <!-- /.col -->
-            <div class="col-md-3 col-sm-6 col-12">
-                <div class="info-box bg-success">
-                    <span class="info-box-icon"><i class="far fa-thumbs-up"></i></span>
+        <!-- /.content-header -->
 
-                    <div class="info-box-content">
-                        <span class="info-box-text">Pasien</span>
-                        <span class="info-box-number">41,410</span>
+        <!-- Main content -->
+        <section class="content">
+            <div class="container-fluid">
+                <!-- Small boxes (Stat box 1) -->
+                <div class="row">
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-success">
+                            <div class="inner">
+                                <h3>150</h3>
 
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 70%"></div>
-                        </div>  
-                        <span class="progress-description">
-                            70% Increase in 30 Days
-                        </span>
-                    </div>
-                    <!-- /.info-box-content -->
-                </div>
-            <!-- /.info-box -->
-            </div>
-            
-            <!-- /.col -->
-            <div class="col-md-3 col-sm-6 col-12">
-                <div class="info-box bg-warning">
-                    <span class="info-box-icon"><i class="far fa-calendar-alt"></i></span>
+                                <p>Data Daftar Supplier</p>
+                            </div>
+                            <div class="icon icon-md">
+                                <!-- <i class="ion ion-stats-bars"></i> -->
+                                <img src="<?= base_url('template/img/hand-truck.svg'); ?>" alt="">
 
-                    <div class="info-box-content">
-                        <span class="info-box-text">Dokter</span>
-                        <span class="info-box-number">41,410</span>
-
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 70%"></div>
+                            </div>
+                            <a href="<?= base_url('/supplier') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                        <span class="progress-description">
-                            70% Increase in 30 Days
-                        </span>
                     </div>
-                    <!-- /.info-box-content -->
-                </div>
-            <!-- /.info-box -->
-            </div>
-            <!-- /.col -->
-            <div class="col-md-3 col-sm-6 col-12">
-                <div class="info-box bg-danger">
-                    <span class="info-box-icon"><i class="fas fa-comments"></i></span>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-danger">
+                            <div class="inner">
+                                <h3>53</h3>
 
-                    <div class="info-box-content">
-                        <span class="info-box-text">Sales</span>
-                        <span class="info-box-number">41,410</span>
-
-                        <div class="progress">
-                            <div class="progress-bar" style="width: 70%"></div>
+                                <p>Data Daftar Pasien</p>
+                            </div>
+                            <div class="icon icon-md">
+                                <!-- <i class="ion ion-bag"></i> -->
+                                <img src="<?= base_url('template/img/heart-beat.svg'); ?>" alt="">
+                            </div>
+                            <a href="<?= base_url('/pasien') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
-                        <span class="progress-description">
-                            70% Increase in 30 Days
-                        </span>
                     </div>
-                    <!-- /.info-box-content -->
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-warning">
+                            <div class="inner">
+                                <h3>44</h3>
+
+                                <p>Data Daftar Dokter</p>
+                            </div>
+                            <div class="icon icon-md">
+                                <!-- <i class="ion ion-bag"></i> -->
+                                <img src="<?= base_url('template/img/stethoscope.svg'); ?>" alt="">
+                            </div>
+                            <a href="<?= base_url('/dokter') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-secondary">
+                            <div class="inner">
+                                <h3>65</h3>
+
+                                <p>Data Daftar Sales</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-briefcase"></i>
+                            </div>
+                            <a href="<?= base_url('/sales') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
                 </div>
-                <!-- /.info-box -->
-            </div>
-            <!-- /.col -->
-        </div>
-        <!-- /.row -->
+                <!-- /.row -->
+
+                <!-- Small boxes (Stat box 2) -->
+                <div class="row">
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box box-rs">
+                            <div class="inner" style="color: white;">
+                                <h3>150</h3>
+
+                                <p>Data Daftar Rumah Sakit</p>
+                            </div>
+                            <div class="icon icon-md mr-3">
+                                <!-- <i class="ion ion-bag"></i> -->
+                                <img src="<?= base_url('template/img/medical-logo.svg'); ?>" alt="">
+                            </div>
+                            <a href="<?= base_url('/rumahsakit') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box box-asuransi">
+                            <div class="inner" style="color: white;">
+                                <h3>53</h3>
+
+                                <p>Data Asuransi</p>
+                            </div>
+                            <div class="icon icon-md">
+                                <!-- <i class="ion ion-bag"></i> -->
+                                <img src="<?= base_url('template/img/wheelchair.svg'); ?>" alt="">
+                            </div>
+                            <a href="<?= base_url('/asuransi') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                    <div class="col-lg-3 col-6">
+                        <!-- small box -->
+                        <div class="small-box bg-primary">
+                            <div class="inner">
+                                <h3>44</h3>
+
+                                <p>Data Daftar Spesialis</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-university"></i>
+                            </div>
+                            <a href="<?= base_url('/dokterspesialis') ?>" class="small-box-footer">More info <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <!-- ./col -->
+                </div>
+
+                <!-- /.row (main row) -->
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
     </div>
-    <!-- Container -->
-    </section>
-    
-
-    
-    <div class="container">
-        <!-- Data Supplier -->
-        <div class="row">
-            <h4>Data Supplier</h3>
-            <div class="col">
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nama Supplier</th>
-                    <th scope="col">Alamat </th>
-                    <th scope="col">Nomor Telepon</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Negara</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php foreach ($data as $sp) : ?>
-                    <tr>
-                    <th scope="row"><?= $sp['supplier_id']; ?></th>
-                    <td><?= $sp['supplier_name']; ?></td>
-                    <td><?= $sp['supplier_address']; ?></td>
-                    <td><?= $sp['supplier_phone']; ?></td>
-                    <td><?= $sp['supplier_email']; ?></td>
-                    <td><?= $sp['supplier_country']; ?></td>
-                    </tr>
-                <?php endforeach; ?>
-                </tbody>
-            </table>
-            </div>
-        </div>
-        <!-- End Row Data Supplier -->
-
-        <!-- Data Pasien -->
-        <div class="row mt-2">
-        <h4>Data Pasien</h3>
-            <div class="col">
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nama Supplier</th>
-                    <th scope="col">Alamat </th>
-                    <th scope="col">Nomor Telepon</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Negara</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php foreach ($data as $sp) : ?>
-                    <tr>
-                    <th scope="row"><?= $sp['supplier_id']; ?></th>
-                    <td><?= $sp['supplier_name']; ?></td>
-                    <td><?= $sp['supplier_address']; ?></td>
-                    <td><?= $sp['supplier_phone']; ?></td>
-                    <td><?= $sp['supplier_email']; ?></td>
-                    <td><?= $sp['supplier_country']; ?></td>
-                    </tr>
-                <?php endforeach; ?>
-                </tbody>
-            </table>
-            </div>
-        </div>
-        <!-- End Row Data Pasien -->
-
-        <!-- Data Dokter -->
-        <div class="row mt-2">
-        <h4>Data Dokter</h3>
-            <div class="col">
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nama Supplier</th>
-                    <th scope="col">Alamat </th>
-                    <th scope="col">Nomor Telepon</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Negara</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php foreach ($data as $sp) : ?>
-                    <tr>
-                    <th scope="row"><?= $sp['supplier_id']; ?></th>
-                    <td><?= $sp['supplier_name']; ?></td>
-                    <td><?= $sp['supplier_address']; ?></td>
-                    <td><?= $sp['supplier_phone']; ?></td>
-                    <td><?= $sp['supplier_email']; ?></td>
-                    <td><?= $sp['supplier_country']; ?></td>
-                    </tr>
-                <?php endforeach; ?>
-                </tbody>
-            </table>
-            </div>
-        </div>
-        <!-- End Row Data Dokter -->
-
-        <!-- Data Rumah Sakit -->
-        <div class="row mt-2">
-        <h4>Data Lainnya</h3>
-            <div class="col">
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Nama Supplier</th>
-                    <th scope="col">Alamat </th>
-                    <th scope="col">Nomor Telepon</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Negara</th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php foreach ($data as $sp) : ?>
-                    <tr>
-                    <th scope="row"><?= $sp['supplier_id']; ?></th>
-                    <td><?= $sp['supplier_name']; ?></td>
-                    <td><?= $sp['supplier_address']; ?></td>
-                    <td><?= $sp['supplier_phone']; ?></td>
-                    <td><?= $sp['supplier_email']; ?></td>
-                    <td><?= $sp['supplier_country']; ?></td>
-                    </tr>
-                <?php endforeach; ?>
-                </tbody>
-            </table>
-            </div>
-        </div>
-        <!-- End Row Data Sales -->
-
-    </div>
-    
-
-</div>
-<!-- /.content-wrapper -->
+    <!-- /.content-wrapper -->
