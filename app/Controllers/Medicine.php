@@ -55,14 +55,18 @@ class Medicine extends BaseController
 
             $builder->insert($data);
 
-            session()->setFlashdata('Pesan', 'Berhasil');
+            session()->setFlashdata('Pesan', 'Tambah');
             return redirect()->to(base_url('/Obat'));
+        } else {
+            session()->setFlashdata('Pesan', 'gagalTambah');
+            return redirect()->to(base_url('/Obat/Tambah'));
         }
     }
 
     public function hapusObat($id)
     {
         $this->medicineModel->delete($id);
+        session()->setFlashdata('Pesan', 'hapus');
         return redirect()->to(base_url('/Obat'));
     }
 
@@ -98,6 +102,8 @@ class Medicine extends BaseController
 
         $builder->where('medicine_id', $id);
         $builder->update($data);
+        session()->setFlashdata('Pesan', 'Update');
+
         return redirect()->to(base_url('/Obat'));
     }
 

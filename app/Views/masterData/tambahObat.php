@@ -3,6 +3,7 @@
     <div class=" row">
         <div class="col">
             <h1 class="mb-2">Tambah Obat</h1>
+            <div hidden class="alert" data-flashdata="<?= session()->getFlashdata('Pesan') ?>"></div>
             <form action="/tambahObat" method="POST">
                 <?= csrf_field(); ?>
                 <label for="idObat" class="labelObat">ID Obat</label>

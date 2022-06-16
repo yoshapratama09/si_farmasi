@@ -36,6 +36,13 @@
   <!-- css master data -->
   <link rel="stylesheet" href="<?= base_url('template/css/masterData.css'); ?>">
 
+  <!-- jQuery -->
+  <script src="<?= base_url('plugins/jquery/jquery.min.js'); ?>"></script>
+  <!-- SweetAlert2 -->
+  <script src="<?= base_url('plugins/sweetalert2/sweetalert2.min.js'); ?>"></script>
+  <!-- Toastr -->
+
+  <script src="<?= base_url('plugins/toastr/toastr.min.js'); ?>"></script>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">

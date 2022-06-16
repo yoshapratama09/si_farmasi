@@ -24,16 +24,12 @@
   </div>
   <!-- ./wrapper -->
 
-  <!-- jQuery -->
-  <script src="<?= base_url('plugins/jquery/jquery.min.js'); ?>"></script>
   <!-- jQuery UI 1.11.4 -->
   <script src="<?= base_url('plugins/jquery-ui/jquery-ui.min.js'); ?>"></script>
   <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
   <script>
       $.widget.bridge('uibutton', $.ui.button)
   </script>
-  <!-- Bootstrap 4 -->
-  <script src="<?= base_url('plugins/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
   <!-- ChartJS -->
   <script src="<?= base_url('plugins/chart.js/Chart.min.js'); ?>"></script>
   <!-- Sparkline -->
@@ -59,15 +55,15 @@
   <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
   <script src="<?= base_url('template/js/pages/dashboard.js'); ?>"></script>
   <script src="<?= base_url('template/js/header.js'); ?>"></script>
-  <!-- SweetAlert2 -->
-  <script src="<?= base_url('plugins/sweetalert2/sweetalert2.min.js'); ?>"></script>
 
 
 
-  <!-- jQuery -->
-  <script src="<?= base_url('plugins/jquery/jquery.min.js'); ?>"></script>
+
   <!-- Bootstrap 4 -->
   <script src="<?= base_url('plugins/bootstrap/js/bootstrap.bundle.min.js'); ?>"></script>
+  <!-- AdminLTE App -->
+
+  <script src="<?= base_url('template/js/adminlte.min.js'); ?>"></script>
   <!-- DataTables  & Plugins -->
   <script src="<?= base_url('plugins/datatables/jquery.dataTables.min.js'); ?>"></script>
   <script src="<?= base_url('plugins/datatables-bs4/js/dataTables.bootstrap4.min.js'); ?>"></script>
