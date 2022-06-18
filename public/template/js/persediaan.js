@@ -15,8 +15,6 @@ $('#clearBtn').on('click', function () {
     document.getElementById("medName").value = "";
 } );
 
-
-
 $('#filter').on('click', function () {
     var checkBox = document.getElementById("filter");
     var input = document.getElementById("medId");
