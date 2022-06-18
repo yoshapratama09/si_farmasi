@@ -23,19 +23,22 @@ $('#filter').on('click', function () {
     if(checkBox.checked == true){
         input.dataset.target = "";
         input.readOnly = true;
+        checkBox.value = "1"
     }else{
         input.dataset.target = "#exampleModalCenter";
         input.readOnly = false;
+        checkBox.value ="0";
     }
 });
 
-// function check() {
-//     var checkBox = document.getElementById("filter");
-//     var input = document.getElementById("medId");
-//     if(checkBox.checked == true){
-//         input.readOnly = true;
-//     }else{
-//         input.readOnly = false;
-//     }
-// }
+
+var alert = document.getElementById('msg').value;
+if(alert != null){
+    Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: alert,
+    })
+}
+
 

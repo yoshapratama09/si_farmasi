@@ -23,7 +23,7 @@ class PersediaanModel extends Model
 
     public function getSearch($nama)
     {
-        $query = $this->db->query("SELECT * FROM medicine WHERE medicine_id LIKE %$nama%'");
+        $query = $this->db->query("SELECT * FROM medicine WHERE medicine_name LIKE '%$nama%'");
 
         $row = $query->getResultArray();
 
