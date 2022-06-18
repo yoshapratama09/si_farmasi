@@ -10,7 +10,32 @@ for(var i = 1; i < table.rows.length; i++)
     };
 }
 
-$('#clearBtn').on( 'click', function () {
+$('#clearBtn').on('click', function () {
     document.getElementById("medId").value = "";
     document.getElementById("medName").value = "";
 } );
+
+
+
+$('#filter').on('click', function () {
+    var checkBox = document.getElementById("filter");
+    var input = document.getElementById("medId");
+    if(checkBox.checked == true){
+        input.dataset.target = "";
+        input.readOnly = true;
+    }else{
+        input.dataset.target = "#exampleModalCenter";
+        input.readOnly = false;
+    }
+});
+
+// function check() {
+//     var checkBox = document.getElementById("filter");
+//     var input = document.getElementById("medId");
+//     if(checkBox.checked == true){
+//         input.readOnly = true;
+//     }else{
+//         input.readOnly = false;
+//     }
+// }
+

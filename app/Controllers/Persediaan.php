@@ -40,12 +40,35 @@ class Persediaan extends BaseController
         echo view('Persediaan/penyesuaian_harga', $data);
         echo view('layout/footer');
     }
+    
+    public function getDataExp(){
+        $id = $this->request->getVar('medId');
+        // $name 
+
+        $medicine = $this->persediaanModel->findAll();
+        $getMedicine = $this->persediaanModel->getMedicine($id);
+        // $getSearch = $this->persediaanModel->getSearch();
+
+
+
+        $data = [
+            'data' => $getMedicine,
+            'medicine' => $medicine
+        ];
+
+        echo view('layout/header');
+        echo view('layout/sidebar');
+        echo view('persediaan/top_data');
+        echo view('persediaan/dataExp', $data);
+        echo view('layout/footer');
+    }
 
     public function dataExp(){
         $persediaan = $this->persediaanModel->findAll();
 
         $data = [
-            'data' => $persediaan
+            'data' => $persediaan,
+            'medicine' => $persediaan
         ];
 
         echo view('layout/header');

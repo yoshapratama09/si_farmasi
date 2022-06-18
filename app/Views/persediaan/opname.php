@@ -30,6 +30,7 @@
                 <th scope="col">Tanggal</th>
                 <th scope="col">Invoice</th>
                 <th scope="col">Keterangan</th>
+                <th scope="col">Harga</th>
                 <th scope="col">In</th>
                 <th scope="col">Out</th>
                 <th scope="col">Stok</th> 

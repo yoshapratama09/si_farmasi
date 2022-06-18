@@ -70,6 +70,7 @@ $routes->get('/persediaan/opname', 'Persediaan::index');
 $routes->get('/persediaan/pHarga', 'Persediaan::penyesuaianHarga');
 $routes->get('/persediaan/dataExp', 'Persediaan::dataExp');
 $routes->get('/persediaan/pStock', 'Persediaan::penyesuaianStok');
+$routes->post('/persediaan/getDataExp', 'Persediaan::getDataExp');
 
 /*
  * --------------------------------------------------------------------
