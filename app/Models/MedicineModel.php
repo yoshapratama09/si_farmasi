@@ -18,6 +18,10 @@ class MedicineModel extends Model
     protected $primaryKey2 = 'type_id';
     protected $allowedFields2 = ['type_id', 'type_name'];
 
+    protected $table3      = 'satuanmed';
+    protected $primaryKey3 = 'satuan_id';
+    protected $allowedFields3 = ['satuan_id', 'satuan_name'];
+
 
     public function getKategori()
     {
@@ -28,9 +32,72 @@ class MedicineModel extends Model
         return $row;
     }
 
+    public function getKategoriUpdate($id)
+    {
+        $query = $this->db->query("SELECT * FROM categoryMed where category_id =$id");
+
+        $row = $query->getResultArray();
+
+        return $row;
+    }
+
+    public function cekKategoriObat($id)
+    {
+        $query = $this->db->query("SELECT * FROM categorymed WHERE category_id = $id");
+
+        $row = $query->getNumRows();
+
+        return $row;
+    }
+
     public function getType()
     {
         $query = $this->db->query("SELECT * FROM typemed");
+
+        $row = $query->getResultArray();
+
+        return $row;
+    }
+
+    public function cekTipeObat($id)
+    {
+        $query = $this->db->query("SELECT * FROM typemed WHERE type_id = $id");
+
+        $row = $query->getNumRows();
+
+        return $row;
+    }
+
+    public function getTipeUpdate($id)
+    {
+        $query = $this->db->query("SELECT * FROM typemed where type_id =$id");
+
+        $row = $query->getResultArray();
+
+        return $row;
+    }
+
+    public function getSatuan()
+    {
+        $query = $this->db->query("SELECT * FROM satuanmed");
+
+        $row = $query->getResultArray();
+
+        return $row;
+    }
+
+    public function cekSatuanObat($id)
+    {
+        $query = $this->db->query("SELECT * FROM satuanmed WHERE satuan_id = $id");
+
+        $row = $query->getNumRows();
+
+        return $row;
+    }
+
+    public function getSatuanUpdate($id)
+    {
+        $query = $this->db->query("SELECT * FROM satuanmed where satuan_id =$id");
 
         $row = $query->getResultArray();
 
@@ -67,6 +134,24 @@ class MedicineModel extends Model
     public function searchObat($nama)
     {
         $query = $this->db->query("SELECT * FROM medicine where medicine_name like '%$nama%'");
+
+        $row = $query->getResultArray();
+
+        return $row;
+    }
+
+    public function searchKategoriObat($nama)
+    {
+        $query = $this->db->query("SELECT * FROM categorymed where category_name like '%$nama%'");
+
+        $row = $query->getResultArray();
+
+        return $row;
+    }
+
+    public function searchTipeObat($nama)
+    {
+        $query = $this->db->query("SELECT * FROM typemed where type_name like '%$nama%'");
 
         $row = $query->getResultArray();
 
