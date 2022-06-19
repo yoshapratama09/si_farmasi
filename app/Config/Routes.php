@@ -53,6 +53,28 @@ $routes->post('/tambahObat', 'Medicine::tambahObat');
 $routes->get('/Obat/Tambah', 'Medicine::halamanTambahObat');
 $routes->get('/Obat/Kategori', 'Medicine::halamanKategoriObat');
 $routes->get('/Obat/Tipe', 'Medicine::halamanTipeObat');
+$routes->get('/Obat/Satuan', 'Medicine::halamanSatuanObat');
+
+$routes->get('/Obat/Kategori/Tambah', 'Medicine::halamanTambahKategoriObat');
+$routes->post('/tambahKategoriObat', 'Medicine::tambahKategoriObat');
+$routes->get('/delKategoriObat/(:num)', 'Medicine::hapusKategoriObat/$1');
+$routes->get('/updateKategoriObat/(:num)', 'Medicine::halamanUpdateKategoriObat/$1');
+$routes->post('/updKategoriObat/(:num)', 'Medicine::UpdateKategoriObat/$1');
+$routes->post('/Obat/Kategori/Cari', 'Medicine::cariKategoriObat');
+
+$routes->get('/Obat/Tipe/Tambah', 'Medicine::halamanTambahTipeObat');
+$routes->post('/tambahTipeObat', 'Medicine::tambahTipeObat');
+$routes->get('/delTipeObat/(:num)', 'Medicine::hapusTipeObat/$1');
+$routes->get('/updateTipeObat/(:num)', 'Medicine::halamanUpdateTipeObat/$1');
+$routes->post('/updTipeObat/(:num)', 'Medicine::UpdateTipeObat/$1');
+$routes->post('/Obat/Tipe/Cari', 'Medicine::cariTipeObat');
+
+$routes->get('/Obat/Satuan/Tambah', 'Medicine::halamanTambahSatuanObat');
+$routes->post('/tambahSatuanObat', 'Medicine::tambahSatuanObat');
+$routes->get('/delSatuanObat/(:num)', 'Medicine::hapusSatuanObat/$1');
+$routes->get('/updateSatuanObat/(:num)', 'Medicine::halamanUpdateSatuanObat/$1');
+$routes->post('/updSatuanObat/(:num)', 'Medicine::UpdateSatuanObat/$1');
+$routes->post('/Obat/Satuan/Cari', 'Medicine::cariSatuanObat');
 
 $routes->post('/Obat/Cari', 'Medicine::cariObat');
 

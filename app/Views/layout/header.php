@@ -44,8 +44,6 @@
   <script src="<?= base_url('plugins/sweetalert2/sweetalert2.min.js'); ?>"></script>
   <!-- Toastr -->
   <script src="<?= base_url('plugins/toastr/toastr.min.js'); ?>"></script>
-  <!--script obat-->
-  <!-- <script src="<?= base_url('template/js/medicine.js'); ?>"></script> -->
 
 
 </head>

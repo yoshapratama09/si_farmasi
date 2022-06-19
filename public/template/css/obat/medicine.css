@@ -1,3 +1,10 @@
+.table thead select {
+    border: none;
+    background-color: inherit;
+    font-weight: bold;
+
+}
+
 .labelObat {
     width: 180px;
     clear: left;
@@ -14,7 +21,9 @@
     width: 250px;
 }
 
-
+.inputCari {
+    margin-right: 0px;
+}
 
 
 

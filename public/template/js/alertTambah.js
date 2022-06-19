@@ -10,12 +10,12 @@ const flashData = $('.alert').data('flashdata');
 if (flashData == 'Update') {
     Toast.fire({
         icon: 'success',
-        title: 'Data berhasil diubah'
+        title: 'Data Obat berhasil diubah'
     });
 } else if (flashData == 'Tambah') {
     Toast.fire({
         icon: 'success',
-        title: 'Data berhasil ditambahkan'
+        title: 'Data Obat berhasil ditambahkan'
     });
 } else if (flashData == 'gagalTambah') {
     Toast.fire({
@@ -25,7 +25,67 @@ if (flashData == 'Update') {
 } else if (flashData == 'hapus') {
     Toast.fire({
         icon: 'success',
-        title: 'Data berhasil dihapus'
+        title: 'Data Obat berhasil dihapus'
+    });
+} else if (flashData == 'TambahKategori') {
+    Toast.fire({
+        icon: 'success',
+        title: 'Data Kategori berhasil ditambahkan'
+    });
+} else if (flashData == 'gagalTambahKategori') {
+    Toast.fire({
+        icon: 'warning',
+        title: 'Kategori Obat dengan id tersebut sudah tersedia'
+    });
+} else if (flashData == 'hapusKategori') {
+    Toast.fire({
+        icon: 'success',
+        title: 'Data Kategori Obat berhasil dihapus'
+    });
+} else if (flashData == 'UpdateKategori') {
+    Toast.fire({
+        icon: 'success',
+        title: 'Data Kategori Obat berhasil diubah'
+    });
+} else if (flashData == 'TambahTipe') {
+    Toast.fire({
+        icon: 'success',
+        title: 'Data Tipe berhasil ditambahkan'
+    });
+} else if (flashData == 'gagalTambahTipe') {
+    Toast.fire({
+        icon: 'warning',
+        title: 'Tipe Obat dengan id tersebut sudah tersedia'
+    });
+} else if (flashData == 'hapusTipe') {
+    Toast.fire({
+        icon: 'success',
+        title: 'Data Tipe Obat berhasil dihapus'
+    });
+} else if (flashData == 'UpdateTipe') {
+    Toast.fire({
+        icon: 'success',
+        title: 'Data Tipe Obat berhasil diubah'
+    });
+} else if (flashData == 'TambahSatuan') {
+    Toast.fire({
+        icon: 'success',
+        title: 'Data Satuan berhasil ditambahkan'
+    });
+} else if (flashData == 'gagalTambahSatuan') {
+    Toast.fire({
+        icon: 'warning',
+        title: 'Satuan Obat dengan id tersebut sudah tersedia'
+    });
+} else if (flashData == 'hapusSatuan') {
+    Toast.fire({
+        icon: 'success',
+        title: 'Data Satuan Obat berhasil dihapus'
+    });
+} else if (flashData == 'UpdateSatuan') {
+    Toast.fire({
+        icon: 'success',
+        title: 'Data Satuan Obat berhasil diubah'
     });
 }
 
@@ -36,12 +96,12 @@ $('.btnDel').on('click', function (e) {
 
     Swal.fire({
         title: 'Apakah anda yakin?',
-        text: "Data obat akan dihapus",
+        text: "Data akan dihapus",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Hapus data!'
+        confirmButtonText: 'Hapus data'
     }).then((result) => {
         if (result.isConfirmed) {
             document.location.href = href;
