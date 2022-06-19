@@ -51,11 +51,6 @@ class Persediaan extends BaseController
         $name = $this->request->getVar('medName'); 
 
         $medicine = $this->persediaanModel->findAll();
-        
-        if(empty($id)){
-            
-        }
-
 
         if($filter == "1"){
             $getSearch = $this->persediaanModel->getSearch($name);

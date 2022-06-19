@@ -21,7 +21,7 @@
           <div class="col-sm-3 my-1">
             <label class="sr-only" for="medName">Nama Obat</label>
             <div class="input-group">
-                <input type="text" class="form-control" id="medName" placeholder="Nama Obat" name="medName" required>
+                <input type="text" class="form-control" id="medName" placeholder="Nama Obat" name="medName" data-toggle="modal" data-target="#exampleModalCenter" required>
             </div>
           </div>
           <div class="col-auto my-1">
