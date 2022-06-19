@@ -117,17 +117,17 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="-" class="nav-link">
+              <a href="/persediaan/pStock" class="nav-link">
                 <p>Penyesuaian Stok</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="-" class="nav-link">
+              <a href="/persediaan/pHarga" class="nav-link">
                 <p>Penyesuaian Harga</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="-" class="nav-link">
+              <a href="/persediaan/dataExp" class="nav-link">
                 <p>Data Expired</p>
               </a>
             </li>

@@ -1,7 +1,7 @@
 <div class="container-fluid" id="">
   <div class="row ms-1">
     <div class="col">
-      <h2 class="mb-2">Opname Stok</h2>
+      <h2 class="mb-2">Penyesuaian Stock Obat</h2>
       
       <form class="mt-4 mb-4">
         <div class="form-row align-items-center">
@@ -27,13 +27,10 @@
         <table id="example2" class="table table-hover">
             <thead>
             <tr>
-                <th scope="col">Tanggal</th>
-                <th scope="col">Invoice</th>
-                <th scope="col">Keterangan</th>
+                <th scope="col">ID Obat</th>
+                <th scope="col">Nama Obat</th>
+                <th scope="col">Kuantitas</th>
                 <th scope="col">Harga</th>
-                <th scope="col">In</th>
-                <th scope="col">Out</th>
-                <th scope="col">Stok</th> 
             </tr>
             </thead>
             <tbody>
@@ -53,7 +50,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
+  <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>

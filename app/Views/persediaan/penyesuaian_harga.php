@@ -1,72 +1,69 @@
 <div class="container-fluid" id="">
   <div class="row ms-1">
     <div class="col">
-      <h2 class="mb-2">Data Obat Expired</h2>
+      <h2 class="mb-2">Penyesuaian Harga</h2>
       
-      <form class="mt-4 mb-4" method="POST" id="formDataExp" action="/persediaan/getDataExp">
-        <label class=" col-form-label" for="">Cari Berdasarkan ID Obat</label>
-        <?php 
-            if(session()->getFlashdata('msg') != NULL):       
-          ?>
+      <form class="mt-4 mb-4">
+        <div class="form-row align-items-center">  
           <div class="col-sm-3 my-1">
-            <label class="sr-only" for="hidden">Hidden</label>
-            <input type="hidden" class="form-control alert" id="msg" name="msg" placeholder="Message" value="<?= session()->getFlashdata('msg'); ?>">
-          </div>
-        <?php endif;?>
-        <div class="form-row align-items-center">
-          <div class="col-sm-3 my-1">
-            <label class="sr-only" for="medId">ID</label>
-            <input type="text" class="form-control" id="medId" name="medId" placeholder="ID Obat" data-toggle="modal" data-target="#exampleModalCenter">
+            <label class="staticEmail2" for="medId">ID Obat</label>
+            <input type="text" class="form-control" id="medId" placeholder="ID Obat" data-toggle="modal" data-target="#exampleModalCenter">
           </div>
           <div class="col-sm-3 my-1">
-            <label class="sr-only" for="medName">Nama Obat</label>
+            <label class="staticEmail2" for="medName">Nama Obat</label>
             <div class="input-group">
-                <input type="text" class="form-control" id="medName" placeholder="Nama Obat" name="medName">
+              <input type="text" class="form-control" id="medName" placeholder="Nama Obat" data-toggle="modal" data-target="#exampleModalCenter" >
             </div>
           </div>
-          <div class="col-auto my-1">
-            <button type="submit" class="btn btn-primary msg" name="submitDataExp">Submit</button>
+          <div class="col-auto my-1 mt-4">
+            <button type="submit" class="btn btn-primary">Submit</button>
           </div>
-          <div class="col-auto my-1">
-            <button type="submit" class="btn btn-danger" id="clearBtn" >Clear</button>
+          <div class="col-auto my-1 mt-4">
+            <button type="submit" class="btn btn-danger" id="clearBtn">Clear</button>
           </div>
-        </div>
-        <div class="col-sm-6 my-1 ms-1">
-            <input type="checkbox" class="form-check-input" id="filter" name="filter" value='0'>
-            <label class="form-check-label" for="exampleCheck1">Filter Berdasarkan Nama</label>
+          
         </div>
       </form>
 
+      <form class="mt-4 mb-4" action="">
+        <div class="form-row align-items-center">
+          <div class="col-sm-3 my-1">
+            <label class="staticEmail2" for="oldPrice">Harga Lama</label>
+            <input type="text" class="form-control" id="oldPrice" placeholder="Harga Lama">
+          </div>
+          <div class="col-sm-3 my-1">
+              <label class="staticEmail2" for="newPrice">Harga Baru</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="newPrice" placeholder="Harga Baru">
+              </div>
+          </div>
+        </div>
+        <div class="form-row align-items-center mt-2">
+            <div class="col-sm-10">
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-danger" id="clearBtn">Clear</button>
+            </div>
+          </div>
+      </form>
+
       <table id="example2" class="table table-hover">
-        <thead>
+          <thead>
           <tr>
-              <th scope="col">ID Obat</th>
-              <th scope="col">Nama Obat</th>
-              <th scope="col">Kuantitas</th>
-              <th scope="col">Expired Date</th>
+              <th scope="col">Tanggal</th>
+              <th scope="col">Harga</th>
               <th scope="col">Status</th>
           </tr>
           </thead>
           <tbody>
-            <?php foreach ($data as $p) : ?>
+            <!-- <?php foreach ($data as $p) : ?>
               <tr>
                   <th scope="row"><?= $p['medicine_id']; ?></th>
                   <td><?= $p['medicine_name']; ?></td>
                   <td><?= $p['medicine_stock']; ?></td>
-                  <td><?= $p['medicine_exp']; ?></td>
-                  <td>
-                    <?php 
-                      if($p['medicine_exp'] > getdate()){
-                        echo "Expired";
-                      }else{
-                        echo "Active";
-                      }
-                    ?>
-                  </td>
               </tr>
-            <?php endforeach; ?>
+            <?php endforeach; ?> -->
           </tbody>
-        </tfoot>
+          </tfoot>
       </table>
     </div>
   </div>
@@ -92,7 +89,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($medicine as $p) : ?>
+                <?php foreach ($data as $p) : ?>
                     <tr data-dismiss="modal">
                         <th scope="row"><?= $p['medicine_id']; ?></th>
                         <td><?= $p['medicine_name']; ?></td>

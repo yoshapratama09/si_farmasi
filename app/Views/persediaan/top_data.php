@@ -5,10 +5,10 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Master Data</h1>
+                    <h1 class="m-0">PERSEDIAAN</h1>
                 </div><!-- /.col -->
 
-            </div><!-- /.row -->
+            </div><!-- /.row -->    
         </div><!-- /.container-fluid -->
     </div>
     <!-- /.content-header -->
@@ -28,8 +28,7 @@
                         </div>
 
                         <div class="icon icon-md">
-                            <!-- <i class="ion ion-bag"></i> -->
-                            <img src="<?= base_url('template/img/tablet.svg'); ?>" alt="">
+                            <i class="fas fa-solid fa-pills"></i>
                         </div>
                         <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -41,12 +40,10 @@
                         <div class="inner">
                             <h3>53<sup style="font-size: 20px">%</sup></h3>
 
-                            <p>Daftar Supplier</p>
+                            <p>Daftar Obat Expired</p>
                         </div>
                         <div class="icon icon-md">
-                            <!-- <i class="ion ion-stats-bars"></i> -->
-                            <img src="<?= base_url('template/img/hand-truck.svg'); ?>" alt="">
-
+                            <i class="fas fa-solid fa-clock-rotate-left"></i>
                         </div>
                         <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -58,11 +55,10 @@
                         <div class="inner">
                             <h3>44</h3>
 
-                            <p>Daftar Dokter</p>
+                            <p>Item In</p>
                         </div>
                         <div class="icon icon-md">
-                            <!-- <i class="ion ion-bag"></i> -->
-                            <img src="<?= base_url('template/img/stethoscope.svg'); ?>" alt="">
+                            <i class="fas fa-solid fa-cart-arrow-down"></i>
                         </div>
                         <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
@@ -74,11 +70,10 @@
                         <div class="inner">
                             <h3>65</h3>
 
-                            <p>Daftar Pasien</p>
+                            <p>Item Out</p>
                         </div>
                         <div class="icon icon-md">
-                            <!-- <i class="ion ion-bag"></i> -->
-                            <img src="<?= base_url('template/img/heart-beat.svg'); ?>" alt="">
+                        <i class="fas fa-solid fa-share-from-square"></i>
                         </div>
                         <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
