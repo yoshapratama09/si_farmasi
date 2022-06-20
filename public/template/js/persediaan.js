@@ -20,12 +20,15 @@ $('#clearBtn').on('click', function () {
 $('#filter').on('click', function () {
     var checkBox = document.getElementById("filter");
     var input = document.getElementById("medId");
+    var inputName = document.getElementById("medName");
     if(checkBox.checked == true){
         input.dataset.target = "";
+        inputName.dataset.target = "";
         input.readOnly = true;
         checkBox.value = "1"
     }else{
         input.dataset.target = "#exampleModalCenter";
+        inputName.dataset.target = "#exampleModalCenter";
         input.readOnly = false;
         checkBox.value ="0";
     }

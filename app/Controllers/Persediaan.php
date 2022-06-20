@@ -47,38 +47,39 @@ class Persediaan extends BaseController
         $session = session();
         
         $id = $this->request->getVar('medId');
-        
         $filter = $this->request->getVar('filter');
 
+        $allData = $this->persediaanModel->getDataExp();
         $medicine = $this->persediaanModel->findAll();
+        
         
         if($filter == "1"){
             $name = $this->request->getVar('medName'); 
             $getSearch = $this->persediaanModel->getSearch($name);
             if(empty($getSearch)){
                 $data = [
-                    'data' => $medicine,
-                    'medicine' => $medicine
+                    'data' => $allData,
+                    'medicine' => $allData
                 ];
                 // $session->setFlashData('msg', 'Obat tidak ditemukan');
             }else {
                 $data = [
                     'data' => $getSearch,
-                    'medicine' => $medicine
+                    'medicine' => $allData
                 ];
             }
         }else {
             $getMedicine = $this->persediaanModel->getMedicine($id);
             if(empty($getMedicine)){
                 $data = [
-                    'data' => $medicine,
-                    'medicine' => $medicine
+                    'data' => $allData,
+                    'medicine' => $allData
                 ];
                 $session->setFlashData('msg', 'Obat tidak ditemukan');
             }else {
                 $data = [
                     'data' => $getMedicine,
-                    'medicine' => $medicine
+                    'medicine' => $allData
                 ];
             }
         }
@@ -98,10 +99,11 @@ class Persediaan extends BaseController
     public function dataExp(){
         $session = session();
         $persediaan = $this->persediaanModel->findAll();
+        $allData = $this->persediaanModel->getDataExp();
 
         $data = [
-            'data' => $persediaan,
-            'medicine' => $persediaan
+            'data' => $allData,
+            'medicine' => $allData
         ];
 
         echo view('layout/header');

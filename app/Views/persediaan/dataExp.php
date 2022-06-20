@@ -16,12 +16,12 @@
         <div class="form-row align-items-center">
           <div class="col-sm-3 my-1">
             <label class="sr-only" for="medId">ID</label>
-            <input type="text" class="form-control" id="medId" name="medId" placeholder="ID Obat" data-toggle="modal" data-target="#exampleModalCenter">
+            <input type="text" class="form-control" id="medId" name="medId" placeholder="ID Obat" data-toggle="modal" data-target="#exampleModalCenter" required>
           </div>
           <div class="col-sm-3 my-1">
             <label class="sr-only" for="medName">Nama Obat</label>
             <div class="input-group">
-                <input type="text" class="form-control" id="medName" placeholder="Nama Obat" name="medName">
+                <input type="text" class="form-control" id="medName" placeholder="Nama Obat" name="medName" data-toggle="modal" data-target="#exampleModalCenter" required>
             </div>
           </div>
           <div class="col-auto my-1">
@@ -52,7 +52,7 @@
               <tr>
                   <th scope="row"><?= $p['medicine_id']; ?></th>
                   <td><?= $p['medicine_name']; ?></td>
-                  <td><?= $p['medicine_stock']; ?></td>
+                  <td><?= $p['stock_qty']; ?></td>
                   <td><?= $p['medicine_exp']; ?></td>
                   <td>
                     <?php 
@@ -96,7 +96,7 @@
                     <tr data-dismiss="modal">
                         <th scope="row"><?= $p['medicine_id']; ?></th>
                         <td><?= $p['medicine_name']; ?></td>
-                        <td><?= $p['medicine_stock']; ?></td>
+                        <td><?= $p['stock_qty']; ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
