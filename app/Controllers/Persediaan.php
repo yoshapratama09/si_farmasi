@@ -47,19 +47,20 @@ class Persediaan extends BaseController
         $session = session();
         
         $id = $this->request->getVar('medId');
+        
         $filter = $this->request->getVar('filter');
-        $name = $this->request->getVar('medName'); 
 
         $medicine = $this->persediaanModel->findAll();
-
+        
         if($filter == "1"){
+            $name = $this->request->getVar('medName'); 
             $getSearch = $this->persediaanModel->getSearch($name);
             if(empty($getSearch)){
                 $data = [
                     'data' => $medicine,
                     'medicine' => $medicine
                 ];
-                $session->setFlashData('msg', 'Obat tidak ditemukan');
+                // $session->setFlashData('msg', 'Obat tidak ditemukan');
             }else {
                 $data = [
                     'data' => $getSearch,

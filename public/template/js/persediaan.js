@@ -15,18 +15,17 @@ $('#clearBtn').on('click', function () {
     document.getElementById("medName").value = "";
 } );
 
+
+
 $('#filter').on('click', function () {
     var checkBox = document.getElementById("filter");
     var input = document.getElementById("medId");
-    var nameInput = document.getElementById("medName");
     if(checkBox.checked == true){
         input.dataset.target = "";
-        nameInput.dataset.target = "";
         input.readOnly = true;
         checkBox.value = "1"
     }else{
         input.dataset.target = "#exampleModalCenter";
-        nameInput.dataset.target = "#exampleModalCenter";
         input.readOnly = false;
         checkBox.value ="0";
     }

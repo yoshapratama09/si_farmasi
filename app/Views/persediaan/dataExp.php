@@ -16,12 +16,12 @@
         <div class="form-row align-items-center">
           <div class="col-sm-3 my-1">
             <label class="sr-only" for="medId">ID</label>
-            <input type="text" class="form-control" id="medId" name="medId" placeholder="ID Obat" data-toggle="modal" data-target="#exampleModalCenter" required>
+            <input type="text" class="form-control" id="medId" name="medId" placeholder="ID Obat" data-toggle="modal" data-target="#exampleModalCenter">
           </div>
           <div class="col-sm-3 my-1">
             <label class="sr-only" for="medName">Nama Obat</label>
             <div class="input-group">
-                <input type="text" class="form-control" id="medName" placeholder="Nama Obat" name="medName" data-toggle="modal" data-target="#exampleModalCenter" required>
+                <input type="text" class="form-control" id="medName" placeholder="Nama Obat" name="medName">
             </div>
           </div>
           <div class="col-auto my-1">

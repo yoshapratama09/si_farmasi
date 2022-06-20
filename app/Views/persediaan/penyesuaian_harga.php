@@ -21,44 +21,47 @@
           <div class="col-auto my-1 mt-4">
             <button type="submit" class="btn btn-danger" id="clearBtn">Clear</button>
           </div>
-          <div class="col-sm-6 my-1 ms-4">
-            <input type="checkbox" class="form-check-input" id="filter" name="filter" value='0'>
-            <label class="form-check-label" for="exampleCheck1">Filter Berdasarkan Nama</label>
-          </div>          
+          
         </div>
+      </form>
+
+      <form class="mt-4 mb-4" action="">
+        <div class="form-row align-items-center">
+          <div class="col-sm-3 my-1">
+            <label class="staticEmail2" for="oldPrice">Harga Lama</label>
+            <input type="text" class="form-control" id="oldPrice" placeholder="Harga Lama">
+          </div>
+          <div class="col-sm-3 my-1">
+              <label class="staticEmail2" for="newPrice">Harga Baru</label>
+              <div class="input-group">
+                <input type="text" class="form-control" id="newPrice" placeholder="Harga Baru">
+              </div>
+          </div>
+        </div>
+        <div class="form-row align-items-center mt-2">
+            <div class="col-sm-10">
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <button type="submit" class="btn btn-danger" id="clearBtn">Clear</button>
+            </div>
+          </div>
       </form>
 
       <table id="example2" class="table table-hover">
           <thead>
           <tr>
-              <th scope="col">ID Obat</th>
-              <th scope="col">Nama Obat</th>
-              <th scope="col">Qty</th>
-              <th scope="col">Modal</th>
-              <th scope="col">Harga Lama</th>
-              <th scope="col">Harga Baru</th>
-
+              <th scope="col">Tanggal</th>
+              <th scope="col">Harga</th>
+              <th scope="col">Status</th>
           </tr>
           </thead>
           <tbody>
-            <form action="">
-              <?php foreach ($data as $p) : ?>
-                <tr>
-                    <th scope="row"><?= $p['medicine_id']; ?></th>
-                    <td><?= $p['medicine_name']; ?></td>
-                    <td><?= $p['medicine_stock']; ?></td>
-                    <td><?= $p['medicine_price']; ?></td>
-                    <td><?= $p['medicine_price']; ?></td>
-                    <td>
-                      <div class="col-sm-3 my-1">
-                      <input type="text" class="form-control" id="" placeholder="Harga Baru">
-                      </div>
-                    </td>
-                </tr>
-              <?php endforeach; ?>
-            
-            </form>
-            
+            <!-- <?php foreach ($data as $p) : ?>
+              <tr>
+                  <th scope="row"><?= $p['medicine_id']; ?></th>
+                  <td><?= $p['medicine_name']; ?></td>
+                  <td><?= $p['medicine_stock']; ?></td>
+              </tr>
+            <?php endforeach; ?> -->
           </tbody>
           </tfoot>
       </table>

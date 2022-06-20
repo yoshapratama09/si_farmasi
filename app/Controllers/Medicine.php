@@ -2,6 +2,7 @@
 
 namespace App\Controllers;
 
+use App\Models\DataModel;
 use App\Models\MedicineModel;
 use CodeIgniter\Config\Services;
 use CodeIgniter\Database\Config;
@@ -10,9 +11,11 @@ use CodeIgniter\Validation\StrictRules\Rules;
 class Medicine extends BaseController
 {
     protected $medicineModel;
+    protected $dataModel;
     public function __construct()
     {
         $this->medicineModel = new MedicineModel();
+        $this->dataModel = new DataModel();
     }
     public function index()
     {
@@ -35,8 +38,36 @@ class Medicine extends BaseController
         echo view('layout/footer');
     }
 
+    public function halamanTambahObat()
+    {
+
+        $supplier = $this->dataModel->findAll();
+        $type = $this->medicineModel->getType();
+        $satuan = $this->medicineModel->getSatuan();
+        $kategori = $this->medicineModel->getKategori();
+
+        // session();
+        $data = [
+            'supplier' => $supplier,
+            'type' => $type,
+            'satuan' => $satuan,
+            'category' => $kategori,
+            'validation' => \Config\Services::validation()
+        ];
+
+        echo view('layout/header');
+        echo view('layout/sidebar');
+        // echo view('masterData/menuMasterData');
+        // echo view('masterData/menuObat');
+        echo view('masterData/tambahObat', $data);
+        echo view('layout/footer');
+    }
+
     public function tambahObat()
     {
+
+        $supplier = $this->request->getPost('namaSupplier');
+        dd($supplier);
         if (!$this->validate([
             'idObat' => [
                 'rules' => 'required|numeric|is_unique[medicine.medicine_id]',
@@ -46,10 +77,20 @@ class Medicine extends BaseController
                 ]
             ],
             'namaObat' => 'required',
+            'namaSupplier' => 'required',
+            'mfdObat' => 'required',
+            'expObat' => 'required',
             'stokObat' => 'required|numeric',
-            'hargaObat' => 'required|numeric'
+            'satuan1' => 'required',
+            'satuan2' => 'required|numeric',
+            'hargaObat' => 'required|numeric',
+            'tipeObat' => 'required',
+            'kategoriObat' => 'required',
+            'komposisiObat' => 'required',
+            'fungsiObat' => 'required'
         ])) {
             $validation = \Config\Services::validation();
+            // dd($validation);
             return redirect()->to(base_url('/Obat/Tambah'))->withInput()->with('validation', $validation);
         }
 
@@ -57,19 +98,30 @@ class Medicine extends BaseController
         $builder = $db->table('medicine');
 
         $id = $this->request->getVar('idObat');
-        $nama = $this->request->getVar('namaObat');
-        $stok = $this->request->getVar('stokObat');
-        $harga = $this->request->getVar('hargaObat');
+        $satuan1 = $this->request->getVar('satuan1');
+        $satuan2 = $this->request->getVar('satuan2');
+        $totalMg = $satuan1 * $satuan2;
+
+
 
         $cek = $this->medicineModel->cekObat($id);
+
 
 
         if ($cek <= 0) {
             $data = [
                 'medicine_id' => $this->request->getVar('idObat'),
                 'medicine_name' => $this->request->getVar('namaObat'),
+                'medicine_supplier' => $this->request->getVar('namaSupplier'),
+                'medicine_mfd' => $this->request->getVar('mfdObat'),
+                'medicine_exp' => $this->request->getVar('expObat'),
                 'medicine_stock' => $this->request->getVar('stokObat'),
-                'medicine_price' => $this->request->getVar('hargaObat')
+                'medicine_satuan1' => $this->request->getVar('satuan1'),
+                'medicine_satuan2' => $totalMg,
+                'medicine_price' => $this->request->getVar('hargaObat'),
+                'medicine_type' => $this->request->getVar('tipeObat'),
+                'medicine_comp' => $this->request->getVar('komposisiObat'),
+                'medicine_func' => $this->request->getVar('fungsiObat')
             ];
 
             $builder->insert($data);
@@ -168,21 +220,7 @@ class Medicine extends BaseController
     //     // return redirect()->to(base_url('/Obat'));
     // }
 
-    public function halamanTambahObat()
-    {
 
-        // session();
-        $data = [
-            'validation' => \Config\Services::validation()
-        ];
-
-        echo view('layout/header');
-        echo view('layout/sidebar');
-        echo view('masterData/menuMasterData');
-        echo view('masterData/menuObat');
-        echo view('masterData/tambahObat', $data);
-        echo view('layout/footer');
-    }
 
 
 
@@ -629,4 +667,6 @@ class Medicine extends BaseController
 
         return redirect()->to(base_url('/Obat/Satuan'));
     }
+
+    //supplier
 }

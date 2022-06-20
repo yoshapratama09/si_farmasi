@@ -1,8 +1,52 @@
+body {
+    background-color: #F4F6F9 !important;
+}
+
 .table thead select {
     border: none;
     background-color: inherit;
     font-weight: bold;
 
+}
+
+.bg-form {
+    width: 900px;
+    height: auto;
+    background-color: white;
+    margin: 0px 20px 10px 300px;
+    box-sizing: border-box;
+    padding: 30px;
+}
+
+.title-form {
+    text-align: right;
+    margin-right: 40px;
+}
+
+.tf1 {
+    font-size: 80px;
+    margin-bottom: 20px;
+}
+
+.tf2 {
+    font-size: 30px;
+}
+
+.form-control {
+    border: 1px solid black !important;
+}
+
+select {
+    background-color: white !important;
+    border: 1px solid black !important;
+    width: inherit;
+    height: 40px;
+    border-radius: 5px;
+}
+
+.submitObat {
+    background-color: #198754;
+    color: white;
 }
 
 .labelObat {
