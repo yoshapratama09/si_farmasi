@@ -3,68 +3,73 @@
     <div class="col">
       <h2 class="mb-2">Penyesuaian Harga</h2>
       
-      <form class="mt-4 mb-4">
-        <div class="form-row align-items-center">  
+      <form class="mt-4 mb-4" method="POST" id="formDataExp" action="/persediaan/getPHarga">
+        <label class=" col-form-label" for="">Cari Berdasarkan ID Obat</label>
+        <?php 
+            if(session()->getFlashdata('msg') != NULL):       
+          ?>
           <div class="col-sm-3 my-1">
-            <label class="staticEmail2" for="medId">ID Obat</label>
-            <input type="text" class="form-control" id="medId" placeholder="ID Obat" data-toggle="modal" data-target="#exampleModalCenter">
+            <label class="sr-only" for="hidden">Hidden</label>
+            <input type="hidden" class="form-control alert" id="msg" name="msg" placeholder="Message" value="<?= session()->getFlashdata('msg'); ?>">
           </div>
-          <div class="col-sm-3 my-1">
-            <label class="staticEmail2" for="medName">Nama Obat</label>
-            <div class="input-group">
-              <input type="text" class="form-control" id="medName" placeholder="Nama Obat" data-toggle="modal" data-target="#exampleModalCenter" >
-            </div>
-          </div>
-          <div class="col-auto my-1 mt-4">
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </div>
-          <div class="col-auto my-1 mt-4">
-            <button type="submit" class="btn btn-danger" id="clearBtn">Clear</button>
-          </div>
-          
-        </div>
-      </form>
-
-      <form class="mt-4 mb-4" action="">
+        <?php endif;?>
         <div class="form-row align-items-center">
           <div class="col-sm-3 my-1">
-            <label class="staticEmail2" for="oldPrice">Harga Lama</label>
-            <input type="text" class="form-control" id="oldPrice" placeholder="Harga Lama">
+            <label class="sr-only" for="medId">ID</label>
+            <input type="text" class="form-control" id="medId" name="medId" placeholder="ID Obat" data-toggle="modal" data-target="#exampleModalCenter" required>
           </div>
           <div class="col-sm-3 my-1">
-              <label class="staticEmail2" for="newPrice">Harga Baru</label>
-              <div class="input-group">
-                <input type="text" class="form-control" id="newPrice" placeholder="Harga Baru">
-              </div>
-          </div>
-        </div>
-        <div class="form-row align-items-center mt-2">
-            <div class="col-sm-10">
-              <button type="submit" class="btn btn-primary">Submit</button>
-              <button type="submit" class="btn btn-danger" id="clearBtn">Clear</button>
+            <label class="sr-only" for="medName">Nama Obat</label>
+            <div class="input-group">
+                <input type="text" class="form-control" id="medName" placeholder="Nama Obat" name="medName" data-toggle="modal" data-target="#exampleModalCenter" required>
             </div>
           </div>
+          <div class="col-auto my-1">
+            <button type="submit" class="btn btn-primary msg" name="submitDataExp">Submit</button>
+          </div>
+          <div class="col-auto my-1">
+            <button type="submit" class="btn btn-danger" id="clearBtn" >Clear</button>
+          </div>
+        </div>
+        <div class="col-sm-6 my-1 ms-1">
+            <input type="checkbox" class="form-check-input" id="filter" name="filter" value='0'>
+            <label class="form-check-label" for="exampleCheck1">Filter Berdasarkan Nama</label>
+        </div>
       </form>
 
-      <table id="example2" class="table table-hover">
-          <thead>
+      <table id="tablePH" class="table table-hover">
+        <thead>
           <tr>
-              <th scope="col">Tanggal</th>
-              <th scope="col">Harga</th>
-              <th scope="col">Status</th>
+            <th scope="col">ID Obat</th>
+            <th scope="col">Nama Obat</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Modal</th>
+            <th scope="col">Harga Lama</th>
+            <th scope="col">Harga Baru</th>
           </tr>
           </thead>
           <tbody>
-            <!-- <?php foreach ($data as $p) : ?>
+            <?php foreach ($data as $p) : ?>
               <tr>
                   <th scope="row"><?= $p['medicine_id']; ?></th>
                   <td><?= $p['medicine_name']; ?></td>
-                  <td><?= $p['medicine_stock']; ?></td>
+                  <td><?= $p['stock_qty']; ?></td>
+                  <td><?= $p['stock_qty']; ?></td>
+                  <td><?= $p['medicine_exp']; ?></td>
+                  <td>
+                    <!-- <div class="col-sm-3 my-1"> -->
+                    <input type="text" class="form-control col-md-3" id="" placeholder="Harga Baru">
+                    <!-- </div> -->
+                  </td>
               </tr>
-            <?php endforeach; ?> -->
+            <?php endforeach; ?>
           </tbody>
-          </tfoot>
+        </tfoot>
       </table>
+      <div class="col-auto my-1 mt-4 me-4 text-right">
+        <button type="submit" class="btn btn-primary btn-lg">Simpan</button>
+        <button type="submit" class="btn btn-danger btn-lg">Batal</button>
+      </div>
     </div>
   </div>
 </div>
@@ -90,11 +95,13 @@
             </thead>
             <tbody>
                 <?php foreach ($data as $p) : ?>
-                    <tr data-dismiss="modal">
-                        <th scope="row"><?= $p['medicine_id']; ?></th>
-                        <td><?= $p['medicine_name']; ?></td>
-                        <td><?= $p['medicine_stock']; ?></td>
-                    </tr>
+                  <tr data-dismiss="modal">
+                      <th scope="row"><?= $p['medicine_id']; ?></th>
+                      <td><?= $p['medicine_name']; ?></td>
+                      <td><?= $p['medicine_stock']; ?></td>
+                      
+                      
+                  </tr>
                 <?php endforeach; ?>
             </tbody>
             </tfoot>    
@@ -108,3 +115,17 @@
 </div>
 
 <script src="<?= base_url('template/js/persediaan.js'); ?>"></script>
+
+<script>
+  $(function() {
+    $('#tablePH').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+    });
+  });
+</script>

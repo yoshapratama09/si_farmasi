@@ -90,6 +90,7 @@ $routes->get('/logout', 'Login::logout');
 
 $routes->get('/persediaan/opname', 'Persediaan::index');
 $routes->get('/persediaan/pHarga', 'Persediaan::penyesuaianHarga');
+$routes->post('/persediaan/getPHarga', 'Persediaan::getPHarga');
 $routes->get('/persediaan/dataExp', 'Persediaan::dataExp');
 $routes->get('/persediaan/pStock', 'Persediaan::penyesuaianStok');
 $routes->post('/persediaan/getDataExp', 'Persediaan::getDataExp');
