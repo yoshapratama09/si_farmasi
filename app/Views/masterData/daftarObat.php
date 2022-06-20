@@ -30,8 +30,8 @@
           <tr>
             <th scope="col">ID</th>
             <th scope="col">Nama Obat</th>
-            <th scope="col">Stok</th>
-            <th scope="col">Harga</th>
+            <th scope="col">Tipe</th>
+            <th scope="col">Kategori</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
@@ -40,8 +40,8 @@
             <tr>
               <th scope="row"><?= $m['medicine_id']; ?></th>
               <td><?= $m['medicine_name']; ?></td>
-              <td><?= $m['medicine_stock']; ?></td>
-              <td><?= $m['medicine_price']; ?></td>
+              <td><?= $m['medicine_type']; ?></td>
+              <td><?= $m['medicine_category']; ?></td>
               <td>
                 <div class="btn-group">
                   <button type="button" class="btn btn-info">Action</button>

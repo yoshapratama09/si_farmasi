@@ -8,7 +8,7 @@ class MedicineModel extends Model
 {
     protected $table      = 'medicine';
     protected $primaryKey = 'medicine_id';
-    protected $allowedFields = ['medicine_id', 'medicine_name', 'medicine_supplier', 'medicine_mfd', 'medicine_exp', 'medicine_stock', 'medicine_satuan1', 'medicine_satuan2', 'medicine_price', 'medicine_type', 'medicine_type', 'medicine_category', 'medicine_comp', 'medicine_func'];
+    protected $allowedFields = ['medicine_id', 'medicine_name', 'supplier_id', 'medicine_mfd', 'medicine_exp', 'medicine_stock', 'medicine_satuan1', 'medicine_satuan2', 'medicine_satuantotal', 'medicine_price', 'medicine_type', 'medicine_type', 'medicine_category', 'medicine_comp', 'medicine_func'];
 
     protected $table1      = 'categoryMed';
     protected $primaryKey1 = 'category_id';

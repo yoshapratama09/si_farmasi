@@ -66,8 +66,8 @@ class Medicine extends BaseController
     public function tambahObat()
     {
 
-        $supplier = $this->request->getPost('namaSupplier');
-        dd($supplier);
+        // $supplier = $this->request->getPost('namaSupplier');
+        // dd($supplier);
         if (!$this->validate([
             'idObat' => [
                 'rules' => 'required|numeric|is_unique[medicine.medicine_id]',
@@ -77,20 +77,46 @@ class Medicine extends BaseController
                 ]
             ],
             'namaObat' => 'required',
-            'namaSupplier' => 'required',
             'mfdObat' => 'required',
             'expObat' => 'required',
-            'stokObat' => 'required|numeric',
+            'stokObat' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => 'Stok obat harus diisi',
+                    'numeric' => 'Stok obat harus diisi dengan angka'
+                ]
+            ],
             'satuan1' => 'required',
-            'satuan2' => 'required|numeric',
-            'hargaObat' => 'required|numeric',
+            'satuan2' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => 'Satuan obat (mg) harus diisi',
+                    'numeric' => 'Satuan obat (mg) harus diisi dengan angka'
+                ]
+            ],
+            'hargaObat' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => 'Harga obat harus diisi',
+                    'numeric' => 'Harga obat harus diisi dengan angka'
+                ]
+            ],
             'tipeObat' => 'required',
             'kategoriObat' => 'required',
-            'komposisiObat' => 'required',
-            'fungsiObat' => 'required'
+            'komposisiObat' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Komposisi obat harus diisi',
+                ]
+            ],
+            'fungsiObat' => [
+                'rules' => 'required',
+                'errors' => [
+                    'required' => 'Fungsi obat harus diisi',
+                ]
+            ]
         ])) {
             $validation = \Config\Services::validation();
-            // dd($validation);
             return redirect()->to(base_url('/Obat/Tambah'))->withInput()->with('validation', $validation);
         }
 
@@ -98,28 +124,25 @@ class Medicine extends BaseController
         $builder = $db->table('medicine');
 
         $id = $this->request->getVar('idObat');
-        $satuan1 = $this->request->getVar('satuan1');
+        $stok = $this->request->getVar('stokObat');
         $satuan2 = $this->request->getVar('satuan2');
-        $totalMg = $satuan1 * $satuan2;
-
-
+        $totalMg = $stok * $satuan2;
 
         $cek = $this->medicineModel->cekObat($id);
-
-
 
         if ($cek <= 0) {
             $data = [
                 'medicine_id' => $this->request->getVar('idObat'),
                 'medicine_name' => $this->request->getVar('namaObat'),
-                'medicine_supplier' => $this->request->getVar('namaSupplier'),
                 'medicine_mfd' => $this->request->getVar('mfdObat'),
                 'medicine_exp' => $this->request->getVar('expObat'),
                 'medicine_stock' => $this->request->getVar('stokObat'),
                 'medicine_satuan1' => $this->request->getVar('satuan1'),
-                'medicine_satuan2' => $totalMg,
+                'medicine_satuan2' => $this->request->getVar('satuan2'),
+                'medicine_satuantotal' => $totalMg,
                 'medicine_price' => $this->request->getVar('hargaObat'),
                 'medicine_type' => $this->request->getVar('tipeObat'),
+                'medicine_category' => $this->request->getVar('kategoriObat'),
                 'medicine_comp' => $this->request->getVar('komposisiObat'),
                 'medicine_func' => $this->request->getVar('fungsiObat')
             ];
@@ -143,10 +166,18 @@ class Medicine extends BaseController
 
     public function halamanUpdateObat($id)
     {
+        $supplier = $this->dataModel->findAll();
+        $type = $this->medicineModel->getType();
+        $satuan = $this->medicineModel->getSatuan();
+        $kategori = $this->medicineModel->getKategori();
         $medicine = $this->medicineModel->where(['medicine_id' => $id])->first();
         // dd($medicine);
         // exit;
         $data = [
+            'supplier' => $supplier,
+            'type' => $type,
+            'satuan' => $satuan,
+            'category' => $kategori,
             'title' => "Update Obat",
             'medicine' => $medicine,
             'validation' => \Config\Services::validation()
@@ -154,8 +185,6 @@ class Medicine extends BaseController
 
         echo view('layout/header');
         echo view('layout/sidebar');
-        echo view('masterData/menuMasterData');
-        echo view('masterData/menuObat');
         echo view('masterData/editObat', $data);
         echo view('layout/footer');
     }
@@ -163,24 +192,19 @@ class Medicine extends BaseController
     public function updateObat($id)
     {
         $id = $this->request->getVar('idObat');
+        $medicine = $this->medicineModel->where(['medicine_id' => $id])->first();
 
         if (!$this->validate([
 
             'namaObat' => 'required',
-            'stokObat' => [
-                'rules' => 'required|numeric',
-                'errors' => [
-                    'required' => 'stok obat harus diisi',
-                    'numeric' => 'Stok obat harus diiisi dengan angka'
-                ]
-            ],
-            'hargaObat' => [
-                'rules' => 'required|numeric',
-                'errors' => [
-                    'required' => 'stok obat harus diisi',
-                    'numeric' => 'Stok obat harus diiisi dengan angka'
-                ]
-            ]
+            'mfdObat' => 'required',
+            'expObat' => 'required',
+            'satuan1' => 'required',
+            'tipeObat' => 'required',
+            'kategoriObat' => 'required',
+            'komposisiObat' => 'required',
+            'fungsiObat' => 'required'
+
         ])) {
             $validation = \Config\Services::validation();
             return redirect()->back()->withInput()->with('validation', $validation);
@@ -189,10 +213,21 @@ class Medicine extends BaseController
         $db = db_connect('default');
         $builder = $db->table('medicine');
 
+        $id = $this->request->getVar('idObat');
+        $stok = $this->request->getVar('stokObat');
+        $satuan2 = $this->request->getVar('satuan2');
+        $totalMg = $stok * $satuan2;
+
         $data = [
             'medicine_name' => $this->request->getVar('namaObat'),
-            'medicine_stock' => $this->request->getVar('stokObat'),
-            'medicine_price' => $this->request->getVar('hargaObat')
+            'medicine_name' => $this->request->getVar('namaObat'),
+            'medicine_mfd' => $this->request->getVar('mfdObat'),
+            'medicine_exp' => $this->request->getVar('expObat'),
+            'medicine_satuan1' => $this->request->getVar('satuan1'),
+            'medicine_type' => $this->request->getVar('tipeObat'),
+            'medicine_category' => $this->request->getVar('kategoriObat'),
+            'medicine_comp' => $this->request->getVar('komposisiObat'),
+            'medicine_func' => $this->request->getVar('fungsiObat')
         ];
 
         $builder->where('medicine_id', $id);
@@ -201,28 +236,6 @@ class Medicine extends BaseController
 
         return redirect()->to(base_url('/Obat'));
     }
-
-    // public function updateObatt()
-    // {
-    //     $id = $this->request->getVar('idObat');
-    //     $nama = $this->request->getVar('namaObat');
-    //     $stok = $this->request->getVar('stokObat');
-    //     $harga = $this->request->getVar('hargaObat');
-
-
-    //     $cari = $this->medicineModel->updateObat($id, $nama, $stok, $harga);
-
-    //     if ($cari >= 1) {
-    //         session()->setFlashdata('Pesan', 'Update Berhasil');
-    //         return redirect()->to(base_url('/Obat'));
-    //     }
-
-    //     // return redirect()->to(base_url('/Obat'));
-    // }
-
-
-
-
 
     public function halamanTipeObat()
     {
