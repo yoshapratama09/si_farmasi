@@ -101,6 +101,13 @@ class Medicine extends BaseController
                     'numeric' => 'Harga obat harus diisi dengan angka'
                 ]
             ],
+            'modalObat' => [
+                'rules' => 'required|numeric',
+                'errors' => [
+                    'required' => 'Modal obat harus diisi',
+                    'numeric' => 'Modal obat harus diisi dengan angka'
+                ]
+            ],
             'tipeObat' => 'required',
             'kategoriObat' => 'required',
             'komposisiObat' => [
@@ -123,10 +130,18 @@ class Medicine extends BaseController
         $db = db_connect('default');
         $builder = $db->table('medicine');
 
+        $builder1 = $db->table('pricemed');
+        $builder2 = $db->table('stockmed');
+
         $id = $this->request->getVar('idObat');
         $stok = $this->request->getVar('stokObat');
         $satuan2 = $this->request->getVar('satuan2');
         $totalMg = $stok * $satuan2;
+
+        //Pricemed
+
+        $statusNew = 1;
+        $statusOld = 0;
 
         $cek = $this->medicineModel->cekObat($id);
 
@@ -148,6 +163,25 @@ class Medicine extends BaseController
             ];
 
             $builder->insert($data);
+
+            $dataPrice = [
+
+                'medicine_id' => $this->request->getVar('idObat'),
+                'price_sales' => $this->request->getVar('hargaObat'),
+                'price_capital' => $this->request->getVar('modalObat'),
+                'sales_status' => $statusNew,
+                'capital_status' => $statusNew
+            ];
+
+            $builder1->insert($dataPrice);
+
+            $dataStock = [
+                'medicine_id' => $this->request->getVar('idObat'),
+                'stock_qty' => $this->request->getVar('stokObat'),
+                'stock_status' => $statusNew
+            ];
+
+            $builder2->insert($dataStock);
 
             session()->setFlashdata('Pesan', 'Tambah');
             return redirect()->to(base_url('/Obat'));

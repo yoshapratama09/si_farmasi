@@ -66,10 +66,17 @@
                         </div>
                     </div>
                     <div class="row mb-3">
-                        <label for="hargaObat" class="col-sm-2 col-form-label">Harga Obat</label>
+                        <label for="hargaObat" class="col-sm-2 col-form-label">Harga Jual Obat</label>
                         <div class="col-sm-10">
                             <input type="text" class="form-control <?= ($validation->hasError('hargaObat')) ? 'is-invalid' : ''; ?>" id="hargaObat" name="hargaObat" value="<?= old('hargaObat'); ?>">
                             <div class="invalid-feedback"> <?= $validation->getError('hargaObat'); ?></div>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <label for="modalObat" class="col-sm-2 col-form-label">Harga Modal Obat</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control <?= ($validation->hasError('modalObat')) ? 'is-invalid' : ''; ?>" id="modalObat" name="modalObat" value="<?= old('modalObat'); ?>">
+                            <div class="invalid-feedback"> <?= $validation->getError('modalObat'); ?></div>
                         </div>
                     </div>
                     <div class="row mb-3">

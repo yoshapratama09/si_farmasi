@@ -12,15 +12,17 @@ class PersediaanModel extends Model
     protected $useTimestamps = true;
 
     protected $table1      = 'pricemed';
-    protected $primaryKey1 = 'stock_id';
+    protected $primaryKey1 = 'price_id';
     protected $allowedFields1 = ['medicine_id', 'price_sales', 'price_capital', 'sales_status', 'capital_status', 'update_date'];
     protected $useTimestamps1 = true;
+    protected $createdField1  = 'update_date';
 
-    protected $table2      = 'stokmed';
-    protected $primaryKey2 = 'price_id';
+    protected $table2      = 'stockmed';
+    protected $primaryKey2 = 'stock_id';
     protected $allowedFields2 = ['medicine_id', 'created_at', 'stock_qty', 'stock_status'];
     protected $useTimestamps2 = true;
-    
+    protected $createdField2  = 'created_at';
+
 
     public function getMedicine($id)
     {
