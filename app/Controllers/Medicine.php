@@ -299,8 +299,6 @@ class Medicine extends BaseController
 
         echo view('layout/header');
         echo view('layout/sidebar');
-        echo view('masterData/menuMasterData');
-        echo view('masterData/menuObat');
         echo view('masterData/tambahKategoriObat', $data);
         echo view('layout/footer');
     }
@@ -315,7 +313,13 @@ class Medicine extends BaseController
                     'is_unique' => 'Obat dengan Id ini sudah tersedia'
                 ]
             ],
-            'namaKategori' => 'required'
+            'namaKategori' => [
+                'rules' => 'required|is_unique[categorymed.category_name]',
+                'errors' => [
+                    'required' => 'Nama Kategori obat harus diisi',
+                    'is_unique' => 'Kategori Obat dengan nama ini sudah tersedia'
+                ]
+            ]
         ])) {
             $validation = \Config\Services::validation();
             return redirect()->to(base_url('/Obat/Kategori/Tambah'))->withInput()->with('validation', $validation);
@@ -352,7 +356,7 @@ class Medicine extends BaseController
         $builder = $db->table('categorymed');
         $builder->where(['category_id' => $id])->delete();
         session()->setFlashdata('Pesan', 'hapusKategori');
-        return redirect()->to(base_url('/Obat'));
+        return redirect()->to(base_url('/Obat/Kategori'));
     }
 
     public function halamanUpdateKategoriObat($id)
@@ -370,8 +374,6 @@ class Medicine extends BaseController
 
         echo view('layout/header');
         echo view('layout/sidebar');
-        echo view('masterData/menuMasterData');
-        echo view('masterData/menuObat');
         echo view('masterData/editKategoriObat', $data);
         echo view('layout/footer');
     }
@@ -382,7 +384,13 @@ class Medicine extends BaseController
 
         if (!$this->validate([
 
-            'namaKategori' => 'required'
+            'namaKategori' => [
+                'rules' => 'required|is_unique[categorymed.category_name]',
+                'errors' => [
+                    'required' => 'Nama Kategori obat harus diisi',
+                    'is_unique' => 'Kategori Obat dengan nama ini sudah tersedia'
+                ]
+            ]
         ])) {
             $validation = \Config\Services::validation();
             return redirect()->back()->withInput()->with('validation', $validation);
@@ -399,7 +407,7 @@ class Medicine extends BaseController
         $builder->update($data);
         session()->setFlashdata('Pesan', 'UpdateKategori');
 
-        return redirect()->to(base_url('/Obat'));
+        return redirect()->to(base_url('/Obat/Kategori'));
     }
 
     public function cariKategoriObat()
@@ -430,8 +438,6 @@ class Medicine extends BaseController
 
         echo view('layout/header');
         echo view('layout/sidebar');
-        echo view('masterData/menuMasterData');
-        echo view('masterData/menuObat');
         echo view('masterData/tambahTipeObat', $data);
         echo view('layout/footer');
     }
@@ -446,7 +452,13 @@ class Medicine extends BaseController
                     'is_unique' => 'Tipe obat dengan Id ini sudah tersedia'
                 ]
             ],
-            'namaTipe' => 'required'
+            'namaTipe' => [
+                'rules' => 'required|is_unique[typemed.type_name]',
+                'errors' => [
+                    'required' => 'Nama Tipe obat harus diisi',
+                    'is_unique' => 'Tipe Obat dengan nama ini sudah tersedia'
+                ]
+            ]
         ])) {
             $validation = \Config\Services::validation();
             return redirect()->to(base_url('/Obat/Tipe/Tambah'))->withInput()->with('validation', $validation);
@@ -501,8 +513,6 @@ class Medicine extends BaseController
 
         echo view('layout/header');
         echo view('layout/sidebar');
-        echo view('masterData/menuMasterData');
-        echo view('masterData/menuObat');
         echo view('masterData/editTipeObat', $data);
         echo view('layout/footer');
     }
@@ -513,7 +523,13 @@ class Medicine extends BaseController
 
         if (!$this->validate([
 
-            'namaTipe' => 'required'
+            'namaTipe' => [
+                'rules' => 'required|is_unique[typemed.type_name]',
+                'errors' => [
+                    'required' => 'Nama Tipe obat harus diisi',
+                    'is_unique' => 'Tipe Obat dengan nama ini sudah tersedia'
+                ]
+            ]
         ])) {
             $validation = \Config\Services::validation();
             return redirect()->back()->withInput()->with('validation', $validation);
@@ -578,8 +594,6 @@ class Medicine extends BaseController
 
         echo view('layout/header');
         echo view('layout/sidebar');
-        echo view('masterData/menuMasterData');
-        echo view('masterData/menuObat');
         echo view('masterData/tambahSatuanObat', $data);
         echo view('layout/footer');
     }
@@ -588,13 +602,19 @@ class Medicine extends BaseController
     {
         if (!$this->validate([
             'idSatuan' => [
-                'rules' => 'required|numeric|is_unique[typemed.type_id]',
+                'rules' => 'required|numeric|is_unique[satuanmed.satuan_id]',
                 'errors' => [
                     'required' => 'Id Satuan obat harus diisi',
                     'is_unique' => 'Satuan obat dengan Id ini sudah tersedia'
                 ]
             ],
-            'namaSatuan' => 'required'
+            'namaSatuan' => [
+                'rules' => 'required|is_unique[satuanmed.satuan_name]',
+                'errors' => [
+                    'required' => 'Nama Satuan obat harus diisi',
+                    'is_unique' => 'Satuan Obat dengan nama ini sudah tersedia'
+                ]
+            ]
         ])) {
             $validation = \Config\Services::validation();
             return redirect()->to(base_url('/Obat/Satuan/Tambah'))->withInput()->with('validation', $validation);
@@ -649,8 +669,6 @@ class Medicine extends BaseController
 
         echo view('layout/header');
         echo view('layout/sidebar');
-        echo view('masterData/menuMasterData');
-        echo view('masterData/menuObat');
         echo view('masterData/editSatuanObat', $data);
         echo view('layout/footer');
     }
@@ -660,8 +678,13 @@ class Medicine extends BaseController
         $id = $this->request->getVar('idSatuan');
 
         if (!$this->validate([
-
-            'namaSatuan' => 'required'
+            'namaSatuan' => [
+                'rules' => 'required|is_unique[satuanmed.satuan_name]',
+                'errors' => [
+                    'required' => 'Nama Satuan obat harus diisi',
+                    'is_unique' => 'Satuan Obat dengan nama ini sudah tersedia'
+                ]
+            ]
         ])) {
             $validation = \Config\Services::validation();
             return redirect()->back()->withInput()->with('validation', $validation);
