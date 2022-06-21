@@ -31,7 +31,7 @@ class Persediaan extends BaseController
     public function penyesuaianHarga(){
         $session = session();
         $persediaan = $this->persediaanModel->findAll();
-        $allData = $this->persediaanModel->getDataExp();
+        $allData = $this->persediaanModel->getAll();
 
         $data = [
             'data' => $allData
@@ -50,7 +50,7 @@ class Persediaan extends BaseController
         $id = $this->request->getVar('medId');
         $filter = $this->request->getVar('filter');
 
-        $allData = $this->persediaanModel->getDataExp();
+        $allData = $this->persediaanModel->getAll();
         $medicine = $this->persediaanModel->findAll();
         
         
@@ -110,7 +110,7 @@ class Persediaan extends BaseController
                     'data' => $allData,
                     'medicine' => $allData
                 ];
-                // $session->setFlashData('msg', 'Obat tidak ditemukan');
+                $session->setFlashData('msg', 'Obat tidak ditemukan');
             }else {
                 $data = [
                     'data' => $getSearch,
@@ -138,6 +138,30 @@ class Persediaan extends BaseController
         echo view('persediaan/top_data');
         echo view('persediaan/dataExp', $data);
         echo view('layout/footer');
+    }
+
+    public function updateHarga(){
+        $session = session();
+        $array = array();
+        $harga = $this->request->getVar('hargaB');
+        $idObat = $this->request->getVar('idObat');
+
+        $index=0;
+        foreach($idObat as $id){
+            if($harga[$index] != null){
+                array_push($array, array(
+                    'medicine_id' => $id,
+                    'price_sales' => $harga[$index]
+                ));
+            }
+            $index++;
+        }
+
+        $db = db_connect('default');
+        $builder = $db->table('pricemed');
+        $builder->insertBatch($array);
+
+        return redirect()->to(base_url('/persediaan/pHarga'));
     }
 
     public function dataExp(){

@@ -37,39 +37,42 @@
         </div>
       </form>
 
-      <table id="tablePH" class="table table-hover">
-        <thead>
-          <tr>
-            <th scope="col">ID Obat</th>
-            <th scope="col">Nama Obat</th>
-            <th scope="col">Qty</th>
-            <th scope="col">Modal</th>
-            <th scope="col">Harga Lama</th>
-            <th scope="col">Harga Baru</th>
-          </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($data as $p) : ?>
-              <tr>
-                  <th scope="row"><?= $p['medicine_id']; ?></th>
-                  <td><?= $p['medicine_name']; ?></td>
-                  <td><?= $p['stock_qty']; ?></td>
-                  <td><?= $p['stock_qty']; ?></td>
-                  <td><?= $p['medicine_exp']; ?></td>
-                  <td>
-                    <!-- <div class="col-sm-3 my-1"> -->
-                    <input type="text" class="form-control col-md-3" id="" placeholder="Harga Baru">
-                    <!-- </div> -->
-                  </td>
-              </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </tfoot>
-      </table>
-      <div class="col-auto my-1 mt-4 me-4 text-right">
-        <button type="submit" class="btn btn-primary btn-lg">Simpan</button>
-        <button type="submit" class="btn btn-danger btn-lg">Batal</button>
-      </div>
+      <form action="/persediaan/updateHarga" method="POST" >
+        <table id="tablePH" class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">ID Obat</th>
+              <th scope="col">Nama Obat</th>
+              <th scope="col">Qty</th>
+              <th scope="col">Modal</th>
+              <th scope="col">Harga Lama</th>
+              <th scope="col">Harga Baru</th>
+            </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($data as $p) : ?>
+                <tr>
+                    <th scope="row"><?= $p['medicine_id']; ?></th>
+                    <td><?= $p['medicine_name']; ?></td>
+                    <td><?= $p['stock_qty']; ?></td>
+                    <td><?= $p['price_capital']; ?></td>
+                    <td><?= $p['price_sales']; ?></td>
+                    <td>
+                      <!-- <div class="col-sm-3 my-1"> -->
+                      <input type="hidden" class="form-control col-md-3" name="idObat[]" value="<?= $p['medicine_id']; ?>" id="" placeholder="">
+                      <input type="number" class="form-control col-md-3" name="hargaB[]" id="hargaB" placeholder="Harga Baru">
+                      <!-- </div> -->
+                    </td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </tfoot>
+        </table>
+        <div class="col-auto my-1 mt-4 me-4 text-right">
+          <button type="submit" class="btn btn-primary btn-lg">Simpan</button>
+          <!-- <button type="submit" class="btn btn-danger btn-lg">Batal</button> -->
+        </div>
+      </form>
     </div>
   </div>
 </div>
