@@ -3,7 +3,7 @@
     <div class="col">
       <h2 class="mb-2">Penyesuaian Stock Obat</h2>
       
-      <form class="mt-4 mb-4" method="POST" id="formDataExp" action="/persediaan/getDataExp">
+      <form class="mt-4 mb-4" method="POST" id="formDataExp" action="/persediaan/getPStock">
         <label class=" col-form-label" for="">Cari Berdasarkan ID Obat</label>
         <?php 
             if(session()->getFlashdata('msg') != NULL):       
@@ -36,38 +36,37 @@
             <label class="form-check-label" for="exampleCheck1">Filter Berdasarkan Nama</label>
         </div>
       </form>
-
-      <table id="example2" class="table table-hover">
-        <thead>
-          <tr>
-              <th scope="col">ID Obat</th>
-              <th scope="col">Nama Obat</th>
-              <th scope="col">Kuantitas</th>
-              <th scope="col">Expired Date</th>
-              <th scope="col">Status</th>
-          </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($data as $p) : ?>
-              <tr>
-                  <th scope="row"><?= $p['medicine_id']; ?></th>
-                  <td><?= $p['medicine_name']; ?></td>
-                  <td><?= $p['stock_qty']; ?></td>
-                  <td><?= $p['medicine_exp']; ?></td>
-                  <td>
-                    <?php 
-                      if($p['medicine_exp'] > getdate()){
-                        echo "Expired";
-                      }else{
-                        echo "Active";
-                      }
-                    ?>
-                  </td>
-              </tr>
-            <?php endforeach; ?>
-          </tbody>
-        </tfoot>
-      </table>
+      
+      <form action="/persediaan/updateStock" method="POST">
+        <table id="tablePS" class="table table-hover">
+          <thead>
+            <tr>
+                <th scope="col">ID Obat</th>
+                <th scope="col">Nama Obat</th>
+                <th scope="col">Qty</th>
+                <th scope="col">Qty Baru</th>
+            </tr>
+            </thead>
+            <tbody>
+              <?php foreach ($data as $p) : ?>
+                <tr>
+                    <th scope="row"><?= $p['medicine_id']; ?></th>
+                    <td><?= $p['medicine_name']; ?></td>
+                    <td><?= $p['stock_qty']; ?></td>
+                    <td>
+                      <input type="hidden" class="form-control col-md-3" name="idObat[]" value="<?= $p['medicine_id']; ?>" id="" placeholder="">
+                      <input type="hidden" class="form-control col-md-3" name="idStock[]" value="<?= $p['stock_id']; ?>" id="" placeholder="">
+                      <input type="number" class="form-control col-md-3" name="qtyBaru[]" id="hargaB" placeholder="Qty Baru">
+                    </td>
+                </tr>
+              <?php endforeach; ?>
+            </tbody>
+          </tfoot>
+        </table>
+        <div class="col-auto my-1 mt-4 me-4 text-right">
+          <button type="submit" class="btn btn-primary btn-lg">Simpan</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
@@ -111,3 +110,17 @@
 </div>
 
 <script src="<?= base_url('template/js/persediaan.js'); ?>"></script>
+
+<script>
+  $(function() {
+    $('#tablePS').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+    });
+  });
+</script>

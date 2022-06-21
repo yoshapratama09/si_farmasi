@@ -94,6 +94,8 @@ $routes->post('/persediaan/getPHarga', 'Persediaan::getPHarga');
 $routes->post('/persediaan/updateHarga', 'Persediaan::updateHarga');
 $routes->get('/persediaan/dataExp', 'Persediaan::dataExp');
 $routes->get('/persediaan/pStock', 'Persediaan::penyesuaianStok');
+$routes->post('/persediaan/getPStock', 'Persediaan::getPStock');
+$routes->post('/persediaan/updateStock', 'Persediaan::updateStock');
 $routes->post('/persediaan/getDataExp', 'Persediaan::getDataExp');
 
 /*

@@ -52,6 +52,15 @@ class PersediaanModel extends Model
         return $row;
     }
 
+    public function getStock($id)
+    {
+        $query = $this->db->query("SELECT * FROM stockmed WHERE stock_id = $id AND stock_status = 1");
+
+        $row = $query->getResultArray();
+
+        return $row;
+    }
+
     public function getJoinHarga()
     {
         $query = $this->db->query("SELECT * FROM medicine as med JOIN pricemed as pm ON med.medicine_id = pm.medicine_id");
@@ -77,12 +86,13 @@ class PersediaanModel extends Model
 
         return $row;
     }
-    // public function getJoinStock()
-    // {
-    //     $query = $this->db->query("SELECT * FROM medicine as med JOIN pricemed as pm ON med.medicine_id = pm.medicine_id");
 
-    //     $row = $query->getResultArray();
+    public function getAllStock()
+    {
+        $query = $this->db->query("SELECT * FROM medicine as med JOIN stockmed as sm ON med.medicine_id = sm.medicine_id WHERE stock_status = 1");
 
-    //     return $row;
-    // }
+        $row = $query->getResultArray();
+
+        return $row;
+    }
 }
