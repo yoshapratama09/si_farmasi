@@ -34,7 +34,8 @@ class Persediaan extends BaseController
         $allData = $this->persediaanModel->getAll();
 
         $data = [
-            'data' => $allData
+            'data' => $allData,
+            'allData' => $allData
         ];
 
         echo view('layout/header');
@@ -91,6 +92,31 @@ class Persediaan extends BaseController
         echo view('persediaan/penyesuaian_harga', $data);
         echo view('layout/footer');
     }
+
+    public function updateHarga(){
+        $session = session();
+        $array = array();
+        $harga = $this->request->getVar('hargaB');
+        $idObat = $this->request->getVar('idObat');
+
+        $index=0;
+        foreach($idObat as $id){
+            if($harga[$index] != null){
+                array_push($array, array(
+                    'medicine_id' => $id,
+                    'price_sales' => $harga[$index]
+                ));
+            }
+            $index++;
+        }
+
+        $db = db_connect('default');
+        $builder = $db->table('pricemed');
+        $builder->insertBatch($array);
+
+        return redirect()->to(base_url('/persediaan/pHarga'));
+    }
+
     
     public function getDataExp(){
         $session = session();
@@ -140,30 +166,7 @@ class Persediaan extends BaseController
         echo view('layout/footer');
     }
 
-    public function updateHarga(){
-        $session = session();
-        $array = array();
-        $harga = $this->request->getVar('hargaB');
-        $idObat = $this->request->getVar('idObat');
-
-        $index=0;
-        foreach($idObat as $id){
-            if($harga[$index] != null){
-                array_push($array, array(
-                    'medicine_id' => $id,
-                    'price_sales' => $harga[$index]
-                ));
-            }
-            $index++;
-        }
-
-        $db = db_connect('default');
-        $builder = $db->table('pricemed');
-        $builder->insertBatch($array);
-
-        return redirect()->to(base_url('/persediaan/pHarga'));
-    }
-
+    
     public function dataExp(){
         $session = session();
         $persediaan = $this->persediaanModel->findAll();
@@ -187,7 +190,8 @@ class Persediaan extends BaseController
         $allData = $this->persediaanModel->getAllStock();
 
         $data = [
-            'data' => $allData
+            'data' => $allData,
+            'allData' => $allData
         ];
 
         echo view('layout/header');
@@ -212,13 +216,13 @@ class Persediaan extends BaseController
             if(empty($getSearch)){
                 $data = [
                     'data' => $allData,
-                    'medicine' => $allData
+                    'allData' => $allData
                 ];
                 $session->setFlashData('msg', 'Obat tidak ditemukan');
             }else {
                 $data = [
                     'data' => $getSearch,
-                    'medicine' => $allData
+                    'allData' => $allData
                 ];
             }
         }else {
@@ -226,13 +230,13 @@ class Persediaan extends BaseController
             if(empty($getMedicine)){
                 $data = [
                     'data' => $allData,
-                    'medicine' => $allData
+                    'allData' => $allData
                 ];
                 $session->setFlashData('msg', 'Obat tidak ditemukan');
             }else {
                 $data = [
                     'data' => $getMedicine,
-                    'medicine' => $allData
+                    'allData' => $allData
                 ];
             }
         }

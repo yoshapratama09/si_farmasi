@@ -59,7 +59,7 @@
                     <td><?= $p['price_sales']; ?></td>
                     <td>
                       <!-- <div class="col-sm-3 my-1"> -->
-                      <input type="hidden" class="form-control col-md-3" name="idObat[]" value="<?= $p['medicine_id']; ?>" id="" placeholder="">
+                      <input type="hidden" class="form-control col-md-3" name="idObat[]" value="" id="<?= $p['medicine_id']; ?>" placeholder="">
                       <input type="number" class="form-control col-md-3" name="hargaB[]" id="hargaB" placeholder="Harga Baru">
                       <!-- </div> -->
                     </td>
@@ -97,7 +97,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($data as $p) : ?>
+                <?php foreach ($allData as $p) : ?>
                   <tr data-dismiss="modal">
                       <th scope="row"><?= $p['medicine_id']; ?></th>
                       <td><?= $p['medicine_name']; ?></td>

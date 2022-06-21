@@ -26,7 +26,7 @@ class PersediaanModel extends Model
 
     public function getMedicine($id)
     {
-        $query = $this->db->query("SELECT * FROM medicine as med JOIN stockmed as sm ON med.medicine_id = sm.medicine_id JOIN pricemed as pm ON med.medicine_id = pm.medicine_id WHERE med.medicine_id = $id");
+        $query = $this->db->query("SELECT * FROM medicine as med JOIN stockmed as sm ON med.medicine_id = sm.medicine_id JOIN pricemed as pm ON med.medicine_id = pm.medicine_id WHERE med.medicine_id = $id AND stock_status = 1");
 
         $row = $query->getResultArray();
 

@@ -91,7 +91,7 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($data as $p) : ?>
+                <?php foreach ($allData as $p) : ?>
                     <tr data-dismiss="modal">
                         <th scope="row"><?= $p['medicine_id']; ?></th>
                         <td><?= $p['medicine_name']; ?></td>
