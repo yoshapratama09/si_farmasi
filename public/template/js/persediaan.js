@@ -9,7 +9,7 @@ for(var i = 1; i < table.rows.length; i++)
             document.getElementById("medName").value = this.cells[1].innerHTML;
             table.rows[i].className.add('table-active');
     };
-}
+} 
 
 for(var i = 1; i < tablePH.rows.length; i++)
 {
@@ -21,11 +21,11 @@ for(var i = 1; i < tablePH.rows.length; i++)
     };
 }
 
+
 $('#clearBtn').on('click', function () {
     document.getElementById("medId").value = "";
     document.getElementById("medName").value = "";
 } );
-
 
 
 $('#filter').on('click', function () {

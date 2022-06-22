@@ -21,7 +21,7 @@
           <div class="col-sm-3 my-1">
             <label class="sr-only" for="medName">Nama Obat</label>
             <div class="input-group">
-                <input type="text" class="form-control" id="medName" placeholder="Nama Obat" name="medName" data-toggle="modal" data-target="#exampleModalCenter" required>
+                <input type="text" class="form-control" id="medName" placeholder="Nama Obat" name="medName" >
             </div>
           </div>
           <div class="col-auto my-1">
@@ -32,12 +32,12 @@
           </div>
         </div>
         <div class="col-sm-6 my-1 ms-1">
-            <input type="checkbox" class="form-check-input" id="filter" name="filter" value='0'>
+            <input type="checkbox" class="form-check-input" id="filter" name="filter">
             <label class="form-check-label" for="exampleCheck1">Filter Berdasarkan Nama</label>
         </div>
       </form>
 
-      <table id="example2" class="table table-hover">
+      <table id="table" class="table table-hover">
         <thead>
           <tr>
               <th scope="col">ID Obat</th>
@@ -111,3 +111,17 @@
 </div>
 
 <script src="<?= base_url('template/js/persediaan.js'); ?>"></script>
+
+<script>
+  $(function() {
+    $('#table').DataTable({
+        "paging": true,
+        "lengthChange": false,
+        "searching": false,
+        "ordering": true,
+        "info": true,
+        "autoWidth": false,
+        "responsive": true,
+    });
+  });
+</script>

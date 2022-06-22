@@ -38,7 +38,7 @@
       </form>
 
       <form action="/persediaan/updateHarga" method="POST" >
-        <table id="tablePH" class="table table-hover">
+        <table id="table" class="table table-hover">
           <thead>
             <tr>
               <th scope="col">ID Obat</th>
@@ -50,17 +50,31 @@
             </tr>
             </thead>
             <tbody>
+              <?php $index = 0; ?>
               <?php foreach ($data as $p) : ?>
                 <tr>
                     <th scope="row"><?= $p['medicine_id']; ?></th>
                     <td><?= $p['medicine_name']; ?></td>
                     <td><?= $p['stock_qty']; ?></td>
-                    <td><?= $p['price_capital']; ?></td>
-                    <td><?= $p['price_sales']; ?></td>
+                    <td>
+                      <?php foreach($capital as $c) : ?>
+                        <?php if($p['medicine_id'] == $c['medicine_id']) : ?>
+                        <?= $c['price_amount']; ?>
+                        <?php endif; ?>
+                      <?php endforeach; ?>
+                    </td>
+                    <td>
+                      <?php foreach($sales as $s) : ?>
+                        <?php if($p['medicine_id'] == $s['medicine_id']) : ?>
+                        <?= $s['price_amount']; ?>
+                        <?php endif; ?>
+                      <?php endforeach; ?>
+                    </td>
                     <td>
                       <!-- <div class="col-sm-3 my-1"> -->
-                      <input type="hidden" class="form-control col-md-3" name="idObat[]" value="" id="<?= $p['medicine_id']; ?>" placeholder="">
-                      <input type="number" class="form-control col-md-3" name="hargaB[]" id="hargaB" placeholder="Harga Baru">
+                      <input type="hidden" class="form-control col-md-3" name="idObat[]" value="<?= $p['medicine_id']; ?>" id="" placeholder="">
+                      <input type="hidden" class="form-control col-md-3" name="idPrice[]" value="<?= $p['price_id']; ?>" id="" placeholder="">
+                      <input type="number" class="form-control col-md-4" name="hargaB[]" id="hargaB" placeholder="Harga Baru">
                       <!-- </div> -->
                     </td>
                 </tr>
@@ -88,7 +102,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <table id="table" class="table table-hover">
+        <table id="tablePH" class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">ID Obat</th>
@@ -101,9 +115,7 @@
                   <tr data-dismiss="modal">
                       <th scope="row"><?= $p['medicine_id']; ?></th>
                       <td><?= $p['medicine_name']; ?></td>
-                      <td><?= $p['medicine_stock']; ?></td>
-                      
-                      
+                      <td><?= $p['stock_qty']; ?></td>
                   </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -121,7 +133,7 @@
 
 <script>
   $(function() {
-    $('#tablePH').DataTable({
+    $('#table').DataTable({
         "paging": true,
         "lengthChange": false,
         "searching": false,
@@ -130,5 +142,6 @@
         "autoWidth": false,
         "responsive": true,
     });
+
   });
 </script>

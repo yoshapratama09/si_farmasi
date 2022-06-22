@@ -30,12 +30,15 @@ class Persediaan extends BaseController
 
     public function penyesuaianHarga(){
         $session = session();
-        $persediaan = $this->persediaanModel->findAll();
         $allData = $this->persediaanModel->getAll();
+        $getPSales = $this->persediaanModel->getHarga1();
+        $getPCapital = $this->persediaanModel->getHarga2();
 
         $data = [
             'data' => $allData,
-            'allData' => $allData
+            'allData' => $allData, 
+            'sales' => $getPSales,
+            'capital' => $getPCapital
         ];
 
         echo view('layout/header');
@@ -52,7 +55,8 @@ class Persediaan extends BaseController
         $filter = $this->request->getVar('filter');
 
         $allData = $this->persediaanModel->getAll();
-        $medicine = $this->persediaanModel->findAll();
+        $getPSales = $this->persediaanModel->getHarga1();
+        $getPCapital = $this->persediaanModel->getHarga2();
         
         
         if($filter == "1"){
@@ -61,13 +65,17 @@ class Persediaan extends BaseController
             if(empty($getSearch)){
                 $data = [
                     'data' => $allData,
-                    'medicine' => $allData
+                    'allData' => $allData,
+                    'sales' => $getPSales,
+                    'capital' => $getPCapital
                 ];
                 $session->setFlashData('msg', 'Obat tidak ditemukan');
             }else {
                 $data = [
                     'data' => $getSearch,
-                    'medicine' => $allData
+                    'allData' => $allData,
+                    'sales' => $getPSales,
+                    'capital' => $getPCapital
                 ];
             }
         }else {
@@ -75,13 +83,17 @@ class Persediaan extends BaseController
             if(empty($getMedicine)){
                 $data = [
                     'data' => $allData,
-                    'medicine' => $allData
+                    'allData' => $allData,
+                    'sales' => $getPSales,
+                    'capital' => $getPCapital
                 ];
                 $session->setFlashData('msg', 'Obat tidak ditemukan');
             }else {
                 $data = [
                     'data' => $getMedicine,
-                    'medicine' => $allData
+                    'allData' => $allData,
+                    'sales' => $getPSales,
+                    'capital' => $getPCapital
                 ];
             }
         }
@@ -98,20 +110,27 @@ class Persediaan extends BaseController
         $array = array();
         $harga = $this->request->getVar('hargaB');
         $idObat = $this->request->getVar('idObat');
+        $idPrice = $this->request->getVar('idPrice');
+
+        $db = db_connect('default');
+        $builder = $db->table('pricemed2');
 
         $index=0;
         foreach($idObat as $id){
             if($harga[$index] != null){
                 array_push($array, array(
                     'medicine_id' => $id,
-                    'price_sales' => $harga[$index]
+                    'price_amount' => $harga[$index],
+                    'price_type' => 1,
+                    'price_status' => 1
                 ));
+                $builder->set('price_status', '0');
+                $builder->where('price_id', $idPrice[$index]);
+                $builder->update();
             }
             $index++;
         }
-
-        $db = db_connect('default');
-        $builder = $db->table('pricemed');
+        $builder = $db->table('pricemed2');
         $builder->insertBatch($array);
 
         return redirect()->to(base_url('/persediaan/pHarga'));
@@ -251,7 +270,6 @@ class Persediaan extends BaseController
     public function updateStock(){
         $session = session();
         $array = array();
-        $array1 = array();
         $qty = $this->request->getVar('qtyBaru');
         $idObat = $this->request->getVar('idObat');
         $idStock = $this->request->getVar('idStock');
@@ -275,7 +293,6 @@ class Persediaan extends BaseController
             $index++;
         }
 
-        $builder = $db->table('stockmed');
         $builder->insertBatch($array);
 
         return redirect()->to(base_url('/persediaan/pStock'));
