@@ -19,17 +19,19 @@ body {
 }
 
 .title-form {
-    text-align: right;
-    margin-right: 40px;
+    text-align: left;
+    /* margin-right: 40px; */
 }
 
 .tf1 {
-    font-size: 80px;
-    margin-bottom: 20px;
+    font-size: 50px !important;
+    margin: 20px 30px 30px 10px !important;
 }
 
 .tf2 {
-    font-size: 30px;
+    font-size: 40px;
+    margin: 20px 30px 50px 0px;
+    /* margin: 30px; */
 }
 
 .form-control {
@@ -75,4 +77,16 @@ body {
 .btnDlt {
     width: fit-content;
     display: inline-block;
+}
+
+/* modal */
+
+.modal .modal-title {
+    margin-right: 0;
+    padding-top: 0;
+}
+
+h6 {
+    margin-left: 0px;
+    padding-top: 10px;
 }

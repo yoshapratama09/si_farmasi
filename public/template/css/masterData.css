@@ -4,18 +4,18 @@
     margin-right: 30px;
 }
 
-.box-rs {
-    background-color: #132BFF;
+.boxMD1 {
+    background-color: #4D82AC;
 }
 
-.box-rs .sbox-rs {
-    background-color: #0D21D3;
+.boxMD2 {
+    background-color: #50D9B6;
 }
 
-.box-asuransi {
-    background-color: #10FF1A;
+.boxMD3 {
+    background-color: #FFD664;
 }
 
-.box-asuransi .sbox-asuransi {
-    background-color: #0DD315;
+.boxMD p {
+    font-weight: 500;
 }

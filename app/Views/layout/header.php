@@ -35,6 +35,11 @@
   <link rel="stylesheet" href="<?= base_url('plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css'); ?>">
   <!-- css master data -->
   <link rel="stylesheet" href="<?= base_url('template/css/masterData.css'); ?>">
+  <!-- css quick access -->
+  <link rel="stylesheet" href="<?= base_url('template/css/quickaccess.css'); ?>">
+  <!-- css sidebar -->
+  <link rel="stylesheet" href="<?= base_url('template/css/sidebar.css'); ?>">
+
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -64,9 +69,6 @@
       <ul class="navbar-nav">
         <li class="nav-item ms-2">
           <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-        </li>
-        <li class="nav-item d-none d-sm-inline-block">
-          <a href="index3.html" class="nav-link">Home</a>
         </li>
       </ul>
 
