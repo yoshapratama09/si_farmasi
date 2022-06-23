@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col">
                 <!-- Main content -->
-                <h1 class="title-form tf1">MASTER DATA</h1>
+                <h1 class="title-form tf1 text-right">MASTER DATA</h1>
                 <!-- <section class="content"> -->
                 <div class="container-fluid">
                     <!-- Small boxes (Stat box) -->

@@ -28,8 +28,8 @@
 <!-- Sparkline -->
 <script src="<?= base_url('plugins/sparklines/sparkline.js'); ?>"></script>
 <!-- JQVMap -->
-<script src="<?= base_url('plugins/jqvmap/jquery.vmap.min.js'); ?>"></script>
-<script src="<?= base_url('plugins/jqvmap/maps/jquery.vmap.usa.js'); ?>"></script>
+<!-- <script src="<?= base_url('plugins/jqvmap/jquery.vmap.min.js'); ?>"></script>
+<script src="<?= base_url('plugins/jqvmap/maps/jquery.vmap.usa.js'); ?>"></script> -->
 <!-- jQuery Knob Chart -->
 <script src="<?= base_url('plugins/jquery-knob/jquery.knob.min.js'); ?>"></script>
 <!-- daterangepicker -->

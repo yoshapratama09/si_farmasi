@@ -6,7 +6,8 @@
         <div class="col">
             <h3 class="title-form tf2">Tipe Obat</h3>
             <div hidden class="alert" data-flashdata="<?= session()->getFlashdata('Pesan') ?>"></div>
-            <button type="button" class="float-end col-lg-1 btn btn-block btn-success mb-2 btnTambahObat" id="btnTambahObat" onclick="location.href='/Obat/Tipe/Tambah'"> <i class="fas fa-plus"></i>
+            <button type="button" class="float-end col-lg-3 btn btn-block btn-success mb-2 btnTambahObat" id="btnTambahObat" onclick="location.href='/Obat/Tipe/Tambah'"> <i class="fas fa-plus"></i>
+                Tambah Tipe Obat
             </button>
             <form action="/Obat/Tipe/Cari" method="post" class="mb-2">
                 <div class="input-group inputCari w-25 float-start">
