@@ -60,15 +60,6 @@ class PersediaanModel extends Model
         return $row;
     }
 
-    public function getJoinHarga()
-    {
-        $query = $this->db->query("SELECT * FROM medicine as med JOIN pricemed as pm ON med.medicine_id = pm.medicine_id");
-
-        $row = $query->getResultArray();
-
-        return $row;
-    }
-
     public function getDataExp()
     {
         $query = $this->db->query("SELECT * FROM medicine as med JOIN stockmed as sm ON med.medicine_id = sm.medicine_id WHERE stock_status = 1 ORDER BY medicine_exp DESC");

@@ -37,13 +37,13 @@
             </tr>
             </thead>
             <tbody>
-              <!-- <?php foreach ($data as $p) : ?>
+              <?php foreach ($data as $p) : ?>
                 <tr>
                     <th scope="row"><?= $p['medicine_id']; ?></th>
                     <td><?= $p['medicine_name']; ?></td>
-                    <td><?= $p['medicine_stock']; ?></td>
+                    <td><?= $p['medicine_name']; ?></td>
                 </tr>
-              <?php endforeach; ?> -->
+              <?php endforeach; ?>
             </tbody>
             </tfoot>
         </table>
@@ -75,7 +75,7 @@
                     <tr data-dismiss="modal">
                         <th scope="row"><?= $p['medicine_id']; ?></th>
                         <td><?= $p['medicine_name']; ?></td>
-                        <td><?= $p['medicine_stock']; ?></td>
+                        <td><?= $p['medicine_name']; ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

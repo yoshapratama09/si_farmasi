@@ -144,4 +144,14 @@
     });
 
   });
+
+  for(var i = 1; i < tablePH.rows.length; i++)
+{
+    tablePH.rows[i].onclick = function()
+    {
+            document.getElementById("medId").value = this.cells[0].innerHTML;
+            document.getElementById("medName").value = this.cells[1].innerHTML;
+            tablePH.rows[i].className.add('table-active');
+    };
+}
 </script>
