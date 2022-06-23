@@ -16,7 +16,8 @@ class Login extends BaseController
         $login = $this->loginModel->findAll();
 
         $data = [
-            'data' => $login
+            'data' => $login,
+            'validation' => \Config\Services::validation()
         ];
 
         echo view('login', $data);
@@ -27,6 +28,17 @@ class Login extends BaseController
         $user = new LoginModel();
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
+
+        if (!$this->validate([
+
+            'username' => 'required',
+            'password' => 'required'
+
+        ])) {
+            $validation = \Config\Services::validation();
+            // dd($validation);
+            return redirect()->to(base_url('/login'))->withInput()->with('validation', $validation);
+        }
 
         $data = $user->where('employee_username', $username)->first();
 
