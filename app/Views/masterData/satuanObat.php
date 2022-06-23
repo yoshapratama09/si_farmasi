@@ -6,7 +6,8 @@
         <div class="col">
             <h3 class="title-form tf2">Satuan Obat</h3>
             <div hidden class="alert" data-flashdata="<?= session()->getFlashdata('Pesan') ?>"></div>
-            <button type="button" class="float-end col-lg-3 btn btn-block btn-success mb-2 btnTambahObat" id="btnTambahObat" onclick="location.href='/Obat/Satuan/Tambah'">Tambah Satuan Obat</button>
+            <button type="button" class="float-end col-lg-1 btn btn-block btn-success mb-2 btnTambahObat" id="btnTambahObat" onclick="location.href='/Obat/Satuan/Tambah'"> <i class="fas fa-plus"></i>
+            </button>
             <form action="/Obat/Satuan/Cari" method="post" class="mb-2">
                 <div class="input-group inputCari w-25 float-start">
                     <input name="cari" id="cari" placeholder="Satuan Obat" type="text" class="form-control" aria-label="Recipient's username" aria-describedby="button-addon2">
@@ -50,6 +51,8 @@
     </div>
 </div>
 <!-- end tabel type obat -->
+</div>
+<!-- /.content-wrapper -->
 
 <!--script filter-->
 <script src="<?= base_url('template/js/ddtf.js'); ?>"></script>

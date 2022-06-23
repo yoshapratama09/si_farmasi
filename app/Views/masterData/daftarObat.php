@@ -48,7 +48,7 @@
               <td>
                 <div class="row">
                   <div class="col-lg-3">
-                    <button id="btnDetail" type="button" class="btn btn-block btn-warning" data-name="<?= $m['medicine_name']; ?>" data-type="<?= $m['medicine_type']; ?>" data-category="<?= $m['medicine_category']; ?>" data-comp="<?= $m['medicine_comp']; ?>" data-func="<?= $m['medicine_func']; ?>" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>
+                    <button id="btnDetail" type="button" class="btn btn-block btn-warning btnDetail" data-name="<?= $m['medicine_name']; ?>" data-type="<?= $m['medicine_type']; ?>" data-category="<?= $m['medicine_category']; ?>" data-comp="<?= $m['medicine_comp']; ?>" data-func="<?= $m['medicine_func']; ?>" data-toggle="modal" data-target="#exampleModalCenter">Detail</button>
                   </div>
                   <div class="col-lg-3">
                     <button type="button" class="btn btn-block btn-primary" onclick="location.href='/updateObat/<?= $m['medicine_id'] ?>'">Edit</button>
@@ -129,6 +129,9 @@
   </div>
 </div>
 
+</div>
+<!-- /.content-wrapper -->
+
 
 
 
@@ -156,7 +159,7 @@
 
 
 
-  $('#btnDetail').click(function() {
+  $('.btnDetail').click(function() {
     // console.log(1)
     // $('#exampleModalCenter').modal();
     var name = $(this).attr('data-name');

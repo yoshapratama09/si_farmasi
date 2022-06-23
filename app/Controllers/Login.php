@@ -16,25 +16,38 @@ class Login extends BaseController
         $login = $this->loginModel->findAll();
 
         $data = [
-            'data' => $login
+            'data' => $login,
+            'validation' => \Config\Services::validation()
         ];
 
         echo view('login', $data);
     }
 
-    public function loginAuth(){
+    public function loginAuth()
+    {
         $session = session();
         $user = new LoginModel();
         $username = $this->request->getVar('username');
         $password = $this->request->getVar('password');
 
+        if (!$this->validate([
+
+            'username' => 'required',
+            'password' => 'required'
+
+        ])) {
+            $validation = \Config\Services::validation();
+            // dd($validation);
+            return redirect()->to(base_url('/login'))->withInput()->with('validation', $validation);
+        }
+
         $data = $user->where('employee_username', $username)->first();
 
-        if($data){
-            if(strtolower($data['employee_departemen']) == 'farmasi'){ 
+        if ($data) {
+            if (strtolower($data['employee_departemen']) == 'farmasi') {
                 $pass = $data['employee_pass'];
                 $authPass = password_verify($password, $pass);
-                if($password == $pass){
+                if ($password == $pass) {
                     $ses_data = [
                         'id' => $data['employee_id'],
                         'name' => $data['employee_name'],
@@ -42,25 +55,24 @@ class Login extends BaseController
                     ];
                     $session->set($ses_data);
                     return redirect()->to(base_url('/'));
-                }else{
+                } else {
                     $session->setFlashData('msg', 'Password anda salah');
                     return redirect()->to(base_url('/login'));
                 }
-            }else {
+            } else {
                 $session->setFlashData('msg', 'Anda tidak memiliki hak akses terhadap sistem');
                 return redirect()->to(base_url('/login'));
-            } 
-        }else {
+            }
+        } else {
             $session->setFlashData('msg', 'Username tidak ditemukan');
             return redirect()->to(base_url('/login'));
         }
-    
     }
 
-    public function logout(){
+    public function logout()
+    {
         $session = session();
         $session->destroy();
         return redirect()->to(base_url('/login'));
     }
-
 }

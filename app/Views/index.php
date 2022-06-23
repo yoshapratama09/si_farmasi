@@ -19,7 +19,7 @@
       <div class="row">
         <div class="col-lg-6 col-6">
           <!-- small box -->
-          <div class="small-box boxQC boxQC1">
+          <div class="small-box boxQC boxQC1" onclick="location.href='/Obat'">
             <div class="inner">
               <p>Daftar Obat</p>
             </div>
@@ -32,7 +32,7 @@
         <!-- ./col -->
         <div class="col-lg-6 col-6">
           <!-- small box -->
-          <div class="small-box boxQC boxQC2">
+          <div class="small-box boxQC boxQC2" onclick="location.href='/supplier'">
             <div class="inner">
               <p>Daftar Supplier</p>
             </div>
@@ -45,7 +45,7 @@
         <!-- ./col -->
         <div class="col-lg-6 col-6">
           <!-- small box -->
-          <div class="small-box boxQC boxQC3">
+          <div class="small-box boxQC boxQC3" onclick="location.href='/persediaan/opname'">
             <div class="inner">
               <p>Stok Obat</p>
             </div>
