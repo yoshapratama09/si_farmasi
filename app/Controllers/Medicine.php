@@ -94,13 +94,6 @@ class Medicine extends BaseController
                     'numeric' => 'Satuan obat (mg) harus diisi dengan angka'
                 ]
             ],
-            'hargaObat' => [
-                'rules' => 'required|numeric',
-                'errors' => [
-                    'required' => 'Harga obat harus diisi',
-                    'numeric' => 'Harga obat harus diisi dengan angka'
-                ]
-            ],
             'modalObat' => [
                 'rules' => 'required|numeric',
                 'errors' => [
@@ -141,7 +134,7 @@ class Medicine extends BaseController
         //Pricemed
 
         $statusNew = 1;
-        $statusOld = 0;
+        $typeModal = 0;
 
         $cek = $this->medicineModel->cekObat($id);
 
@@ -151,11 +144,9 @@ class Medicine extends BaseController
                 'medicine_name' => $this->request->getVar('namaObat'),
                 'medicine_mfd' => $this->request->getVar('mfdObat'),
                 'medicine_exp' => $this->request->getVar('expObat'),
-                'medicine_stock' => $this->request->getVar('stokObat'),
                 'medicine_satuan1' => $this->request->getVar('satuan1'),
                 'medicine_satuan2' => $this->request->getVar('satuan2'),
                 'medicine_satuantotal' => $totalMg,
-                'medicine_price' => $this->request->getVar('hargaObat'),
                 'medicine_type' => $this->request->getVar('tipeObat'),
                 'medicine_category' => $this->request->getVar('kategoriObat'),
                 'medicine_comp' => $this->request->getVar('komposisiObat'),
@@ -167,12 +158,14 @@ class Medicine extends BaseController
             $dataPrice = [
 
                 'medicine_id' => $this->request->getVar('idObat'),
-                'price_sales' => $this->request->getVar('hargaObat'),
-                'price_capital' => $this->request->getVar('modalObat'),
-                'sales_status' => $statusNew,
-                'capital_status' => $statusNew
+                'price_amount' => $this->request->getVar('modalObat'),
+                'price_type' => $typeModal,
+                'price_status' => $statusNew
             ];
 
+            // $builder1->set('price_status', '0');
+            // $builder1->where('medicine_id', $id);
+            // $builder->update();
             $builder1->insert($dataPrice);
 
             $dataStock = [

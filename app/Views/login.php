@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -15,8 +16,9 @@
     <link rel="stylesheet" href="template/css/login.css">
     <title>RSUD Jombang || Login</title>
 </head>
+
 <body>
-    
+
     <section class="login_box">
         <div class="row justify-content-center align-items-center">
             <div class="col-12 m-5">
@@ -45,22 +47,36 @@
                                 </div>
                                 <div class="input-group mb-4">
                                     <input type="password" name="password" class="form-control text-center rounded-lg shadow <?= ($validation->hasError('password')) ? 'is-invalid' : ''; ?>" placeholder="Password">
+<<<<<<< HEAD
                                         <div class="invalid-feedback">
                                     <?= $validation->getError('password'); ?>
                             </div>
+=======
+                                    <div class="invalid-feedback">
+                                        <?= $validation->getError('password'); ?>
+                                    </div>
+>>>>>>> 6ac38676583853c2535e0cab78d137f5d388175c
                                 </div>
                                 <div class="mb-3 text-center">
                                     <button type="submit" class="btn btn-primary rounded-lg-50 shadow-lg">Login</button>
                                 </div>
                             </form>
+<<<<<<< HEAD
                             
+=======
+
+>>>>>>> 6ac38676583853c2535e0cab78d137f5d388175c
                             <div class="text-center mt-5">
                                 <p class="">Belum memiliki akun? <a href="#!" class="text-blue-50 fw-bold" id="regis">Buat Akun</a></p>
                             </div>
                         </section>
 
                         <section class="buatAkun" id="buatAkun" style="display: none;">
+<<<<<<< HEAD
                             <div class="text-center mb-3" >
+=======
+                            <div class="text-center mb-3">
+>>>>>>> 6ac38676583853c2535e0cab78d137f5d388175c
                                 <h5 class="m-0 p-0" style="font-weight: 500">SILAHKAN MENGHUBUNGI ADMIN IT</h5>
                                 <h5 class="m-0 p-0" style="font-weight: 500">UNTUK PEMBUATAN AKUN</h5>
                             </div>
@@ -68,7 +84,11 @@
                                 <button type="submit" class="btn btn-primary rounded-lg shadow" id="kembali">Kembali</button>
                             </div>
                         </section>
+<<<<<<< HEAD
                         
+=======
+
+>>>>>>> 6ac38676583853c2535e0cab78d137f5d388175c
                     </div>
                 </div>
             </div>
@@ -84,4 +104,5 @@
     <script src="template/js/login.js"></script>
 
 </body>
+
 </html>
