@@ -5,6 +5,7 @@ namespace App\Controllers;
 use App\Models\DataModel;
 use App\Models\MedicineModel;
 use App\Models\PersediaanModel;
+use CodeIgniter\CLI\Console;
 use CodeIgniter\Config\Services;
 use CodeIgniter\Database\Config;
 use CodeIgniter\Validation\StrictRules\Rules;
@@ -129,67 +130,73 @@ class Medicine extends BaseController
             return redirect()->to(base_url('/Obat/Tambah'))->withInput()->with('validation', $validation);
         }
 
-        $db = db_connect('default');
-        $builder = $db->table('medicine');
+        $mfdDate = $this->request->getVar('mfdObat');
+        $expDate = $this->request->getVar('expObat');
 
-        $builder1 = $db->table('pricemed');
-        $builder2 = $db->table('stockmed');
-
-        $id = $this->request->getVar('idObat');
-        $stok = $this->request->getVar('stokObat');
-        $satuan2 = $this->request->getVar('satuan2');
-        $totalMg = $stok * $satuan2;
-
-        //Pricemed
-
-        $statusNew = 1;
-        $typeModal = 0;
-
-        $cek = $this->medicineModel->cekObat($id);
-
-        if ($cek <= 0) {
-            $data = [
-                'medicine_id' => $this->request->getVar('idObat'),
-                'medicine_name' => $this->request->getVar('namaObat'),
-                'medicine_mfd' => $this->request->getVar('mfdObat'),
-                'medicine_exp' => $this->request->getVar('expObat'),
-                'medicine_satuan1' => $this->request->getVar('satuan1'),
-                'medicine_satuan2' => $this->request->getVar('satuan2'),
-                'medicine_satuantotal' => $totalMg,
-                'medicine_type' => $this->request->getVar('tipeObat'),
-                'medicine_category' => $this->request->getVar('kategoriObat'),
-                'medicine_comp' => $this->request->getVar('komposisiObat'),
-                'medicine_func' => $this->request->getVar('fungsiObat')
-            ];
-
-            $builder->insert($data);
-
-            $dataPrice = [
-
-                'medicine_id' => $this->request->getVar('idObat'),
-                'price_amount' => $this->request->getVar('modalObat'),
-                'price_type' => $typeModal,
-                'price_status' => $statusNew
-            ];
-
-            // $builder1->set('price_status', '0');
-            // $builder1->where('medicine_id', $id);
-            // $builder->update();
-            $builder1->insert($dataPrice);
-
-            $dataStock = [
-                'medicine_id' => $this->request->getVar('idObat'),
-                'stock_qty' => $this->request->getVar('stokObat'),
-                'stock_status' => $statusNew
-            ];
-
-            $builder2->insert($dataStock);
-
-            session()->setFlashdata('Pesan', 'Tambah');
-            return redirect()->to(base_url('/Obat'));
+        if ($expDate < $mfdDate) {
+            // echo 'gagal';
+            session()->setFlashdata('Pesan', 'tanggal');
+            return redirect()->to(base_url('/Obat/Tambah'))->withInput();
         } else {
-            session()->setFlashdata('Pesan', 'gagalTambah');
-            return redirect()->to(base_url('/Obat/Tambah'));
+            $db = db_connect('default');
+            $builder = $db->table('medicine');
+
+            $builder1 = $db->table('pricemed');
+            $builder2 = $db->table('stockmed');
+
+            $id = $this->request->getVar('idObat');
+            $stok = $this->request->getVar('stokObat');
+            $satuan2 = $this->request->getVar('satuan2');
+            $totalMg = $stok * $satuan2;
+
+            //Pricemed
+
+            $statusNew = 1;
+            $typeModal = 0;
+
+            $cek = $this->medicineModel->cekObat($id);
+
+            if ($cek <= 0) {
+                $data = [
+                    'medicine_id' => $this->request->getVar('idObat'),
+                    'medicine_name' => $this->request->getVar('namaObat'),
+                    'medicine_mfd' => $this->request->getVar('mfdObat'),
+                    'medicine_exp' => $this->request->getVar('expObat'),
+                    'medicine_satuan1' => $this->request->getVar('satuan1'),
+                    'medicine_satuan2' => $this->request->getVar('satuan2'),
+                    'medicine_satuantotal' => $totalMg,
+                    'medicine_type' => $this->request->getVar('tipeObat'),
+                    'medicine_category' => $this->request->getVar('kategoriObat'),
+                    'medicine_comp' => $this->request->getVar('komposisiObat'),
+                    'medicine_func' => $this->request->getVar('fungsiObat')
+                ];
+
+                $builder->insert($data);
+
+                $dataPrice = [
+
+                    'medicine_id' => $this->request->getVar('idObat'),
+                    'price_amount' => $this->request->getVar('modalObat'),
+                    'price_type' => $typeModal,
+                    'price_status' => $statusNew
+                ];
+
+                $builder1->insert($dataPrice);
+
+                $dataStock = [
+                    'medicine_id' => $this->request->getVar('idObat'),
+                    'stock_qty' => $this->request->getVar('stokObat'),
+                    'stock_status' => $statusNew
+                ];
+
+                $builder2->insert($dataStock);
+
+                session()->setFlashdata('Pesan', 'Tambah');
+                return redirect()->to(base_url('/Obat'));
+            } else {
+                session()->setFlashdata('Pesan', 'gagalTambah');
+                return redirect()->to(base_url('/Obat/Tambah'));
+            }
         }
     }
 

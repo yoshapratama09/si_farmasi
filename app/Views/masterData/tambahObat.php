@@ -132,3 +132,35 @@
 
 
 <script src="<?= base_url('template/js/alertTambah.js'); ?>"></script>
+
+<script>
+    // var Toast = Swal.mixin({
+    //     toast: true,
+    //     position: 'top-end',
+    //     showConfirmButton: false,
+    //     timer: 3000
+    // });
+
+    // const flashData = $('.alert').data('flashdata');
+
+    // var mfdDate = document.getElementById('mfdObat');
+    // var expDate = document.getElementById('expObat');
+    // var btnSubmit = document.getElementById('submitObat');
+
+    // let compare = () => {
+    //     let mfdValue = (new Date(mfdDate.value)).getDate();
+    //     let expValue = (new Date(expDate.value)).getDate();
+
+    //     if (expValue < mfdValue) {
+    //         Toast.fire({
+    //             icon: 'warning',
+    //             title: 'Tanggal expired harus setelah tanggal dibuatnya obat'
+    //         });
+    //     } else {
+    //         messageDiv.innerHTML = '';
+    //         submitButton.disabled = false;
+    //     }
+    // };
+
+    // btnSubmit.addEventListener('click', compare);
+</script>

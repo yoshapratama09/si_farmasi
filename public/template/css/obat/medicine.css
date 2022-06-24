@@ -32,12 +32,12 @@ tr .action {
 
 .tf1 {
     font-size: 50px !important;
-    margin: 20px 30px 30px 10px !important;
+    margin: 20px 30px 30px 0px !important;
 }
 
 .tf2 {
     font-size: 40px;
-    margin: 20px 30px 30px 10px;
+    margin: 20px 30px 30px 0px;
     /* margin: 30px; */
 }
 

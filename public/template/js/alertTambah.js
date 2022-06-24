@@ -12,6 +12,11 @@ if (flashData == 'Update') {
         icon: 'success',
         title: 'Data Obat berhasil diubah'
     });
+} else if (flashData == 'tanggal') {
+    Toast.fire({
+        icon: 'warning',
+        title: 'Tanggal expired harus setelah tanggal dibuatnya obat'
+    });
 } else if (flashData == 'Tambah') {
     Toast.fire({
         icon: 'success',
