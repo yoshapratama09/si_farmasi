@@ -122,14 +122,6 @@ class MedicineModel extends Model
         return $row;
     }
 
-    // public function updateObat($id, $nama, $stok, $harga)
-    // {
-    //     $query = $this->db->query("UPDATE medicine set medicine_name = $nama, medicine_stock = $stok, medicine_price=$harga WHERE medicine_id = $id");
-
-    //     $row = $query->getRow();
-
-    //     return $row;
-    // }
 
     public function searchObat($nama)
     {
@@ -154,6 +146,33 @@ class MedicineModel extends Model
         $query = $this->db->query("SELECT * FROM typemed where type_name like '%$nama%'");
 
         $row = $query->getResultArray();
+
+        return $row;
+    }
+
+    public function getCountMed()
+    {
+        $query = $this->db->query("SELECT * FROM medicine");
+
+        $row = $query->getNumRows();
+
+        return $row;
+    }
+
+    public function getCountCategory()
+    {
+        $query = $this->db->query("SELECT * FROM categorymed");
+
+        $row = $query->getNumRows();
+
+        return $row;
+    }
+
+    public function getCountType()
+    {
+        $query = $this->db->query("SELECT * FROM typemed");
+
+        $row = $query->getNumRows();
 
         return $row;
     }

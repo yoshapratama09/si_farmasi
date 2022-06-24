@@ -6,7 +6,14 @@ body {
     border: none;
     background-color: inherit;
     font-weight: bold;
+}
 
+thead .action {
+    text-align: center;
+}
+
+tr .action {
+    margin: auto;
 }
 
 .bg-form {

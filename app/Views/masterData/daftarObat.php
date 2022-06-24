@@ -36,7 +36,7 @@
             <th scope="col">Nama Obat</th>
             <th scope="col">Tipe</th>
             <th scope="col">Kategori</th>
-            <th scope="col">Action</th>
+            <th scope="col" class="action">Action</th>
           </tr>
         </thead>
         <tbody>
@@ -46,8 +46,8 @@
               <td><?= $m['medicine_name']; ?></td>
               <td><?= $m['medicine_type']; ?></td>
               <td><?= $m['medicine_category']; ?></td>
-              <td>
-                <div class="row">
+              <td class="action">
+                <div class="row justify-content-center">
                   <div class="col-lg-3">
                     <button id="btnDetail" type="button" class="btn btn-block btn-warning btnDetail" data-name="<?= $m['medicine_name']; ?>" data-type="<?= $m['medicine_type']; ?>" data-category="<?= $m['medicine_category']; ?>" data-comp="<?= $m['medicine_comp']; ?>" data-func="<?= $m['medicine_func']; ?>" data-toggle="modal" data-target="#exampleModalCenter">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -138,6 +138,8 @@
     </div>
   </div>
 </div>
+
+<!--modal-->
 
 </div>
 <!-- /.content-wrapper -->

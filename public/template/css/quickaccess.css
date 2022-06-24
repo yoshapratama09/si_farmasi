@@ -3,7 +3,7 @@
 }
 
 .boxQC2 {
-    background-color: #4D82AC;
+    background-color: #8cc2ee;
 }
 
 .boxQC3 {
@@ -19,12 +19,13 @@
 }
 
 .boxQC6 {
-    background-color: #6C84BD;
+    background-color: #9a9aff;
 }
 
 .boxQC {
     height: 200px;
     margin: 20px;
+    cursor: pointer;
 }
 
 .boxQC p {

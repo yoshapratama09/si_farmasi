@@ -69,7 +69,8 @@ class PersediaanModel extends Model
         return $row;
     }
 
-    public function getAll(){
+    public function getAll()
+    {
         $query = $this->db->query("SELECT * FROM medicine as med JOIN pricemed as pm ON med.medicine_id = pm.medicine_id JOIN stockmed as sm ON med.medicine_id = sm.medicine_id WHERE pm.price_type = 1 AND pm.price_status = 1 AND sm.stock_status = 1");
 
         $row = $query->getResultArray();
@@ -101,6 +102,24 @@ class PersediaanModel extends Model
         $query = $this->db->query("SELECT * FROM medicine as med JOIN pricemed as pm ON med.medicine_id = pm.medicine_id WHERE pm.price_type = 0 AND pm.price_status = 1");
 
         $row = $query->getResultArray();
+
+        return $row;
+    }
+
+    public function cekChildMedHarga($id)
+    {
+        $query = $this->db->query("SELECT * FROM pricemed WHERE medicine_id = $id");
+
+        $row = $query->getNumRows();
+
+        return $row;
+    }
+
+    public function cekChildMedStock($id)
+    {
+        $query = $this->db->query("SELECT * FROM stockmed WHERE medicine_id = $id");
+
+        $row = $query->getNumRows();
 
         return $row;
     }

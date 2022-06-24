@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\DataModel;
 use App\Models\MedicineModel;
+use App\Models\PersediaanModel;
 use CodeIgniter\Config\Services;
 use CodeIgniter\Database\Config;
 use CodeIgniter\Validation\StrictRules\Rules;
@@ -12,10 +13,12 @@ class Medicine extends BaseController
 {
     protected $medicineModel;
     protected $dataModel;
+    protected $persediaanModel;
     public function __construct()
     {
         $this->medicineModel = new MedicineModel();
         $this->dataModel = new DataModel();
+        $this->persediaanModel = new PersediaanModel();
     }
     public function index()
     {
@@ -23,16 +26,22 @@ class Medicine extends BaseController
         $medicine = $this->medicineModel->findAll();
         $category = $this->medicineModel->getKategori();
         $type = $this->medicineModel->getType();
+        $countMed = $this->medicineModel->getCountMed();
+        $countCategory = $this->medicineModel->getCountCategory();
+        $countType = $this->medicineModel->getCountType();
 
         $data = [
             'medicine' => $medicine,
             'category' => $category,
-            'type' => $type
+            'type' => $type,
+            'countmed' => $countMed,
+            'countcategory' => $countCategory,
+            'counttype' => $countType
         ];
 
         echo view('layout/header');
         echo view('layout/sidebar');
-        echo view('masterData/menuMasterData');
+        echo view('masterData/menuMasterData', $data);
         echo view('masterData/menuObat');
         echo view('masterData/daftarObat', $data);
         echo view('layout/footer');
@@ -186,9 +195,38 @@ class Medicine extends BaseController
 
     public function hapusObat($id)
     {
-        $this->medicineModel->delete($id);
-        session()->setFlashdata('Pesan', 'hapus');
-        return redirect()->to(base_url('/Obat'));
+        $cekChildHarga = $this->persediaanModel->cekChildMedHarga($id);
+        $cekChildStock = $this->persediaanModel->cekChildMedStock($id);
+
+        if ($cekChildHarga >= 1 || $cekChildStock <= 0) {
+            $db = db_connect('default');
+            $builder = $db->table('pricemed');
+            $builder->where(['medicine_id' => $id])->delete();
+
+            $this->medicineModel->delete($id);
+            session()->setFlashdata('Pesan', 'hapus');
+            return redirect()->to(base_url('/Obat'));
+        } else if ($cekChildHarga <= 0 || $cekChildStock >= 1) {
+            $db = db_connect('default');
+            $builder = $db->table('stockmed');
+            $builder->where(['medicine_id' => $id])->delete();
+
+            $this->medicineModel->delete($id);
+            session()->setFlashdata('Pesan', 'hapus');
+            return redirect()->to(base_url('/Obat'));
+        } else if ($cekChildHarga >= 1 || $cekChildStock >= 1) {
+            $db = db_connect('default');
+            $builder = $db->table('pricemed');
+            $builder->where(['medicine_id' => $id])->delete();
+
+            $db2 = db_connect('default');
+            $builder2 = $db2->table('stockmed');
+            $builder2->where(['medicine_id' => $id])->delete();
+
+            $this->medicineModel->delete($id);
+            session()->setFlashdata('Pesan', 'hapus');
+            return redirect()->to(base_url('/Obat'));
+        }
     }
 
     public function halamanUpdateObat($id)
@@ -264,22 +302,6 @@ class Medicine extends BaseController
         return redirect()->to(base_url('/Obat'));
     }
 
-    public function halamanTipeObat()
-    {
-
-        $type = $this->medicineModel->getType();
-
-        $data = [
-            'type' => $type
-        ];
-
-        echo view('layout/header');
-        echo view('layout/sidebar');
-        echo view('masterData/menuMasterData');
-        echo view('masterData/menuObat');
-        echo view('masterData/TipeObat', $data);
-        echo view('layout/footer');
-    }
 
     public function cariObat()
     {
@@ -303,14 +325,20 @@ class Medicine extends BaseController
     {
 
         $category = $this->medicineModel->getKategori();
+        $countMed = $this->medicineModel->getCountMed();
+        $countCategory = $this->medicineModel->getCountCategory();
+        $countType = $this->medicineModel->getCountType();
 
         $data = [
-            'category' => $category
+            'category' => $category,
+            'countmed' => $countMed,
+            'countcategory' => $countCategory,
+            'counttype' => $countType
         ];
 
         echo view('layout/header');
         echo view('layout/sidebar');
-        echo view('masterData/menuMasterData');
+        echo view('masterData/menuMasterData', $data);
         echo view('masterData/menuObat');
         echo view('masterData/kategoriObat', $data);
         echo view('layout/footer');
@@ -455,6 +483,30 @@ class Medicine extends BaseController
 
     //Tipe obat
 
+
+    public function halamanTipeObat()
+    {
+
+        $type = $this->medicineModel->getType();
+        $countMed = $this->medicineModel->getCountMed();
+        $countCategory = $this->medicineModel->getCountCategory();
+        $countType = $this->medicineModel->getCountType();
+
+        $data = [
+            'type' => $type,
+            'countmed' => $countMed,
+            'countcategory' => $countCategory,
+            'counttype' => $countType
+        ];
+
+        echo view('layout/header');
+        echo view('layout/sidebar');
+        echo view('masterData/menuMasterData', $data);
+        echo view('masterData/menuObat');
+        echo view('masterData/TipeObat', $data);
+        echo view('layout/footer');
+    }
+
     public function halamanTambahTipeObat()
     {
 
@@ -598,14 +650,20 @@ class Medicine extends BaseController
     {
 
         $satuan = $this->medicineModel->getSatuan();
+        $countMed = $this->medicineModel->getCountMed();
+        $countCategory = $this->medicineModel->getCountCategory();
+        $countType = $this->medicineModel->getCountType();
 
         $data = [
-            'satuan' => $satuan
+            'satuan' => $satuan,
+            'countmed' => $countMed,
+            'countcategory' => $countCategory,
+            'counttype' => $countType
         ];
 
         echo view('layout/header');
         echo view('layout/sidebar');
-        echo view('masterData/menuMasterData');
+        echo view('masterData/menuMasterData', $data);
         echo view('masterData/menuObat');
         echo view('masterData/SatuanObat', $data);
         echo view('layout/footer');

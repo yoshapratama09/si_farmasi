@@ -14,7 +14,7 @@
                             <!-- small box -->
                             <div class="small-box boxMD boxMD1">
                                 <div class="inner">
-                                    <h3>150</h3>
+                                    <h3><?= $countmed; ?></h3>
 
                                     <p>Daftar Obat</p>
                                 </div>
@@ -31,9 +31,9 @@
                             <!-- small box -->
                             <div class="small-box boxMD boxMD2">
                                 <div class="inner">
-                                    <h3>53<sup style="font-size: 20px">%</sup></h3>
+                                    <h3><?= $countcategory; ?></h3>
 
-                                    <p>Daftar Supplier</p>
+                                    <p>Kategori Obat</p>
                                 </div>
                                 <div class="icon icon-md">
                                     <!-- <i class="ion ion-stats-bars"></i> -->
@@ -47,9 +47,9 @@
                             <!-- small box -->
                             <div class="small-box boxMD boxMD3">
                                 <div class="inner">
-                                    <h3>44</h3>
+                                    <h3><?= $counttype; ?></h3>
 
-                                    <p>Daftar Dokter</p>
+                                    <p>Tipe Obat</p>
                                 </div>
                                 <div class="icon icon-md">
                                     <!-- <i class="ion ion-bag"></i> -->

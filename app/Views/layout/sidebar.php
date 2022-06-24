@@ -53,7 +53,7 @@
               <!-- item data-data -->
               <ul class="nav nav-treeview">
                 <li class="nav-item nav2">
-                  <a href="/Obat" class="nav-link" id="daftarObat">
+                  <a href="/supplier" class="nav-link" id="daftarObat">
                     <p>Daftar Supplier</p>
                   </a>
                 </li>
@@ -63,27 +63,27 @@
                   </a>
                 </li>
                 <li class="nav-item nav2">
-                  <a href="-" class="nav-link">
+                  <a href="/dokter" class="nav-link">
                     <p>Daftar Dokter</p>
                   </a>
                 </li>
                 <li class="nav-item nav2">
-                  <a href="-" class="nav-link">
+                  <a href="/rumahsakit" class="nav-link">
                     <p>Daftar Rumah Sakit</p>
                   </a>
                 </li>
                 <li class="nav-item nav2">
-                  <a href="-" class="nav-link">
+                  <a href="/asuransi" class="nav-link">
                     <p>Daftar Asuransi</p>
                   </a>
                 </li>
                 <li class="nav-item nav2">
-                  <a href="-" class="nav-link">
+                  <a href="/sales" class="nav-link">
                     <p>Daftar Sales</p>
                   </a>
                 </li>
                 <li class="nav-item nav2">
-                  <a href="-" class="nav-link">
+                  <a href="dokterspesialis" class="nav-link">
                     <p>Daftar Dokter Spesialis</p>
                   </a>
                 </li>
