@@ -19,7 +19,7 @@ class PersediaanModel extends Model
 
     protected $table3      = 'pricemed';
     protected $primaryKey3 = 'price_id';
-    protected $allowedFields3 = ['medicine_id', 'price_amount', 'price_type', 'price_status'];
+    protected $allowedFields3 = ['medicine_id', 'price_amount', 'price_type', 'price_status', 'stock_invoice'];
     protected $useTimestamps3 = true;
     protected $createdField3  = 'created_at';
 
@@ -35,21 +35,21 @@ class PersediaanModel extends Model
 
     public function getSearch($nama)
     {
-        $query = $this->db->query("SELECT * FROM medicine as med JOIN stockmed as sm ON med.medicine_id = sm.medicine_id WHERE med.medicine_name LIKE '%$nama%'");
+        $query = $this->db->query("SELECT * FROM medicine as med JOIN stockmed as sm ON med.medicine_id = sm.medicine_id WHERE med.medicine_name LIKE '%$nama%' AND sm.stock_status = 1");
 
         $row = $query->getResultArray();
 
         return $row;
     }
 
-    public function getPHarga($id)
-    {
-        $query = $this->db->query("SELECT * FROM medicine WHERE medicine_id = $id");
+    // public function getPHarga($id)
+    // {
+    //     $query = $this->db->query("SELECT * FROM medicine WHERE medicine_id = $id");
 
-        $row = $query->getResultArray();
+    //     $row = $query->getResultArray();
 
-        return $row;
-    }
+    //     return $row;
+    // }
 
     public function getStock($id)
     {
@@ -123,4 +123,14 @@ class PersediaanModel extends Model
 
         return $row;
     }
+
+    public function getIdPstock(){
+        $query = $this->db->query("SELECT * FROM stockmed WHERE stock_invoice = (SELECT MAX(stock_invoice) FROM stockmed WHERE stock_invoice LIKE '1144%')");
+
+        $row = $query->getResultArray();
+
+        return $row;
+    }
 }
+
+// SELECT * FROM `stockmed` WHERE stock_invoice = (SELECT MAX(stock_invoice) FROM stockmed WHERE stock_invoice LIKE '1144%')'

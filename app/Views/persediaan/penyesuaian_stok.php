@@ -3,7 +3,7 @@
     <div class="col">
       <h2 class="mb-2">Penyesuaian Stock Obat</h2>
       
-      <form class="mt-4 mb-4" method="POST" id="formDataExp" action="/persediaan/getPStock">
+      <form class="mt-4" method="POST" id="formDataExp" action="/persediaan/getPStock">
         <label class=" col-form-label" for="">Cari Berdasarkan ID Obat</label>
         <?php 
             if(session()->getFlashdata('msg') != NULL):       
@@ -31,13 +31,25 @@
             <button type="submit" class="btn btn-danger" id="clearBtn" >Clear</button>
           </div>
         </div>
-        <div class="col-sm-6 my-1 ms-1">
+        <div class="col-sm-6 my-1 ms-1 mb-0">
             <input type="checkbox" class="form-check-input" id="filter" name="filter" value='0'>
             <label class="form-check-label" for="exampleCheck1">Filter Berdasarkan Nama</label>
         </div>
       </form>
-      
+
       <form action="/persediaan/updateStock" method="POST">
+        <div class="row mb-1 mt-3">
+          <div class="col-sm-3 form-group" >
+              <label class="" for="idPs">ID Penyesuaian</label>
+              <div class="input-group">
+                  <?php foreach($invoice as $i): ?>
+                  <input type="text" class="form-control text-right" id="idPs" placeholder="ID Penyesuaian" name="idPs" value="<?= $i['stock_invoice']+1; ?>" required>
+                  <?php break; ?>
+                  <?php endforeach; ?>
+              </div>
+          </div>
+        </div>
+        
         <table id="tablePS" class="table table-hover">
           <thead>
             <tr>

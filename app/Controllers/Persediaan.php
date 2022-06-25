@@ -207,10 +207,12 @@ class Persediaan extends BaseController
         $session = session();
         $persediaan = $this->persediaanModel->findAll();
         $allData = $this->persediaanModel->getAllStock();
+        $invoice = $this->persediaanModel->getIdPstock();
 
         $data = [
             'data' => $allData,
-            'allData' => $allData
+            'allData' => $allData,
+            'invoice' => $invoice
         ];
 
         echo view('layout/header');
@@ -228,6 +230,7 @@ class Persediaan extends BaseController
 
         $allData = $this->persediaanModel->getAllStock();
         $medicine = $this->persediaanModel->findAll();
+        $invoice = $this->persediaanModel->getIdPstock();
         
         if($filter == "1"){
             $name = $this->request->getVar('medName'); 
@@ -235,13 +238,15 @@ class Persediaan extends BaseController
             if(empty($getSearch)){
                 $data = [
                     'data' => $allData,
-                    'allData' => $allData
+                    'allData' => $allData,
+                    'invoice' => $invoice
                 ];
                 $session->setFlashData('msg', 'Obat tidak ditemukan');
             }else {
                 $data = [
                     'data' => $getSearch,
-                    'allData' => $allData
+                    'allData' => $allData,
+                    'invoice' => $invoice
                 ];
             }
         }else {
@@ -249,13 +254,15 @@ class Persediaan extends BaseController
             if(empty($getMedicine)){
                 $data = [
                     'data' => $allData,
-                    'allData' => $allData
+                    'allData' => $allData,
+                    'invoice' => $invoice
                 ];
                 $session->setFlashData('msg', 'Obat tidak ditemukan');
             }else {
                 $data = [
                     'data' => $getMedicine,
-                    'allData' => $allData
+                    'allData' => $allData,
+                    'invoice' => $invoice
                 ];
             }
         }
@@ -273,8 +280,8 @@ class Persediaan extends BaseController
         $qty = $this->request->getVar('qtyBaru');
         $idObat = $this->request->getVar('idObat');
         $idStock = $this->request->getVar('idStock');
+        $invoice = $this->request->getVar('idPs');
 
-        
         $db = db_connect('default');
         $builder = $db->table('stockmed');
 
@@ -284,7 +291,8 @@ class Persediaan extends BaseController
                 array_push($array, array(
                     'medicine_id' => $id,
                     'stock_qty' => $qty[$index],
-                    'stock_status' => 1
+                    'stock_status' => 1,
+                    'stock_invoice' => $invoice
                 ));
                 $builder->set('stock_status', '0');
                 $builder->where('stock_id', $idStock[$index]);
