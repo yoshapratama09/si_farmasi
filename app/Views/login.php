@@ -55,11 +55,7 @@
                                     <button type="submit" class="btn btn-primary rounded-lg-50 shadow-lg">Login</button>
                                 </div>
                             </form>
-<<<<<<< HEAD
                             
-=======
-
->>>>>>> 6ac38676583853c2535e0cab78d137f5d388175c
                             <div class="text-center mt-5">
                                 <p class="">Belum memiliki akun? <a href="#!" class="text-blue-50 fw-bold" id="regis">Buat Akun</a></p>
                             </div>
