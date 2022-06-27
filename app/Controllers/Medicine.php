@@ -24,10 +24,12 @@ class Medicine extends BaseController
     public function index()
     {
 
-        $medicine = $this->medicineModel->findAll();
+        $medicine = $this->medicineModel->getDaftarObat();
+        // dd($medicine);
         $category = $this->medicineModel->getKategori();
         $type = $this->medicineModel->getType();
-        $countMed = $this->medicineModel->getCountMed();
+        // $countMed = $this->medicineModel->getCountMed();
+        $countMed = $this->medicineModel->getCountDaftarObat();
         $countCategory = $this->medicineModel->getCountCategory();
         $countType = $this->medicineModel->getCountType();
 
@@ -150,9 +152,12 @@ class Medicine extends BaseController
             $totalMg = $stok * $satuan2;
 
             //Pricemed
-
+            //status = 0(non aktif), 1 (aktif)
             $statusNew = 1;
+            //0(modal) 1 (jual)
             $typeModal = 0;
+            //type = P = penyesuaian, I = pembelian, O = penjualan
+            $stockType = 'I';
 
             $cek = $this->medicineModel->cekObat($id);
 
@@ -160,8 +165,6 @@ class Medicine extends BaseController
                 $data = [
                     'medicine_id' => $this->request->getVar('idObat'),
                     'medicine_name' => $this->request->getVar('namaObat'),
-                    'medicine_mfd' => $this->request->getVar('mfdObat'),
-                    'medicine_exp' => $this->request->getVar('expObat'),
                     'medicine_satuan1' => $this->request->getVar('satuan1'),
                     'medicine_satuan2' => $this->request->getVar('satuan2'),
                     'medicine_satuantotal' => $totalMg,
@@ -186,7 +189,10 @@ class Medicine extends BaseController
                 $dataStock = [
                     'medicine_id' => $this->request->getVar('idObat'),
                     'stock_qty' => $this->request->getVar('stokObat'),
-                    'stock_status' => $statusNew
+                    'stock_status' => $statusNew,
+                    'stock_mfd' => $this->request->getVar('mfdObat'),
+                    'stock_exp' => $this->request->getVar('expObat'),
+                    'stock_type' => $stockType
                 ];
 
                 $builder2->insert($dataStock);

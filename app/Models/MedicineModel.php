@@ -8,7 +8,7 @@ class MedicineModel extends Model
 {
     protected $table      = 'medicine';
     protected $primaryKey = 'medicine_id';
-    protected $allowedFields = ['medicine_id', 'medicine_name', 'supplier_id', 'medicine_mfd', 'medicine_exp', 'medicine_stock', 'medicine_satuan1', 'medicine_satuan2', 'medicine_satuantotal', 'medicine_price', 'medicine_type', 'medicine_type', 'medicine_category', 'medicine_comp', 'medicine_func'];
+    protected $allowedFields = ['medicine_id', 'medicine_name', 'supplier_id', 'medicine_stock', 'medicine_satuan1', 'medicine_satuan2', 'medicine_satuantotal', 'medicine_price', 'medicine_type', 'medicine_type', 'medicine_category', 'medicine_comp', 'medicine_func'];
 
     protected $table1      = 'categoryMed';
     protected $primaryKey1 = 'category_id';
@@ -22,6 +22,24 @@ class MedicineModel extends Model
     protected $primaryKey3 = 'satuan_id';
     protected $allowedFields3 = ['satuan_id', 'satuan_name'];
 
+
+    public function getDaftarObat()
+    {
+        $query = $this->db->query("SELECT * FROM medicine as med JOIN pricemed AS pm ON med.medicine_id = pm.medicine_id JOIN stockmed AS sm ON med.medicine_id = sm.medicine_id WHERE pm.price_type = 1 AND pm.price_status = 1 AND sm.stock_status=1");
+
+        $row = $query->getResultArray();
+
+        return $row;
+    }
+
+    public function getCountDaftarObat()
+    {
+        $query = $this->db->query("SELECT * FROM medicine as med JOIN pricemed AS pm ON med.medicine_id = pm.medicine_id JOIN stockmed AS sm ON med.medicine_id = sm.medicine_id WHERE pm.price_type = 1 AND pm.price_status = 1 AND sm.stock_status=1");
+
+        $row = $query->getNumRows();
+
+        return $row;
+    }
 
     public function getKategori()
     {

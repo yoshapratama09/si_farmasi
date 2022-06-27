@@ -13,7 +13,7 @@ class PersediaanModel extends Model
 
     protected $table2      = 'stockmed';
     protected $primaryKey2 = 'stock_id';
-    protected $allowedFields2 = ['medicine_id', 'created_at', 'stock_qty', 'stock_status'];
+    protected $allowedFields2 = ['medicine_id', 'created_at', 'stock_qty', 'stock_status', 'stock_type', 'stock_exp', 'stock_mfd'];
     protected $useTimestamps2 = true;
     protected $createdField2  = 'created_at';
 
@@ -121,7 +121,8 @@ class PersediaanModel extends Model
         return $row;
     }
 
-    public function getIdPstock(){
+    public function getIdPstock()
+    {
         $query = $this->db->query("SELECT * FROM stockmed WHERE stock_invoice = (SELECT MAX(stock_invoice) FROM stockmed WHERE stock_invoice LIKE '1144%')");
 
         $row = $query->getResultArray();
@@ -129,7 +130,8 @@ class PersediaanModel extends Model
         return $row;
     }
 
-    public function itemIn(){
+    public function itemIn()
+    {
         $query = $this->db->query("SELECT * FROM item as itm JOIN medicine as med ON med.medicine_id = itm.medicine_id WHERE item_type = 1");
 
         $row = $query->getResultArray();
@@ -137,7 +139,8 @@ class PersediaanModel extends Model
         return $row;
     }
 
-    public function itemOut(){
+    public function itemOut()
+    {
         $query = $this->db->query("SELECT * FROM item as itm JOIN medicine as med ON med.medicine_id = itm.medicine_id WHERE item_type = 0");
 
         $row = $query->getResultArray();
@@ -145,7 +148,8 @@ class PersediaanModel extends Model
         return $row;
     }
 
-    public function getItemIn($id){
+    public function getItemIn($id)
+    {
         $query = $this->db->query("SELECT * FROM item as itm JOIN medicine as med ON med.medicine_id = itm.medicine_id WHERE itm.medicine_id = $id AND item_type = 1");
 
         $row = $query->getResultArray();
@@ -153,7 +157,8 @@ class PersediaanModel extends Model
         return $row;
     }
 
-    public function getItemOut($id){
+    public function getItemOut($id)
+    {
         $query = $this->db->query("SELECT * FROM item as itm JOIN medicine as med ON med.medicine_id = itm.medicine_id WHERE itm.medicine_id = $id AND item_type = 0");
 
         $row = $query->getResultArray();
@@ -161,7 +166,8 @@ class PersediaanModel extends Model
         return $row;
     }
 
-    public function getSearchIn($name){
+    public function getSearchIn($name)
+    {
         $query = $this->db->query("SELECT * FROM item as itm JOIN medicine as med ON med.medicine_id = itm.medicine_id WHERE itm.medicine_id LIKE '%$name%' AND item_type = 1");
 
         $row = $query->getResultArray();
@@ -169,7 +175,8 @@ class PersediaanModel extends Model
         return $row;
     }
 
-    public function getSearchOut($name){
+    public function getSearchOut($name)
+    {
         $query = $this->db->query("SELECT * FROM item as itm JOIN medicine as med ON med.medicine_id = itm.medicine_id WHERE itm.medicine_id LIKE '%$name%' AND item_type = 0");
 
         $row = $query->getResultArray();
@@ -177,7 +184,8 @@ class PersediaanModel extends Model
         return $row;
     }
 
-    public function getOpname($id){ 
+    public function getOpname($id)
+    {
         $query = $this->db->query("SELECT * FROM stockmed as sm JOIN medicine as med ON med.medicine_id = sm.medicine_id JOIN pricemed as pm ON med.medicine_id = pm.medicine_id JOIN item AS itm ON sm.medicine_id = itm.medicine_id WHERE med.medicine_id = $id GROUP BY stock_id");
 
         $row = $query->getResultArray();
@@ -185,7 +193,8 @@ class PersediaanModel extends Model
         return $row;
     }
 
-    public function getSearchOp($name){
+    public function getSearchOp($name)
+    {
         $query = $this->db->query("SELECT * FROM stockmed as sm JOIN medicine as med ON med.medicine_id = sm.medicine_id JOIN pricemed as pm ON med.medicine_id = pm.medicine_id JOIN item AS itm ON sm.medicine_id = itm.medicine_id WHERE med.medicine_id LIKE '%$name%'");
 
         $row = $query->getResultArray();
