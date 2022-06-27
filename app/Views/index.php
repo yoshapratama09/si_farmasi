@@ -4,8 +4,8 @@
   <div class="content-header m-1">
     <div class="container-fluid">
       <div class="row mb-2">
-        <div class="col-sm-6">
-          <h1 class="title-form tf1">QUICK ACCESS</h1>
+        <div>
+          <h1 class="title-form tf1 text-right">QUICK ACCESS</h1>
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
