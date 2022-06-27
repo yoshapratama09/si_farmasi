@@ -176,4 +176,20 @@ class PersediaanModel extends Model
 
         return $row;
     }
+
+    public function getOpname($id){ 
+        $query = $this->db->query("SELECT * FROM stockmed as sm JOIN medicine as med ON med.medicine_id = sm.medicine_id JOIN pricemed as pm ON med.medicine_id = pm.medicine_id JOIN item AS itm ON sm.medicine_id = itm.medicine_id WHERE med.medicine_id = $id GROUP BY stock_id");
+
+        $row = $query->getResultArray();
+
+        return $row;
+    }
+
+    public function getSearchOp($name){
+        $query = $this->db->query("SELECT * FROM stockmed as sm JOIN medicine as med ON med.medicine_id = sm.medicine_id JOIN pricemed as pm ON med.medicine_id = pm.medicine_id JOIN item AS itm ON sm.medicine_id = itm.medicine_id WHERE med.medicine_id LIKE '%$name%'");
+
+        $row = $query->getResultArray();
+
+        return $row;
+    }
 }

@@ -15,10 +15,13 @@ class Persediaan extends BaseController
     public function index()
     {
         $session = session();
+        $id=0;
         $persediaan = $this->persediaanModel->findAll();
+        $getItem = $this->persediaanModel->getOpname($id);
 
         $data = [
-            'data' => $persediaan
+            'data' => $getItem,
+            'stock' => $persediaan
         ];
 
         echo view('layout/header');
@@ -31,14 +34,42 @@ class Persediaan extends BaseController
     public function getOpname(){
         $session = session();
         $persediaan = $this->persediaanModel->getAllStock();
-        $allData = $this->persediaanModel->itemOut();
 
-        $data = [
-            'data' => $allData,
-            'stock' => $persediaan
-        ];
+        $id = $this->request->getVar('medId');
+        $filter = $this->request->getVar('filter');
 
-        $session->setFlashData('msg', 'Success');
+        if($filter == "1"){
+            $name = $this->request->getVar('medName'); 
+            $getSearchItem = $this->persediaanModel->getSearchOp($name);
+            if(empty($getSearchItem)){
+                $data = [
+                    'data' => $allData,
+                    'stock' => $persediaan
+                ];
+                $session->setFlashData('msg', 'Obat tidak ditemukan');
+            }else {
+                $data = [
+                    'data' => $getSearchItem,
+                    'stock' => $persediaan
+                ];
+                $session->setFlashData('msg', 'Success');
+            }
+        }else {
+            $getItem = $this->persediaanModel->getOpname($id);
+            if(empty($getItem)){
+                $data = [
+                    'data' => $allData,
+                    'stock' => $persediaan
+                ];
+                $session->setFlashData('msg', 'Obat tidak ditemukan');
+            }else {
+                $data = [
+                    'data' => $getItem,
+                    'stock' => $persediaan
+                ];
+                $session->setFlashData('msg', 'Success');
+            }
+        }
 
         echo view('layout/header');
         echo view('layout/sidebar');
@@ -46,7 +77,6 @@ class Persediaan extends BaseController
         echo view('Persediaan/opname', $data);
         echo view('layout/footer');
     }
-}
 
     public function penyesuaianHarga(){
         $session = session();
@@ -324,7 +354,8 @@ class Persediaan extends BaseController
                     'medicine_id' => $id,
                     'stock_qty' => $qty[$index],
                     'stock_status' => 1,
-                    'stock_invoice' => $invoice
+                    'stock_invoice' => $invoice,
+                    'stock_type' => 'P'
                 ));
                 $builder->set('stock_status', '0');
                 $builder->where('stock_id', $idStock[$index]);
@@ -475,3 +506,4 @@ class Persediaan extends BaseController
     }
 
     
+}
