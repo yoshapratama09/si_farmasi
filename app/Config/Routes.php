@@ -97,6 +97,10 @@ $routes->get('/persediaan/pStock', 'Persediaan::penyesuaianStok');
 $routes->post('/persediaan/getPStock', 'Persediaan::getPStock');
 $routes->post('/persediaan/updateStock', 'Persediaan::updateStock');
 $routes->post('/persediaan/getDataExp', 'Persediaan::getDataExp');
+$routes->get('/persediaan/itemIn', 'Persediaan::itemIn');
+$routes->post('/persediaan/getItemIn', 'Persediaan::getItemIn');
+$routes->get('/persediaan/itemOut', 'Persediaan::itemOut');
+$routes->post('/persediaan/getItemOut', 'Persediaan::getItemOut');
 
 /*
  * --------------------------------------------------------------------

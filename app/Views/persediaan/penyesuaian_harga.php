@@ -38,7 +38,7 @@
       </form>
 
       <form action="/persediaan/updateHarga" method="POST" >
-        <table id="table" class="table table-hover">
+        <table id="tableData" class="table table-hover">
           <thead>
             <tr>
               <th scope="col">ID Obat</th>
@@ -133,7 +133,7 @@
 
 <script>
   $(function() {
-    $('#table').DataTable({
+    $('#tableData').DataTable({
         "paging": true,
         "lengthChange": false,
         "searching": false,
@@ -146,12 +146,12 @@
   });
 
   for(var i = 1; i < tablePH.rows.length; i++)
-{
+  {
     tablePH.rows[i].onclick = function()
     {
-            document.getElementById("medId").value = this.cells[0].innerHTML;
-            document.getElementById("medName").value = this.cells[1].innerHTML;
-            tablePH.rows[i].className.add('table-active');
+      document.getElementById("medId").value = this.cells[0].innerHTML;
+      document.getElementById("medName").value = this.cells[1].innerHTML;
+      tablePH.rows[i].className.add('table-active');
     };
-}
+  }
 </script>

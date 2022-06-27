@@ -130,12 +130,12 @@
               </a>
             </li>
             <li class="nav-item">
-              <a href="-" class="nav-link">
+              <a href="/persediaan/itemIn" class="nav-link">
                 <p>Item In</p>
               </a>
             </li>
             <li class="nav-item">
-              <a href="-" class="nav-link">
+              <a href="/persediaan/itemOut" class="nav-link">
                 <p>Item Out</p>
               </a>
             </li>

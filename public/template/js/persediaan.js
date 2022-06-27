@@ -36,7 +36,7 @@ $('#filter').on('click', function () {
 
 
 var alert = document.getElementById('msg').value;
-if(alert != null){
+if(alert != 'Success'){
     Swal.fire({
         icon: 'error',
         title: 'Oops...',

@@ -1,9 +1,9 @@
 <div class="container-fluid" id="">
   <div class="row ms-1">
     <div class="col">
-      <h2 class="mb-2">Penyesuaian Stock Obat</h2>
+      <h2 class="mb-2">Item In</h2>
       
-      <form class="mt-4" method="POST" id="formDataExp" action="/persediaan/getPStock">
+      <form class="mt-4 mb-4" method="POST" id="formDataExp" action="/persediaan/getItemIn">
         <label class=" col-form-label" for="">Cari Berdasarkan ID Obat</label>
         <?php 
             if(session()->getFlashdata('msg') != NULL):       
@@ -21,7 +21,7 @@
           <div class="col-sm-3 my-1">
             <label class="sr-only" for="medName">Nama Obat</label>
             <div class="input-group">
-                <input type="text" class="form-control" id="medName" placeholder="Nama Obat" name="medName" data-toggle="modal" data-target="#exampleModalCenter" required>
+                <input type="text" class="form-control" id="medName" placeholder="Nama Obat" name="medName" >
             </div>
           </div>
           <div class="col-auto my-1">
@@ -31,54 +31,47 @@
             <button type="submit" class="btn btn-danger" id="clearBtn" >Clear</button>
           </div>
         </div>
-        <div class="col-sm-6 my-1 ms-1 mb-0">
-            <input type="checkbox" class="form-check-input" id="filter" name="filter" value='0'>
+        <div class="col-sm-6 my-1 ms-1">
+            <input type="checkbox" class="form-check-input" id="filter" name="filter">
             <label class="form-check-label" for="exampleCheck1">Filter Berdasarkan Nama</label>
         </div>
       </form>
 
-      <form action="/persediaan/updateStock" method="POST">
-        <div class="row mb-1 mt-3">
-          <div class="col-sm-3 form-group" >
-              <label class="" for="idPs">ID Penyesuaian</label>
-              <div class="input-group">
-                  <?php foreach($invoice as $i): ?>
-                  <input type="text" class="form-control text-right" id="idPs" placeholder="ID Penyesuaian" name="idPs" value="<?= $i['stock_invoice']+1; ?>" required>
-                  <?php break; ?>
-                  <?php endforeach; ?>
-              </div>
-          </div>
-        </div>
-        
-        <table id="tableData" class="table table-hover">
-          <thead>
-            <tr>
-                <th scope="col">ID Obat</th>
-                <th scope="col">Nama Obat</th>
-                <th scope="col">Qty</th>
-                <th scope="col">Qty Baru</th>
-            </tr>
-            </thead>
-            <tbody>
-              <?php foreach ($data as $p) : ?>
+      <table id="tableData" class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Tanggal</th>
+            <th scope="col">No. Invoice</th>
+            <th scope="col">ID Obat</th>
+            <th scope="col">Nama Obat</th>
+            <th scope="col">Qty In</th>
+            <th scope="col">Modal</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+            <?php foreach ($data as $p) : ?>
                 <tr>
-                    <th scope="row"><?= $p['medicine_id']; ?></th>
+                    <th scope="row"><?= $p['item_date']; ?></th>
+                    <td><?= $p['item_invoice']; ?></td>
+                    <td><?= $p['medicine_id']; ?></td>
                     <td><?= $p['medicine_name']; ?></td>
-                    <td><?= $p['stock_qty']; ?></td>
+                    <td><?= $p['item_qty']; ?></td>
+                    <td><?= $p['item_price']; ?></td>
                     <td>
-                      <input type="hidden" class="form-control col-md-3" name="idObat[]" value="<?= $p['medicine_id']; ?>" id="" placeholder="">
-                      <input type="hidden" class="form-control col-md-3" name="idStock[]" value="<?= $p['stock_id']; ?>" id="" placeholder="">
-                      <input type="number" class="form-control col-md-3" name="qtyBaru[]" id="hargaB" placeholder="Qty Baru">
+                    <?php 
+                        if($p['medicine_exp'] > getdate()){
+                        echo "Expired";
+                        }else{
+                        echo "Active";
+                        }
+                    ?>
                     </td>
                 </tr>
-              <?php endforeach; ?>
-            </tbody>
-          </tfoot>
-        </table>
-        <div class="col-auto my-1 mt-4 me-4 text-right">
-          <button type="submit" class="btn btn-primary btn-lg">Simpan</button>
-        </div>
-      </form>
+            <?php endforeach; ?>
+        </tbody>
+        </tfoot>
+      </table>
     </div>
   </div>
 </div>
@@ -103,11 +96,11 @@
                 </tr>
             </thead>
             <tbody>
-                <?php foreach ($allData as $p) : ?>
+                <?php foreach ($stock as $s) : ?>
                     <tr data-dismiss="modal">
-                        <th scope="row"><?= $p['medicine_id']; ?></th>
-                        <td><?= $p['medicine_name']; ?></td>
-                        <td><?= $p['stock_qty']; ?></td>
+                        <th scope="row"><?= $s['medicine_id']; ?></th>
+                        <td><?= $s['medicine_name']; ?></td>
+                        <td><?= $s['stock_qty']; ?></td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>
@@ -135,4 +128,5 @@
         "responsive": true,
     });
   });
+
 </script>

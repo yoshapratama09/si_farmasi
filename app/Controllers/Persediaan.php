@@ -28,6 +28,26 @@ class Persediaan extends BaseController
         echo view('layout/footer');
     }
 
+    public function getOpname(){
+        $session = session();
+        $persediaan = $this->persediaanModel->getAllStock();
+        $allData = $this->persediaanModel->itemOut();
+
+        $data = [
+            'data' => $allData,
+            'stock' => $persediaan
+        ];
+
+        $session->setFlashData('msg', 'Success');
+
+        echo view('layout/header');
+        echo view('layout/sidebar');
+        echo view('Persediaan/top_data');
+        echo view('Persediaan/opname', $data);
+        echo view('layout/footer');
+    }
+}
+
     public function penyesuaianHarga(){
         $session = session();
         $allData = $this->persediaanModel->getAll();
@@ -40,6 +60,8 @@ class Persediaan extends BaseController
             'sales' => $getPSales,
             'capital' => $getPCapital
         ];
+
+        $session->setFlashData('msg', 'Success');
 
         echo view('layout/header');
         echo view('layout/sidebar');
@@ -77,6 +99,7 @@ class Persediaan extends BaseController
                     'sales' => $getPSales,
                     'capital' => $getPCapital
                 ];
+                $session->setFlashData('msg', 'Success');
             }
         }else {
             $getMedicine = $this->persediaanModel->getMedicine($id);
@@ -95,6 +118,7 @@ class Persediaan extends BaseController
                     'sales' => $getPSales,
                     'capital' => $getPCapital
                 ];
+                $session->setFlashData('msg', 'Success');
             }
         }
 
@@ -132,6 +156,7 @@ class Persediaan extends BaseController
         }
         $builder = $db->table('pricemed2');
         $builder->insertBatch($array);
+        $session->setFlashData('msg', 'Success');
 
         return redirect()->to(base_url('/persediaan/pHarga'));
     }
@@ -145,7 +170,6 @@ class Persediaan extends BaseController
 
         $allData = $this->persediaanModel->getDataExp();
         $medicine = $this->persediaanModel->findAll();
-        
         
         if($filter == "1"){
             $name = $this->request->getVar('medName'); 
@@ -161,6 +185,7 @@ class Persediaan extends BaseController
                     'data' => $getSearch,
                     'medicine' => $allData
                 ];
+                $session->setFlashData('msg', 'Success');
             }
         }else {
             $getMedicine = $this->persediaanModel->getMedicine($id);
@@ -175,6 +200,7 @@ class Persediaan extends BaseController
                     'data' => $getMedicine,
                     'medicine' => $allData
                 ];
+                $session->setFlashData('msg', 'Success');
             }
         }
 
@@ -196,6 +222,8 @@ class Persediaan extends BaseController
             'medicine' => $allData
         ];
 
+        $session->setFlashData('msg', 'Success');
+
         echo view('layout/header');
         echo view('layout/sidebar');
         echo view('Persediaan/top_data');
@@ -214,6 +242,8 @@ class Persediaan extends BaseController
             'allData' => $allData,
             'invoice' => $invoice
         ];
+
+        $session->setFlashData('msg', 'Success');
 
         echo view('layout/header');
         echo view('layout/sidebar');
@@ -248,6 +278,7 @@ class Persediaan extends BaseController
                     'allData' => $allData,
                     'invoice' => $invoice
                 ];
+                $session->setFlashData('msg', 'Success');
             }
         }else {
             $getMedicine = $this->persediaanModel->getMedicine($id);
@@ -264,6 +295,7 @@ class Persediaan extends BaseController
                     'allData' => $allData,
                     'invoice' => $invoice
                 ];
+                $session->setFlashData('msg', 'Success');
             }
         }
 
@@ -302,8 +334,144 @@ class Persediaan extends BaseController
         }
 
         $builder->insertBatch($array);
+        $session->setFlashData('msg', 'Success');
 
         return redirect()->to(base_url('/persediaan/pStock'));
     }
 
-}
+    public function itemIn(){
+        $session = session();
+        $persediaan = $this->persediaanModel->getAllStock();
+        $allData = $this->persediaanModel->itemIn();
+
+        $data = [
+            'data' => $allData,
+            'stock' => $persediaan
+        ];
+
+        $session->setFlashData('msg', 'Success');
+
+        echo view('layout/header');
+        echo view('layout/sidebar');
+        echo view('Persediaan/top_data');
+        echo view('Persediaan/itemIn', $data);
+        echo view('layout/footer');
+    }
+
+    public function getitemIn(){
+        $session = session();
+        $persediaan = $this->persediaanModel->getAllStock();
+        $allData = $this->persediaanModel->itemIn();
+        
+        $id = $this->request->getVar('medId');
+        $filter = $this->request->getVar('filter');
+
+        if($filter == "1"){
+            $name = $this->request->getVar('medName'); 
+            $getSearchItem = $this->persediaanModel->getSearchIn($name);
+            if(empty($getSearchItem)){
+                $data = [
+                    'data' => $allData,
+                    'stock' => $persediaan
+                ];
+                $session->setFlashData('msg', 'Obat tidak ditemukan');
+            }else {
+                $data = [
+                    'data' => $getSearchItem,
+                    'stock' => $persediaan
+                ];
+                $session->setFlashData('msg', 'Success');
+            }
+        }else {
+            $getItem = $this->persediaanModel->getItemIn($id);
+            if(empty($getItem)){
+                $data = [
+                    'data' => $allData,
+                    'stock' => $persediaan
+                ];
+                $session->setFlashData('msg', 'Obat tidak ditemukan');
+            }else {
+                $data = [
+                    'data' => $getItem,
+                    'stock' => $persediaan
+                ];
+                $session->setFlashData('msg', 'Success');
+            }
+        }
+        
+        echo view('layout/header');
+        echo view('layout/sidebar');
+        echo view('Persediaan/top_data');
+        echo view('Persediaan/itemIn', $data);
+        echo view('layout/footer');
+    }
+
+
+    public function itemOut(){
+        $session = session();
+        $persediaan = $this->persediaanModel->getAllStock();
+        $allData = $this->persediaanModel->itemOut();
+
+        $data = [
+            'data' => $allData,
+            'stock' => $persediaan
+        ];
+
+        $session->setFlashData('msg', 'Success');
+
+        echo view('layout/header');
+        echo view('layout/sidebar');
+        echo view('Persediaan/top_data');
+        echo view('Persediaan/itemOut', $data);
+        echo view('layout/footer');
+    }
+
+    public function getitemOut(){
+        $session = session();
+        $persediaan = $this->persediaanModel->getAllStock();
+        $allData = $this->persediaanModel->itemOut();
+        
+        $id = $this->request->getVar('medId');
+        $filter = $this->request->getVar('filter');
+
+        if($filter == "1"){
+            $name = $this->request->getVar('medName'); 
+            $getSearchItem = $this->persediaanModel->getSearchOut($name);
+            if(empty($getSearchItem)){
+                $data = [
+                    'data' => $allData,
+                    'stock' => $persediaan
+                ];
+                $session->setFlashData('msg', 'Obat tidak ditemukan');
+            }else {
+                $data = [
+                    'data' => $getSearchItem,
+                    'stock' => $persediaan
+                ];
+                $session->setFlashData('msg', 'Success');
+            }
+        }else {
+            $getItem = $this->persediaanModel->getItemOut($id);
+            if(empty($getItem)){
+                $data = [
+                    'data' => $allData,
+                    'stock' => $persediaan
+                ];
+                $session->setFlashData('msg', 'Obat tidak ditemukan');
+            }else {
+                $data = [
+                    'data' => $getItem,
+                    'stock' => $persediaan
+                ];
+                $session->setFlashData('msg', 'Success');
+            }
+        }
+        
+        echo view('layout/header');
+        echo view('layout/sidebar');
+        echo view('Persediaan/top_data');
+        echo view('Persediaan/itemIn', $data);
+        echo view('layout/footer');
+    }
+
+    
