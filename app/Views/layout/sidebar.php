@@ -3,7 +3,7 @@
   <!-- Brand Logo -->
   <a href="/" class="brand-link">
     <img src="<?= base_url('template/img/AdminLTELogo.png'); ?>" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-light">RSUD Jombang</span>
+    <span class="brand-text font-weight-normal text-uppercase">rsud jombang</span>
   </a>
 
   <!-- Sidebar -->
@@ -40,59 +40,68 @@
             </p>
           </a>
           <ul class="nav nav-treeview">
-            <li class="nav-item nav1">
+            <li class="nav-item">
               <a href="/Obat" class="nav-link" id="daftarObat">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+              </svg>
                 <p>Daftar Obat dan Resep</p>
               </a>
             </li>
-            <li class="nav-item nav1">
-              <a href="/data" class="nav-link">
-                <p>Data-data</p>
-                <i class="fas fa-angle-right right"></i>
+            <li class="nav-item">
+              <a href="/supplier" class="nav-link" id="daftarObat">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+              </svg>
+                <p>Daftar Supplier</p>
               </a>
-              <!-- item data-data -->
-              <ul class="nav nav-treeview">
-                <li class="nav-item nav2">
-                  <a href="/supplier" class="nav-link" id="daftarObat">
-                    <p>Daftar Supplier</p>
-                  </a>
-                </li>
-                <li class="nav-item nav2">
-                  <a href="/data" class="nav-link">
-                    <p>Daftar Pasien</p>
-                  </a>
-                </li>
-                <li class="nav-item nav2">
-                  <a href="/dokter" class="nav-link">
-                    <p>Daftar Dokter</p>
-                  </a>
-                </li>
-                <li class="nav-item nav2">
-                  <a href="/rumahsakit" class="nav-link">
-                    <p>Daftar Rumah Sakit</p>
-                  </a>
-                </li>
-                <li class="nav-item nav2">
-                  <a href="/asuransi" class="nav-link">
-                    <p>Daftar Asuransi</p>
-                  </a>
-                </li>
-                <li class="nav-item nav2">
-                  <a href="/sales" class="nav-link">
-                    <p>Daftar Sales</p>
-                  </a>
-                </li>
-                <li class="nav-item nav2">
-                  <a href="dokterspesialis" class="nav-link">
-                    <p>Daftar Dokter Spesialis</p>
-                  </a>
-                </li>
-              </ul>
-              <!-- end item data-data -->
             </li>
-            <li class="nav-item nav1">
-              <a href="-" class="nav-link">
-                <p>Data pendukung</p>
+            <li class="nav-item">
+              <a href="/data" class="nav-link">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+              </svg>
+                <p>Daftar Pasien</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/dokter" class="nav-link">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+              </svg>
+                <p>Daftar Dokter</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/dokterspesialis" class="nav-link">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+              </svg>
+                <p>Daftar Dokter Spesialis</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/asuransi" class="nav-link">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+              </svg>
+                <p>Daftar Asuransi</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/sales" class="nav-link">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+              </svg>
+                <p>Daftar Sales</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="/rumahsakit" class="nav-link">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+              </svg>
+                <p>Daftar Rumah Sakit</p>
               </a>
             </li>
           </ul>
@@ -111,31 +120,49 @@
           <ul class="nav nav-treeview">
             <li class="nav-item">
               <a href="/persediaan/opname" class="nav-link">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+              </svg>
                 <p>Opname Stok</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="/persediaan/pStock" class="nav-link">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+              </svg>
                 <p>Penyesuaian Stok</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="/persediaan/pHarga" class="nav-link">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+              </svg>
                 <p>Penyesuaian Harga</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="/persediaan/dataExp" class="nav-link">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+              </svg>
                 <p>Data Expired</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="/persediaan/itemIn" class="nav-link">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+              </svg>
                 <p>Item In</p>
               </a>
             </li>
             <li class="nav-item">
               <a href="/persediaan/itemOut" class="nav-link">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
+              </svg>
                 <p>Item Out</p>
               </a>
             </li>
