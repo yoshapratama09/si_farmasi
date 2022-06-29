@@ -32,7 +32,7 @@
           </div>
         </div>
         <div class="col-sm-6 my-1 ms-1">
-            <input type="checkbox" class="form-check-input" id="filter" name="filter" value='0'>
+            <input type="checkbox" class="form-check-input" id="filter" name="filter">
             <label class="form-check-label" for="exampleCheck1">Filter Berdasarkan Nama</label>
         </div>
       </form>

@@ -59,7 +59,7 @@ class PersediaanModel extends Model
 
     public function getDataExp()
     {
-        $query = $this->db->query("SELECT * FROM medicine as med JOIN stockmed as sm ON med.medicine_id = sm.medicine_id WHERE stock_status = 1 ORDER BY medicine_exp DESC");
+        $query = $this->db->query("SELECT * FROM medicine as med JOIN stockmed as sm ON med.medicine_id = sm.medicine_id WHERE stock_status = 1 ORDER BY stock_exp DESC");
 
         $row = $query->getResultArray();
 

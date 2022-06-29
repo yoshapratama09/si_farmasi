@@ -60,11 +60,7 @@
                     <td><?= $p['item_price']; ?></td>
                     <td>
                     <?php 
-                        if($p['medicine_exp'] > getdate()){
-                        echo "Expired";
-                        }else{
-                        echo "Active";
-                        }
+                        
                     ?>
                     </td>
                 </tr>

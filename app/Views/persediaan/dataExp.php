@@ -53,10 +53,10 @@
                   <th scope="row"><?= $p['medicine_id']; ?></th>
                   <td><?= $p['medicine_name']; ?></td>
                   <td><?= $p['stock_qty']; ?></td>
-                  <td><?= $p['medicine_exp']; ?></td>
+                  <td><?= $p['stock_exp']; ?></td>
                   <td>
                     <?php 
-                      if($p['medicine_exp'] > getdate()){
+                      if($p['stock_exp'] < getdate()){
                         echo "Expired";
                       }else{
                         echo "Active";

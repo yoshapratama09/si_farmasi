@@ -16,7 +16,7 @@ class Persediaan extends BaseController
     {
         $session = session();
         $id = 0;
-        $persediaan = $this->persediaanModel->findAll();
+        $persediaan = $this->persediaanModel->getAllStock();
         $getItem = $this->persediaanModel->getOpname($id);
 
         $data = [
