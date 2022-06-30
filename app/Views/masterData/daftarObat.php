@@ -33,11 +33,11 @@
         <thead>
           <tr>
             <th scope="col">ID</th>
-            <th scope="col">Nama Obat</th>
+            <th scope="col">Nama</th>
             <th scope="col">Tipe</th>
             <th scope="col">Kategori</th>
-            <th scope="col">Stock</th>
-            <th scope="col">Tanggal EXP</th>
+            <th scope="col">Stok</th>
+            <th scope="col">EXP</th>
             <th scope="col">Harga Jual</th>
             <th scope="col" class="action">Action</th>
           </tr>

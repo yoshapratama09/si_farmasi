@@ -275,8 +275,6 @@ class Medicine extends BaseController
         if (!$this->validate([
 
             'namaObat' => 'required',
-            'mfdObat' => 'required',
-            'expObat' => 'required',
             'satuan1' => 'required',
             'tipeObat' => 'required',
             'kategoriObat' => 'required',
@@ -299,8 +297,6 @@ class Medicine extends BaseController
         $data = [
             'medicine_name' => $this->request->getVar('namaObat'),
             'medicine_name' => $this->request->getVar('namaObat'),
-            'medicine_mfd' => $this->request->getVar('mfdObat'),
-            'medicine_exp' => $this->request->getVar('expObat'),
             'medicine_satuan1' => $this->request->getVar('satuan1'),
             'medicine_type' => $this->request->getVar('tipeObat'),
             'medicine_category' => $this->request->getVar('kategoriObat'),

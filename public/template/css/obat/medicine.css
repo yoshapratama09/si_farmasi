@@ -8,6 +8,8 @@ body {
     font-weight: bold;
 }
 
+
+
 thead .action {
     text-align: center;
 }
@@ -79,6 +81,9 @@ tr .action {
     margin-right: 0px;
 }
 
+/* .expInput {
+    margin-left: -90px;
+} */
 
 
 .btnUpd,

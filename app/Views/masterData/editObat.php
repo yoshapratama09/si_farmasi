@@ -36,20 +36,7 @@
                                   <div class="invalid-feedback">Nama obat harus diisi</div>
                               </div>
                           </div>
-                          <div class="row mb-3">
-                              <label for="mfdObat" class="col-sm-2 col-form-label">Tanggal obat dibuat</label>
-                              <div class="col-sm-10">
-                                  <input type="date" class="form-control <?= ($validation->hasError('mfdObat')) ? 'is-invalid' : ''; ?>" id="mfdObat" name="mfdObat" value="<?= $medicine['medicine_mfd']; ?>">
-                                  <div class="invalid-feedback">Harus diisi</div>
-                              </div>
-                          </div>
-                          <div class="row mb-3">
-                              <label for="expObat" class="col-sm-2 col-form-label">Tanggal kadaluarsa obat</label>
-                              <div class="col-sm-10">
-                                  <input type="date" class="form-control <?= ($validation->hasError('expObat')) ? 'is-invalid' : ''; ?>" id="expObat" name="expObat" value="<?= $medicine['medicine_exp']; ?>">
-                                  <div class="invalid-feedback">Harus diisi</div>
-                              </div>
-                          </div>
+                          <!--  -->
                           <div class="row mb-3">
                               <label for="satuan1" class="col-sm-2 col-form-label">Satuan</label>
                               <div class="col-sm-10">
