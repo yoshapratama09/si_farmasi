@@ -198,7 +198,7 @@ class PersediaanModel extends Model
         $query = $this->db->query("SELECT * FROM stockmed as sm JOIN medicine as med ON med.medicine_id = sm.medicine_id JOIN pricemed as pm ON med.medicine_id = pm.medicine_id JOIN item AS itm ON sm.medicine_id = itm.medicine_id WHERE med.medicine_id LIKE '%$name%'");
 
         $row = $query->getResultArray();
-
+        
         return $row;
     }
 }
