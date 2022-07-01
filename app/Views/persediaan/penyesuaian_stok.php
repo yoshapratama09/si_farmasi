@@ -3,7 +3,7 @@
     <div class="col">
       <h2 class="mb-2">Penyesuaian Stock Obat</h2>
       
-      <form class="mt-4" method="POST" id="formDataExp" action="/persediaan/getPStock">
+      <form class="mt-4" method="POST" id="formDataExp" action="/persediaan/pStock">
         <label class=" col-form-label" for="">Cari Berdasarkan ID Obat</label>
         <?php 
             if(session()->getFlashdata('msg') != NULL):       
@@ -135,4 +135,8 @@
         "responsive": true,
     });
   });
+</script>
+
+<script>
+  $('#tableData').ddTableFilter();
 </script>

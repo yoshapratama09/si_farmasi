@@ -89,19 +89,25 @@ $routes->post('/login/loginAuth', 'Login::loginAuth');
 $routes->get('/logout', 'Login::logout');
 
 $routes->get('/persediaan/opname', 'Persediaan::index');
-$routes->post('/persediaan/getOpname', 'Persediaan::getOpname');
+$routes->post('/persediaan/opname', 'Persediaan::index');
+// $routes->post('/persediaan/getOpname', 'Persediaan::getOpname');
 $routes->get('/persediaan/pHarga', 'Persediaan::penyesuaianHarga');
-$routes->post('/persediaan/getPHarga', 'Persediaan::getPHarga');
+$routes->post('/persediaan/pHarga', 'Persediaan::penyesuaianHarga');
+// $routes->post('/persediaan/getPHarga', 'Persediaan::getPHarga');
 $routes->post('/persediaan/updateHarga', 'Persediaan::updateHarga');
 $routes->get('/persediaan/dataExp', 'Persediaan::dataExp');
-$routes->post('/persediaan/getDataExp', 'Persediaan::getDataExp');
+$routes->post('/persediaan/dataExp', 'Persediaan::dataExp');
+// $routes->post('/persediaan/getDataExp', 'Persediaan::getDataExp');
 $routes->get('/persediaan/pStock', 'Persediaan::penyesuaianStok');
-$routes->post('/persediaan/getPStock', 'Persediaan::getPStock');
+$routes->post('/persediaan/pStock', 'Persediaan::penyesuaianStok');
+// $routes->post('/persediaan/getPStock', 'Persediaan::getPStock');
 $routes->post('/persediaan/updateStock', 'Persediaan::updateStock');
 $routes->get('/persediaan/itemIn', 'Persediaan::itemIn');
-$routes->post('/persediaan/getItemIn', 'Persediaan::getItemIn');
+$routes->post('/persediaan/itemIn', 'Persediaan::itemIn');
+// $routes->post('/persediaan/getItemIn', 'Persediaan::getItemIn');
 $routes->get('/persediaan/itemOut', 'Persediaan::itemOut');
-$routes->post('/persediaan/getItemOut', 'Persediaan::getItemOut');
+$routes->post('/persediaan/itemOut', 'Persediaan::itemOut');
+// $routes->post('/persediaan/getItemOut', 'Persediaan::getItemOut');
 
 /*
  * --------------------------------------------------------------------

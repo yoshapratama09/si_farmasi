@@ -14,6 +14,10 @@ class Data extends BaseController
     }
     public function index()
     {
+        if (!isset($_SESSION['id'])) {
+            return redirect()->to(base_url('/login'));
+        }
+
         echo view('layout/header');
         echo view('layout/sidebar');
         echo view('data');

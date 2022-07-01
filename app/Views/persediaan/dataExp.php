@@ -3,7 +3,7 @@
     <div class="col">
       <h2 class="mb-2">Data Obat Expired</h2>
       
-      <form class="mt-4 mb-4" method="POST" id="formDataExp" action="/persediaan/getDataExp">
+      <form class="mt-4 mb-4" method="POST" id="formDataExp" action="/persediaan/dataExp">
         <label class=" col-form-label" for="">Cari Berdasarkan ID Obat</label>
         <?php 
             if(session()->getFlashdata('msg') != NULL):       

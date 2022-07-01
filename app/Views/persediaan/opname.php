@@ -3,7 +3,7 @@
     <div class="col">
       <h2 class="mb-2">Opname Stok</h2>
       
-      <form class="mt-4 mb-4" method="POST" id="formDataExp" action="/persediaan/getOpname">
+      <form class="mt-4 mb-4" method="POST" id="formDataExp" action="/persediaan/opname">
         <label class=" col-form-label" for="">Cari Berdasarkan ID Obat</label>
         <?php 
             if(session()->getFlashdata('msg') != NULL):       
@@ -13,6 +13,7 @@
             <input type="hidden" class="form-control alert" id="msg" name="msg" placeholder="Message" value="<?= session()->getFlashdata('msg'); ?>">
           </div>
         <?php endif;?>
+
         <div class="form-row align-items-center">
           <div class="col-sm-3 my-1">
             <label class="sr-only" for="medId">ID</label>
@@ -21,7 +22,7 @@
           <div class="col-sm-3 my-1">
             <label class="sr-only" for="medName">Nama Obat</label>
             <div class="input-group">
-                <input type="text" class="form-control" id="medName" placeholder="Nama Obat" name="medName" >
+                <input type="text" class="form-control" id="medName" placeholder="Nama Obat" name="medName">
             </div>
           </div>
           <div class="col-auto my-1">
@@ -37,74 +38,74 @@
         </div> -->
       </form>
 
-        <table id="tableData" class="table table-hover">
-            <thead>
+      <table id="tableData" class="table table-hover">
+        <thead>
+        <tr>
+            <th scope="col">Tanggal</th>
+            <th scope="col">Invoice</th>
+            <th scope="col">Keterangan</th>
+            <th scope="col">Harga</th>
+            <th scope="col">In</th>
+            <th scope="col">Out</th>
+            <th scope="col">Stok</th> 
+        </tr>
+        </thead>
+        <tbody> 
+          <?php $index=0; ?>
+          <?php foreach ($data as $p) : ?>
             <tr>
-                <th scope="col">Tanggal</th>
-                <th scope="col">Invoice</th>
-                <th scope="col">Keterangan</th>
-                <th scope="col">Harga</th>
-                <th scope="col">In</th>
-                <th scope="col">Out</th>
-                <th scope="col">Stok</th> 
+              <th scope="row"><?= $p['created_at']; ?></th>
+              <td><?= $p['stock_invoice']; ?></td>
+              <?php 
+                if(empty($p['item_price'])){
+                  $p['item_price']=0;
+                }
+
+                if($p['stock_type'] == 'P'){  
+                  echo '<td> Penyesuaian Stock </td>';
+                  if(empty($harga)){
+                    echo '<td> 0 </td>';
+                    echo '<td> 0 </td>';
+                    echo '<td> 0 </td>';
+                  }else {
+                    foreach($harga as $h){
+                      if($p['price_id'] == $h['price_id']){
+                        $price = $h['price_amount'];
+                        break;
+                      }else{
+                        $price = 0;
+                      }
+                    }
+                    echo '<td>'. $price .'</td>';
+                  }
+                  if($p['stock_qty'] > $index){
+                    echo '<td>'. $p['stock_qty'] - $index .'</td>';
+                    echo '<td> - </td>';
+                  }else if ($p['stock_qty'] < $index){
+                    echo '<td> - </td>';
+                    echo '<td>'. $index - $p['stock_qty'] .'</td>';
+                  }
+                }else if ($p['stock_type'] == 'I'){
+                  echo '<td> Pembelian </td>';
+                  echo '<td>'. $p['item_price'] .'</td>';
+                  echo '<td>' . $p['stock_qty'] - $index . '</td>';
+                  echo '<td> - </td>';
+                }else{
+                  echo '<td> Penjualan </td>';
+                  echo '<td>'. $p['item_price'] .'</td>';
+                  echo '<td> - </td>';  
+                  echo '<td></td>';
+                }
+              ?>
+
+              
+              <td><?= $p['stock_qty']; ?></td> 
             </tr>
-            </thead>
-            <tbody> 
-              <?php $index=0; ?>
-              <?php foreach ($data as $p) : ?>
-                <tr>
-                  <th scope="row"><?= $p['created_at']; ?></th>
-                  <td><?= $p['stock_invoice']; ?></td>
-                  <?php 
-                    if(empty($p['item_price'])){
-                      $p['item_price']=0;
-                    }
-
-                    if($p['stock_type'] == 'P'){  
-                      echo '<td> Penyesuaian Stock </td>';
-                      if(empty($harga)){
-                        echo '<td> 0 </td>';
-                        echo '<td> 0 </td>';
-                        echo '<td> 0 </td>';
-                      }else {
-                        foreach($harga as $h){
-                          if($p['price_id'] == $h['price_id']){
-                            $price = $h['price_amount'];
-                            break;
-                          }else{
-                            $price = 0;
-                          }
-                        }
-                        echo '<td>'. $price .'</td>';
-                      }
-                      if($p['stock_qty'] > $index){
-                        echo '<td>'. $p['stock_qty'] - $index .'</td>';
-                        echo '<td> - </td>';
-                      }else if ($p['stock_qty'] < $index){
-                        echo '<td> - </td>';
-                        echo '<td>'. $index - $p['stock_qty'] .'</td>';
-                      }
-                    }else if ($p['stock_type'] == 'I'){
-                      echo '<td> Pembelian </td>';
-                      echo '<td>'. $p['item_price'] .'</td>';
-                      echo '<td>' . $p['stock_qty'] - $index . '</td>';
-                      echo '<td> - </td>';
-                    }else{
-                      echo '<td> Penjualan </td>';
-                      echo '<td>'. $p['item_price'] .'</td>';
-                      echo '<td> - </td>';  
-                      echo '<td></td>';
-                    }
-                  ?>
-
-                  
-                  <td><?= $p['stock_qty']; ?></td> 
-                </tr>
-                <?php $index = $p['stock_qty']; ?>
-              <?php endforeach; ?>
-            </tbody>
-            </tfoot>
-        </table>
+            <?php $index = $p['stock_qty']; ?>
+          <?php endforeach; ?>
+        </tbody>
+        </tfoot>
+      </table>
     </div>
   </div>
 </div>
@@ -161,5 +162,7 @@
         "responsive": true,
     });
   });
+  
 
 </script>
+

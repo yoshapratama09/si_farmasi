@@ -23,6 +23,9 @@ class Medicine extends BaseController
     }
     public function index()
     {
+        if (!isset($_SESSION['id'])) {
+            return redirect()->to(base_url('/login'));
+        }
 
         $medicine = $this->medicineModel->getDaftarObat();
         // dd($medicine);

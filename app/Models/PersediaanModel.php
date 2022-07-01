@@ -38,6 +38,13 @@ class PersediaanModel extends Model
         return $row;
     }
 
+    public function getMed($id){
+        $query = $this->db->query("SELECT * FROM medicine as med JOIN stockmed as sm ON med.medicine_id = sm.medicine_id WHERE med.medicine_id = '$id' AND sm.stock_status = 1");
+
+        $row = $query->getResultArray();
+
+        return $row;
+    }
 
     public function getSearch($nama)
     {

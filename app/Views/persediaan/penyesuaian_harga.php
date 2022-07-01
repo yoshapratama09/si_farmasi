@@ -3,7 +3,7 @@
     <div class="col">
       <h2 class="mb-2">Penyesuaian Harga</h2>
       
-      <form class="mt-4 mb-4" method="POST" id="formDataExp" action="/persediaan/getPHarga">
+      <form class="mt-4 mb-4" method="POST" id="formDataExp" action="/persediaan/pHarga">
         <label class=" col-form-label" for="">Cari Berdasarkan ID Obat</label>
         <?php 
             if(session()->getFlashdata('msg') != NULL):       
@@ -102,7 +102,7 @@
         </button>
       </div>
       <div class="modal-body">
-        <table id="tablePH" class="table table-hover">
+        <table id="table" class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">ID Obat</th>
@@ -154,4 +154,8 @@
       tablePH.rows[i].className.add('table-active');
     };
   }
+</script>
+
+<script>
+  $('#tableData').ddTableFilter();
 </script>

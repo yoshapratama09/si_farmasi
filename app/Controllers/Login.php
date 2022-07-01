@@ -37,7 +37,6 @@ class Login extends BaseController
 
         ])) {
             $validation = \Config\Services::validation();
-            // dd($validation);
             return redirect()->to(base_url('/login'))->withInput()->with('validation', $validation);
         }
 
