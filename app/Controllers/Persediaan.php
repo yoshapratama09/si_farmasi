@@ -19,21 +19,18 @@ class Persediaan extends BaseController
         if (!isset($_SESSION['id'])) {
             return redirect()->to(base_url('/login'));
         }else {
+            $persediaan = $this->persediaanModel->getAllStock();
             if(empty($this->request->getPost())){
-                $id = 0;
-                $persediaan = $this->persediaanModel->getAllStock();
-                $getItem = $this->persediaanModel->getOpname($id);
-
+                $getItem = $this->persediaanModel->getOpname(0);
                 $data = [
                     'data' => $getItem,
                     'stock' => $persediaan
                 ];
             }else{
                 $id = $this->request->getVar('medId');
-                $persediaan = $this->persediaanModel->getAllStock();
                 $harga = $this->persediaanModel->getHarga($id);
-
                 $getItem = $this->persediaanModel->getOpname($id);
+
                 if (empty($getItem)) {
                     $stock1 = $this->persediaanModel->getStockMed($id);
                     $data = [
@@ -66,11 +63,10 @@ class Persediaan extends BaseController
         if (!isset($_SESSION['id'])) {
             return redirect()->to(base_url('/login'));
         }else {
+            $allData = $this->persediaanModel->getAllStock();
+            $getPSales = $this->persediaanModel->getHarga1();
+            $getPCapital = $this->persediaanModel->getHarga2();
             if(empty($this->request->getPost())){
-                $allData = $this->persediaanModel->getAllStock();
-                $getPSales = $this->persediaanModel->getHarga1();
-                $getPCapital = $this->persediaanModel->getHarga2();
-
                 $data = [
                     'data' => $allData,
                     'allData' => $allData,
@@ -81,10 +77,6 @@ class Persediaan extends BaseController
             }else{
                 $id = $this->request->getVar('medId');
                 $filter = $this->request->getVar('filter');
-
-                $allData = $this->persediaanModel->getAllStock();
-                $getPSales = $this->persediaanModel->getHarga1();
-                $getPCapital = $this->persediaanModel->getHarga2();
 
                 if ($filter == "1") {
                     $name = $this->request->getVar('medName');
@@ -137,15 +129,12 @@ class Persediaan extends BaseController
                 }
             }
         }
-
         echo view('layout/header');
         echo view('layout/sidebar');
         echo view('Persediaan/top_data');
         echo view('Persediaan/penyesuaian_harga', $data);
         echo view('layout/footer');
     }
-
-    
 
     public function updateHarga()
     {
@@ -186,9 +175,9 @@ class Persediaan extends BaseController
         if (!isset($_SESSION['id'])) {
             return redirect()->to(base_url('/login'));
         }else{
+            $allData = $this->persediaanModel->getDataExp();
             if(empty($this->request->getPost())){
-                $persediaan = $this->persediaanModel->findAll();
-                $allData = $this->persediaanModel->getDataExp();
+                
         
                 $data = [
                     'data' => $allData,
@@ -198,9 +187,6 @@ class Persediaan extends BaseController
             }else{
                 $id = $this->request->getVar('medId');
                 $filter = $this->request->getVar('filter');
-
-                $allData = $this->persediaanModel->getDataExp();
-                $medicine = $this->persediaanModel->findAll();
 
                 if ($filter == "1") {
                     $name = $this->request->getVar('medName');
@@ -262,7 +248,6 @@ class Persediaan extends BaseController
             }else{
                 $id = $this->request->getVar('medId');
                 $filter = $this->request->getVar('filter');
-                $medicine = $this->persediaanModel->findAll();
 
                 if ($filter == "1") {
                     $name = $this->request->getVar('medName');
@@ -464,7 +449,5 @@ class Persediaan extends BaseController
         echo view('Persediaan/top_data');
         echo view('Persediaan/itemOut', $data);
         echo view('layout/footer');
-    }
-
-    
+    } 
 }
