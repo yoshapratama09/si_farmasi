@@ -123,7 +123,7 @@ class PersediaanModel extends Model
 
     public function getIdPstock()
     {
-        $query = $this->db->query("SELECT * FROM stockmed WHERE stock_invoice = (SELECT MAX(stock_invoice) FROM stockmed WHERE stock_invoice LIKE '1144%')");
+        $query = $this->db->query("SELECT * FROM stockmed WHERE stock_invoice = (SELECT MAX(stock_invoice) FROM stockmed WHERE stock_type = 'P')");
 
         $row = $query->getResultArray();
 
@@ -186,7 +186,7 @@ class PersediaanModel extends Model
 
     public function getOpname($id)
     {
-        $query = $this->db->query("SELECT * FROM stockmed as sm JOIN medicine as med ON med.medicine_id = sm.medicine_id JOIN pricemed as pm ON med.medicine_id = pm.medicine_id JOIN item AS itm ON sm.medicine_id = itm.medicine_id WHERE med.medicine_id = $id GROUP BY stock_id");
+        $query = $this->db->query("SELECT * FROM stockmed as sm JOIN medicine as med ON med.medicine_id = sm.medicine_id JOIN item AS itm ON sm.medicine_id = itm.medicine_id WHERE med.medicine_id = $id GROUP BY stock_id");
 
         $row = $query->getResultArray();
 
@@ -195,7 +195,23 @@ class PersediaanModel extends Model
 
     public function getSearchOp($name)
     {
-        $query = $this->db->query("SELECT * FROM stockmed as sm JOIN medicine as med ON med.medicine_id = sm.medicine_id JOIN pricemed as pm ON med.medicine_id = pm.medicine_id JOIN item AS itm ON sm.medicine_id = itm.medicine_id WHERE med.medicine_id LIKE '%$name%'");
+        $query = $this->db->query("SELECT * FROM stockmed as sm JOIN medicine as med ON med.medicine_id = sm.medicine_id JOIN item AS itm ON sm.medicine_id = itm.medicine_id WHERE med.medicine_id LIKE '%$name%'");
+
+        $row = $query->getResultArray();
+        
+        return $row;
+    }
+
+    public function getHarga($id){
+        $query = $this->db->query("SELECT * FROM pricemed WHERE medicine_id LIKE '$id'");
+
+        $row = $query->getResultArray();
+        
+        return $row;
+    }
+
+    public function getStockMed($id){
+        $query = $this->db->query("SELECT * FROM medicine as med JOIN stockmed as sm ON med.medicine_id = sm.medicine_id WHERE sm.medicine_id = '$id'");
 
         $row = $query->getResultArray();
         

@@ -56,7 +56,7 @@
                   <td><?= $p['stock_exp']; ?></td>
                   <td>
                     <?php 
-                      if($p['stock_exp'] < getdate()){
+                      if( strtotime($p['stock_exp']) < strtotime(date("Y-m-d"))){
                         echo "Expired";
                       }else{
                         echo "Active";

@@ -34,43 +34,27 @@ class Persediaan extends BaseController
     public function getOpname()
     {
         $session = session();
-        $persediaan = $this->persediaanModel->getAllStock();
-
+        
         $id = $this->request->getVar('medId');
-        $filter = $this->request->getVar('filter');
+        $persediaan = $this->persediaanModel->getAllStock();
+        $harga = $this->persediaanModel->getHarga($id);
 
-        if ($filter == "1") {
-            $name = $this->request->getVar('medName');
-            $getSearchItem = $this->persediaanModel->getSearchOp($name);
-            if (empty($getSearchItem)) {
-                $data = [
-                    'data' => $persediaan,
-                    'stock' => $persediaan
-                ];
-                $session->setFlashData('msg', 'Obat tidak ditemukan');
-            } else {
-                $data = [
-                    'data' => $getSearchItem,
-                    'stock' => $persediaan
-                ];
-                $session->setFlashData('msg', 'Success');
-            }
-        } else {
             $getItem = $this->persediaanModel->getOpname($id);
             if (empty($getItem)) {
+                $stock1 = $this->persediaanModel->getStockMed($id);
                 $data = [
-                    'data' => $persediaan,
-                    'stock' => $persediaan
+                    'data' => $stock1,
+                    'stock' => $persediaan,
+                    'harga' => $harga
                 ];
-                $session->setFlashData('msg', 'Obat tidak ditemukan');
             } else {
                 $data = [
                     'data' => $getItem,
-                    'stock' => $persediaan
+                    'stock' => $persediaan,
+                    'harga' => $harga
                 ];
                 $session->setFlashData('msg', 'Success');
             }
-        }
 
         echo view('layout/header');
         echo view('layout/sidebar');
