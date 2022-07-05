@@ -49,7 +49,10 @@
   <!-- Toastr -->
   <script src="<?= base_url('plugins/toastr/toastr.min.js'); ?>"></script>
 
-
+  <!-- DataTables -->
+  <link rel="stylesheet" href="<?= base_url('plugins/datatables-bs4/css/dataTables.bootstrap4.min.css'); ?>">
+  <link rel="stylesheet" href="<?= base_url('plugins/datatables-responsive/css/responsive.bootstrap4.min.css'); ?>">
+  <link rel="stylesheet" href="<?= base_url('plugins/datatables-buttons/css/buttons.bootstrap4.min.css'); ?>">
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed d-flex flex-column min-vh-100">

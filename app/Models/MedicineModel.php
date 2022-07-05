@@ -143,7 +143,7 @@ class MedicineModel extends Model
 
     public function searchObat($nama)
     {
-        $query = $this->db->query("SELECT * FROM medicine where medicine_name like '%$nama%'");
+        $query = $this->db->query("SELECT * FROM medicine as med JOIN pricemed AS pm ON med.medicine_id = pm.medicine_id JOIN stockmed AS sm ON med.medicine_id = sm.medicine_id WHERE pm.price_type = 1 AND pm.price_status = 1 AND sm.stock_status=1 AND med.medicine_name LIKE '%$nama%'");
 
         $row = $query->getResultArray();
 
@@ -162,6 +162,15 @@ class MedicineModel extends Model
     public function searchTipeObat($nama)
     {
         $query = $this->db->query("SELECT * FROM typemed where type_name like '%$nama%'");
+
+        $row = $query->getResultArray();
+
+        return $row;
+    }
+
+    public function searchSatuanObat($nama)
+    {
+        $query = $this->db->query("SELECT * FROM satuanmed where satuan_name like '%$nama%'");
 
         $row = $query->getResultArray();
 
