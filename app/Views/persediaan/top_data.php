@@ -41,7 +41,11 @@
                         <div class="inner">
                             <h3>
                                 <?php foreach($itemIn as $i){
-                                    echo $i;
+                                    if(empty($i)){
+                                        echo '0';
+                                    }else{
+                                        echo $i;
+                                    }
                                 } ?>
                             </h3>
 
@@ -59,7 +63,11 @@
                         <div class="inner">
                             <h3>
                                 <?php foreach($itemOut as $i){
-                                    echo $i;
+                                    if(empty($i)){
+                                        echo '0';
+                                    }else{
+                                        echo $i;
+                                    }
                                 } ?>
                             </h3>
 

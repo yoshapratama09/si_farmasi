@@ -226,15 +226,15 @@ class PersediaanModel extends Model
     }
 
     public function getCountItemIn(){
-        $query = $this->db->query("SELECT SUM(item_qty) FROM item WHERE item_type = 1");
+        $query = $this->db->query("SELECT SUM(item_qty) FROM item WHERE item_type = 1 AND MONTH(item_date) = MONTH(CURDATE())");
 
         $row = $query->getRow();
-        
+
         return $row;
     }
 
     public function getCountItemOut(){
-        $query = $this->db->query("SELECT SUM(item_qty) FROM item WHERE item_type = 0");
+        $query = $this->db->query("SELECT SUM(item_qty) FROM item WHERE item_type = 0 AND MONTH(item_date) = MONTH(CURDATE())");
 
         $row = $query->getRow();
         
@@ -242,7 +242,7 @@ class PersediaanModel extends Model
     }
 
     public function getCountExp(){
-        $query = $this->db->query("SELECT * FROM stockmed WHERE stock_exp < CURDATE()");
+        $query = $this->db->query("SELECT * FROM stockmed WHERE stock_exp < CURDATE() AND stock_status = 1");
 
         $row = $query->getNumRows();
         
