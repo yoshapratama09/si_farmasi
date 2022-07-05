@@ -7,6 +7,7 @@ use App\Models\PersediaanModel;
 class Persediaan extends BaseController
 {
     protected $persediaanModel;
+
     public function __construct()
     {
         $this->persediaanModel = new PersediaanModel();
@@ -20,11 +21,18 @@ class Persediaan extends BaseController
             return redirect()->to(base_url('/login'));
         }else {
             $persediaan = $this->persediaanModel->getAllStock();
+            $topData = [
+                'itemIn' =>  $this->persediaanModel->getCountItemIn(),
+                'itemOut' => $this->persediaanModel->getCountItemOut(),
+                'dataExp' => $this->persediaanModel->getCountExp() 
+            ];
+
             if(empty($this->request->getPost())){
                 $getItem = $this->persediaanModel->getOpname(0);
                 $data = [
                     'data' => $getItem,
-                    'stock' => $persediaan
+                    'stock' => $persediaan,
+                    
                 ];
             }else{
                 $id = $this->request->getVar('medId');
@@ -51,7 +59,7 @@ class Persediaan extends BaseController
 
         echo view('layout/header');
         echo view('layout/sidebar');
-        echo view('Persediaan/top_data');
+        echo view('Persediaan/top_data', $topData);
         echo view('Persediaan/opname', $data);
         echo view('layout/footer');
     }
@@ -66,6 +74,13 @@ class Persediaan extends BaseController
             $allData = $this->persediaanModel->getAllStock();
             $getPSales = $this->persediaanModel->getHarga1();
             $getPCapital = $this->persediaanModel->getHarga2();
+
+            $topData = [
+                'itemIn' =>  $this->persediaanModel->getCountItemIn(),
+                'itemOut' => $this->persediaanModel->getCountItemOut(),
+                'dataExp' => $this->persediaanModel->getCountExp() 
+            ];
+
             if(empty($this->request->getPost())){
                 $data = [
                     'data' => $allData,
@@ -131,7 +146,7 @@ class Persediaan extends BaseController
         }
         echo view('layout/header');
         echo view('layout/sidebar');
-        echo view('Persediaan/top_data');
+        echo view('Persediaan/top_data', $topData);
         echo view('Persediaan/penyesuaian_harga', $data);
         echo view('layout/footer');
     }
@@ -176,9 +191,14 @@ class Persediaan extends BaseController
             return redirect()->to(base_url('/login'));
         }else{
             $allData = $this->persediaanModel->getDataExp();
+
+            $topData = [
+                'itemIn' =>  $this->persediaanModel->getCountItemIn(),
+                'itemOut' => $this->persediaanModel->getCountItemOut(),
+                'dataExp' => $this->persediaanModel->getCountExp() 
+            ];
+
             if(empty($this->request->getPost())){
-                
-        
                 $data = [
                     'data' => $allData,
                     'medicine' => $allData
@@ -225,7 +245,7 @@ class Persediaan extends BaseController
 
         echo view('layout/header');
         echo view('layout/sidebar');
-        echo view('Persediaan/top_data');
+        echo view('Persediaan/top_data', $topData);
         echo view('Persediaan/dataExp', $data);
         echo view('layout/footer');
     }
@@ -238,6 +258,13 @@ class Persediaan extends BaseController
         }else{
             $allData = $this->persediaanModel->getAllStock();
             $invoice = $this->persediaanModel->getIdPstock();
+
+            $topData = [
+                'itemIn' =>  $this->persediaanModel->getCountItemIn(),
+                'itemOut' => $this->persediaanModel->getCountItemOut(),
+                'dataExp' => $this->persediaanModel->getCountExp() 
+            ];
+
             if(empty($this->request->getPost())){
                 $data = [
                     'data' => $allData,
@@ -290,7 +317,7 @@ class Persediaan extends BaseController
         
         echo view('layout/header');
         echo view('layout/sidebar');
-        echo view('Persediaan/top_data');
+        echo view('Persediaan/top_data', $topData);
         echo view('Persediaan/penyesuaian_stok', $data);
         echo view('layout/footer');
     }
@@ -338,6 +365,13 @@ class Persediaan extends BaseController
         }else{
             $persediaan = $this->persediaanModel->getAllStock();
             $allData = $this->persediaanModel->itemIn();
+
+            $topData = [
+                'itemIn' =>  $this->persediaanModel->getCountItemIn(),
+                'itemOut' => $this->persediaanModel->getCountItemOut(),
+                'dataExp' => $this->persediaanModel->getCountExp() 
+            ];
+
             if(empty($this->request->getPost())){
                 $data = [
                     'data' => $allData,
@@ -385,7 +419,7 @@ class Persediaan extends BaseController
             
         echo view('layout/header');
         echo view('layout/sidebar');
-        echo view('Persediaan/top_data');
+        echo view('Persediaan/top_data', $topData);
         echo view('Persediaan/itemIn', $data);
         echo view('layout/footer');
     }
@@ -398,6 +432,13 @@ class Persediaan extends BaseController
         }else{
             $persediaan = $this->persediaanModel->getAllStock();
             $allData = $this->persediaanModel->itemOut();
+
+            $topData = [
+                'itemIn' =>  $this->persediaanModel->getCountItemIn(),
+                'itemOut' => $this->persediaanModel->getCountItemOut(),
+                'dataExp' => $this->persediaanModel->getCountExp() 
+            ];
+
             if(empty($this->request->getPost())){
                 $data = [
                     'data' => $allData,
@@ -446,7 +487,7 @@ class Persediaan extends BaseController
 
         echo view('layout/header');
         echo view('layout/sidebar');
-        echo view('Persediaan/top_data');
+        echo view('Persediaan/top_data', $topData);
         echo view('Persediaan/itemOut', $data);
         echo view('layout/footer');
     } 

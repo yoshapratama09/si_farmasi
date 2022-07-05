@@ -224,4 +224,28 @@ class PersediaanModel extends Model
         
         return $row;
     }
+
+    public function getCountItemIn(){
+        $query = $this->db->query("SELECT SUM(item_qty) FROM item WHERE item_type = 1");
+
+        $row = $query->getRow();
+        
+        return $row;
+    }
+
+    public function getCountItemOut(){
+        $query = $this->db->query("SELECT SUM(item_qty) FROM item WHERE item_type = 0");
+
+        $row = $query->getRow();
+        
+        return $row;
+    }
+
+    public function getCountExp(){
+        $query = $this->db->query("SELECT * FROM stockmed WHERE stock_exp < CURDATE()");
+
+        $row = $query->getNumRows();
+        
+        return $row;
+    }
 }
