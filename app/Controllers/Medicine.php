@@ -989,6 +989,4 @@ class Medicine extends BaseController
         echo view('masterData/SatuanObat', $data);
         echo view('layout/footer');
     }
-
-    //supplier
 }
