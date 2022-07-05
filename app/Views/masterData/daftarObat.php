@@ -37,7 +37,6 @@
             <th scope="col">Tipe</th>
             <th scope="col">Kategori</th>
             <th scope="col">Stok</th>
-            <th scope="col">EXP</th>
             <th scope="col">Harga Jual</th>
             <th scope="col" class="action">Action</th>
           </tr>
@@ -50,7 +49,6 @@
               <td><?= $m['medicine_type']; ?></td>
               <td><?= $m['medicine_category']; ?></td>
               <td><?= $m['stock_qty']; ?></td>
-              <td><?= $m['stock_exp']; ?></td>
               <td><?= $m['price_amount']; ?></td>
               <td class="action">
                 <div class="row justify-content-center">

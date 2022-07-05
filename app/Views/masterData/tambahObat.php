@@ -48,9 +48,6 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-
-                        </div>
-                        <div class="row mb-3">
                             <label for="stokObat" class="col-sm-2 col-form-label">Stok Obat</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control <?= ($validation->hasError('stokObat')) ? 'is-invalid' : ''; ?>" id="stokObat" name="stokObat" value="<?= old('stokObat'); ?>">
@@ -77,7 +74,7 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="modalObat" class="col-sm-2 col-form-label">Harga Modal Obat</label>
+                            <label for="modalObat" class="col-sm-2 col-form-label">Modal Obat</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control <?= ($validation->hasError('modalObat')) ? 'is-invalid' : ''; ?>" id="modalObat" name="modalObat" value="<?= old('modalObat'); ?>">
                                 <div class="invalid-feedback"> <?= $validation->getError('modalObat'); ?></div>

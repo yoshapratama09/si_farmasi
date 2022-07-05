@@ -350,16 +350,22 @@ class Medicine extends BaseController
             return redirect()->to(base_url('/login'));
         } else {
             $cari = $this->medicineModel->searchObat($this->request->getVar('cari'));
-
+            // dd($cari);
+            $countMed = $this->medicineModel->getCountDaftarObat();
+            $countCategory = $this->medicineModel->getCountCategory();
+            $countType = $this->medicineModel->getCountType();
             $data = [
-                'medicine' => $cari
+                'medicine' => $cari,
+                'countmed' => $countMed,
+                'countcategory' => $countCategory,
+                'counttype' => $countType
             ];
         }
 
 
         echo view('layout/header');
         echo view('layout/sidebar');
-        echo view('masterData/menuMasterData');
+        echo view('masterData/menuMasterData', $data);
         echo view('masterData/menuObat');
         echo view('masterData/daftarObat', $data);
         echo view('layout/footer');
@@ -429,10 +435,11 @@ class Medicine extends BaseController
                     ]
                 ],
                 'namaKategori' => [
-                    'rules' => 'required|is_unique[categorymed.category_name]',
+                    'rules' => 'required|is_unique[categorymed.category_name]|alpha_space',
                     'errors' => [
                         'required' => 'Nama Kategori obat harus diisi',
-                        'is_unique' => 'Kategori Obat dengan nama ini sudah tersedia'
+                        'is_unique' => 'Kategori Obat dengan nama ini sudah tersedia',
+                        'alpha_space' => 'Kategori Obat harus berupa huruf'
                     ]
                 ]
             ])) {
@@ -515,10 +522,11 @@ class Medicine extends BaseController
             if (!$this->validate([
 
                 'namaKategori' => [
-                    'rules' => 'required|is_unique[categorymed.category_name]',
+                    'rules' => 'required|is_unique[categorymed.category_name]|alpha_space',
                     'errors' => [
                         'required' => 'Nama Kategori obat harus diisi',
-                        'is_unique' => 'Kategori Obat dengan nama ini sudah tersedia'
+                        'is_unique' => 'Kategori Obat dengan nama ini sudah tersedia',
+                        'alpha_space' => 'Kategori Obat harus berupa huruf'
                     ]
                 ]
             ])) {
@@ -548,16 +556,21 @@ class Medicine extends BaseController
             return redirect()->to(base_url('/login'));
         } else {
             $cari = $this->medicineModel->searchKategoriObat($this->request->getVar('cari'));
-
+            $countMed = $this->medicineModel->getCountDaftarObat();
+            $countCategory = $this->medicineModel->getCountCategory();
+            $countType = $this->medicineModel->getCountType();
             $data = [
-                'category' => $cari
+                'category' => $cari,
+                'countmed' => $countMed,
+                'countcategory' => $countCategory,
+                'counttype' => $countType
             ];
         }
 
 
         echo view('layout/header');
         echo view('layout/sidebar');
-        echo view('masterData/menuMasterData');
+        echo view('masterData/menuMasterData', $data);
         echo view('masterData/menuObat');
         echo view('masterData/kategoriObat', $data);
         echo view('layout/footer');
@@ -624,14 +637,16 @@ class Medicine extends BaseController
                     'rules' => 'required|numeric|is_unique[typemed.type_id]',
                     'errors' => [
                         'required' => 'Id Tipe obat harus diisi',
+                        'numeric' => 'Id Tipe obat harus berupa angka',
                         'is_unique' => 'Tipe obat dengan Id ini sudah tersedia'
                     ]
                 ],
                 'namaTipe' => [
-                    'rules' => 'required|is_unique[typemed.type_name]',
+                    'rules' => 'required|is_unique[typemed.type_name]|alpha_space',
                     'errors' => [
                         'required' => 'Nama Tipe obat harus diisi',
-                        'is_unique' => 'Tipe Obat dengan nama ini sudah tersedia'
+                        'is_unique' => 'Tipe Obat dengan nama ini sudah tersedia',
+                        'alpha_space' => 'Tipe obat harus berupa huruf'
                     ]
                 ]
             ])) {
@@ -715,10 +730,11 @@ class Medicine extends BaseController
             if (!$this->validate([
 
                 'namaTipe' => [
-                    'rules' => 'required|is_unique[typemed.type_name]',
+                    'rules' => 'required|is_unique[typemed.type_name]|alpha_space',
                     'errors' => [
                         'required' => 'Nama Tipe obat harus diisi',
-                        'is_unique' => 'Tipe Obat dengan nama ini sudah tersedia'
+                        'is_unique' => 'Tipe Obat dengan nama ini sudah tersedia',
+                        'alpha_space' => 'Tipe Obat harus berupa huruf'
                     ]
                 ]
             ])) {
@@ -748,16 +764,21 @@ class Medicine extends BaseController
             return redirect()->to(base_url('/login'));
         } else {
             $cari = $this->medicineModel->searchTipeObat($this->request->getVar('cari'));
-
+            $countMed = $this->medicineModel->getCountDaftarObat();
+            $countCategory = $this->medicineModel->getCountCategory();
+            $countType = $this->medicineModel->getCountType();
             $data = [
-                'type' => $cari
+                'type' => $cari,
+                'countmed' => $countMed,
+                'countcategory' => $countCategory,
+                'counttype' => $countType
             ];
         }
 
 
         echo view('layout/header');
         echo view('layout/sidebar');
-        echo view('masterData/menuMasterData');
+        echo view('masterData/menuMasterData', $data);
         echo view('masterData/menuObat');
         echo view('masterData/TipeObat', $data);
         echo view('layout/footer');
@@ -823,14 +844,16 @@ class Medicine extends BaseController
                     'rules' => 'required|numeric|is_unique[satuanmed.satuan_id]',
                     'errors' => [
                         'required' => 'Id Satuan obat harus diisi',
-                        'is_unique' => 'Satuan obat dengan Id ini sudah tersedia'
+                        'is_unique' => 'Satuan obat dengan Id ini sudah tersedia',
+                        'numeric' => 'Id satuan obat harus berupa angka'
                     ]
                 ],
                 'namaSatuan' => [
-                    'rules' => 'required|is_unique[satuanmed.satuan_name]',
+                    'rules' => 'required|is_unique[satuanmed.satuan_name]|alpha_space',
                     'errors' => [
                         'required' => 'Nama Satuan obat harus diisi',
-                        'is_unique' => 'Satuan Obat dengan nama ini sudah tersedia'
+                        'is_unique' => 'Satuan Obat dengan nama ini sudah tersedia',
+                        'alpha_space' => 'Satuan Obat harus berupa huruf'
                     ]
                 ]
             ])) {
@@ -913,10 +936,11 @@ class Medicine extends BaseController
 
             if (!$this->validate([
                 'namaSatuan' => [
-                    'rules' => 'required|is_unique[satuanmed.satuan_name]',
+                    'rules' => 'required|is_unique[satuanmed.satuan_name]|alpha_space',
                     'errors' => [
                         'required' => 'Nama Satuan obat harus diisi',
-                        'is_unique' => 'Satuan Obat dengan nama ini sudah tersedia'
+                        'is_unique' => 'Satuan Obat dengan nama ini sudah tersedia',
+                        'alpha_space' => 'Satuan obat harus berupa huruf'
                     ]
                 ]
             ])) {
@@ -937,6 +961,33 @@ class Medicine extends BaseController
 
             return redirect()->to(base_url('/Obat/Satuan'));
         }
+    }
+
+    public function cariSatuanObat()
+    {
+        $session = session();
+        if (!isset($_SESSION['id'])) {
+            return redirect()->to(base_url('/login'));
+        } else {
+            $cari = $this->medicineModel->searchSatuanObat($this->request->getVar('cari'));
+            $countMed = $this->medicineModel->getCountDaftarObat();
+            $countCategory = $this->medicineModel->getCountCategory();
+            $countType = $this->medicineModel->getCountType();
+            $data = [
+                'satuan' => $cari,
+                'countmed' => $countMed,
+                'countcategory' => $countCategory,
+                'counttype' => $countType
+            ];
+        }
+
+
+        echo view('layout/header');
+        echo view('layout/sidebar');
+        echo view('masterData/menuMasterData', $data);
+        echo view('masterData/menuObat');
+        echo view('masterData/SatuanObat', $data);
+        echo view('layout/footer');
     }
 
     //supplier
