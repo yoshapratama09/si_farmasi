@@ -19,64 +19,56 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-4 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-info">
+                    <div class="small-box boxMD boxMD1">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3><?= $dataExp; ?></h3>
 
-                            <p>Daftar Obat</p>
+                            <p>Daftar Obat Expired</p>
                         </div>
 
                         <div class="icon icon-md">
                             <i class="fas fa-solid fa-pills"></i>
                         </div>
-                        <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="<?= base_url('persediaan/dataExp'); ?>" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-4 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-success">
+                    <div class="small-box boxMD boxMD2">
                         <div class="inner">
-                            <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                            <p>Daftar Obat Expired</p>
-                        </div>
-                        <div class="icon icon-md">
-                            <i class="fas fa-solid fa-clock-rotate-left"></i>
-                        </div>
-                        <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
-                    </div>
-                </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
-                    <!-- small box -->
-                    <div class="small-box bg-warning">
-                        <div class="inner">
-                            <h3>44</h3>
+                            <h3>
+                                <?php foreach($itemIn as $i){
+                                    echo $i;
+                                } ?>
+                            </h3>
 
                             <p>Item In</p>
                         </div>
                         <div class="icon icon-md">
-                            <i class="fas fa-solid fa-cart-arrow-down"></i>
+                            <i class="fas fa-solid fa-clock-rotate-left"></i>
                         </div>
-                        <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="<?= base_url('persediaan/itemIn'); ?>" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
-                <!-- ./col -->
-                <div class="col-lg-3 col-6">
+                <div class="col-lg-4 col-6">
                     <!-- small box -->
-                    <div class="small-box bg-danger">
+                    <div class="small-box boxMD boxMD3">
                         <div class="inner">
-                            <h3>65</h3>
+                            <h3>
+                                <?php foreach($itemOut as $i){
+                                    echo $i;
+                                } ?>
+                            </h3>
 
                             <p>Item Out</p>
                         </div>
                         <div class="icon icon-md">
                         <i class="fas fa-solid fa-share-from-square"></i>
                         </div>
-                        <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
+                        <a href="<?= base_url('persediaan/itemOut'); ?>" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
 
