@@ -18,7 +18,7 @@
         var opts = [];
         selectbox.append('<option value="--all--">' + $(this).text() + '</option>');
 
-        var col = $('tr:not(.skip-filter) td:nth-child(' + (index + 1) + ')', table).each(function () {
+        var col = $('tr:not(.skip-filter) #tdF:nth-child(' + (index + 1) + ')', table).each(function () {
           var cellVal = options.valueCallback.apply(this);
           if (cellVal.length == 0) {
             cellVal = '--empty--';

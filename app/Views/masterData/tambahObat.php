@@ -16,7 +16,7 @@
         <div class=" row">
             <div class="col">
                 <div hidden class="alert" data-flashdata="<?= session()->getFlashdata('Pesan') ?>"></div>
-                <div class="bg-form">
+                <div class="bg-form containe-fluid">
                     <form action="/tambahObat" method="POST">
                         <?= csrf_field(); ?>
                         <div class="row mb-3">

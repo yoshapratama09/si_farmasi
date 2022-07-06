@@ -25,7 +25,7 @@ class MedicineModel extends Model
 
     public function getDaftarObat()
     {
-        $query = $this->db->query("SELECT * FROM medicine as med JOIN pricemed AS pm ON med.medicine_id = pm.medicine_id JOIN stockmed AS sm ON med.medicine_id = sm.medicine_id WHERE pm.price_type = 1 AND pm.price_status = 1 AND sm.stock_status=1");
+        $query = $this->db->query("SELECT * FROM medicine as med JOIN stockmed AS sm ON med.medicine_id = sm.medicine_id WHERE sm.stock_status=1");
 
         $row = $query->getResultArray();
 
@@ -34,7 +34,7 @@ class MedicineModel extends Model
 
     public function getCountDaftarObat()
     {
-        $query = $this->db->query("SELECT * FROM medicine as med JOIN pricemed AS pm ON med.medicine_id = pm.medicine_id JOIN stockmed AS sm ON med.medicine_id = sm.medicine_id WHERE pm.price_type = 1 AND pm.price_status = 1 AND sm.stock_status=1");
+        $query = $this->db->query("SELECT * FROM medicine as med JOIN stockmed AS sm ON med.medicine_id = sm.medicine_id WHERE sm.stock_status=1");
 
         $row = $query->getNumRows();
 
@@ -143,7 +143,7 @@ class MedicineModel extends Model
 
     public function searchObat($nama)
     {
-        $query = $this->db->query("SELECT * FROM medicine as med JOIN pricemed AS pm ON med.medicine_id = pm.medicine_id JOIN stockmed AS sm ON med.medicine_id = sm.medicine_id WHERE pm.price_type = 1 AND pm.price_status = 1 AND sm.stock_status=1 AND med.medicine_name LIKE '%$nama%'");
+        $query = $this->db->query("SELECT * FROM medicine as med JOIN stockmed AS sm ON med.medicine_id = sm.medicine_id WHERE sm.stock_status=1 AND med.medicine_name LIKE '%$nama%'");
 
         $row = $query->getResultArray();
 
