@@ -38,13 +38,36 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 
 $routes->get('/data', 'Data::index');
+
+//supplier
 $routes->get('/supplier', 'Data::supplier');
-$routes->get('/pasien', 'Data::pasien');
+$routes->get('/hapus_supplier/(:num)', 'Data::hapus_supplier/$1');
+$routes->get('/editsupplier/(:num)', 'Data::halamanUpdateSupplier/$1');
+$routes->post('/updateSupplier/(:num)', 'Data::UpdateSupplier/$1');
+$routes->post('/tambahSupplier', 'Data::tambahSupplier');
+
+//dokter
 $routes->get('/dokter', 'Data::dokter');
+$routes->get('/hapus_dokter/(:num)', 'Data::hapus_dokter/$1');
+$routes->post('/tambahDokter', 'Data::tambahDokter');
+$routes->get('/editdokter/(:num)', 'Data::halamanUpdateDokter/$1');
+$routes->post('/updateDokter/(:num)', 'Data::UpdateDokter/$1');
+
+//pasien
+$routes->get('/pasien', 'Data::pasien');
+$routes->get('/hapus_pasien/(:num)', 'Data::hapus_pasien/$1');
+$routes->post('/tambahPasien', 'Data::tambahPasien');
+$routes->get('/editpasien/(:num)', 'Data::halamanUpdatePasien/$1');
+$routes->post('/updatePasien/(:num)', 'Data::UpdatePasien/$1');
+
+//rumahsakit
+$routes->get('/hapus_rumahsakit/(:num)', 'Data::hapus_rumahsakit/$1');
 $routes->get('/rumahsakit', 'Data::rumahsakit');
-$routes->get('/asuransi', 'Data::asuransi');
-$routes->get('/sales', 'Data::sales');
-$routes->get('/dokterspesialis', 'Data::dokterspesialis');
+$routes->post('/tambahRumahsakit', 'Data::tambahRumahsakit');
+$routes->get('/editrumahsakit/(:num)', 'Data::halamanUpdateRumahsakit/$1');
+$routes->post('/updateRumahsakit/(:num)', 'Data::UpdateRumahsakit/$1');
+
+//============================================================================
 
 
 $routes->get('/Obat', 'Medicine::index');

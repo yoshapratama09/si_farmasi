@@ -5,12 +5,12 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Data Dokter Spesialis</h1>
+                        <h1 class="m-0">Data Asuransi</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="<?= base_url('/data') ?>">Data</a></li>
-                            <li class="breadcrumb-item active"> Data Dokter Spesialis</li>
+                            <li class="breadcrumb-item active"> Data Asuransi</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -25,7 +25,7 @@
                             <div class="card-header">
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                                    Tambah Data Dokter Spesialis <i class="ion ion-plus-round"></i>
+                                    Tambah Data Asuransi <i class="ion ion-plus-round"></i>
                                 </button>
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm" style="width: 150px; padding:10px;">
@@ -122,7 +122,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="staticBackdropLabel">Tambah Data Dokter Spesialis</h5>
+                        <h5 class="modal-title" id="staticBackdropLabel">Tambah Data Asuransi</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
