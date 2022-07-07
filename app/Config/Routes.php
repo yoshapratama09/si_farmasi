@@ -37,6 +37,7 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('/MasterData', 'Home::masterData');
+$routes->get('/Persediaan', 'Home::persediaan');
 
 
 $routes->get('/data', 'Data::index');

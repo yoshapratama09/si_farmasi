@@ -41,65 +41,14 @@
         </li>
 
         <li class="nav-item">
-          <a href="#" class="nav-link">
+          <a href="/Persediaan" class="nav-link">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4" />
             </svg>
             <p>
               Persediaan
-              <i class="fas fa-angle-right right"></i>
             </p>
           </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item">
-              <a href="/persediaan/opname" class="nav-link">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
-                </svg>
-                <p>Opname Stok</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/persediaan/pStock" class="nav-link">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
-                </svg>
-                <p>Penyesuaian Stok</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/persediaan/pHarga" class="nav-link">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
-                </svg>
-                <p>Penyesuaian Harga</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/persediaan/dataExp" class="nav-link">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
-                </svg>
-                <p>Data Expired</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/persediaan/itemIn" class="nav-link">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
-                </svg>
-                <p>Item In</p>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a href="/persediaan/itemOut" class="nav-link">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M18 12H6" />
-                </svg>
-                <p>Item Out</p>
-              </a>
-            </li>
-          </ul>
         </li>
 
         <li class="nav-item">
