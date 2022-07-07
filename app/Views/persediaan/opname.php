@@ -63,43 +63,50 @@
                   }
 
                   if($p['stock_type'] == 'P'){  
-                    echo '<td> Penyesuaian Stock </td>';
-                    if(empty($harga)){
+                    if(empty($harga) && $p['stock_qty'] == 0){
+                      echo '<td> Barang didaftarkan </td>';
                       echo '<td> 0 </td>';
                       echo '<td> 0 </td>';
                       echo '<td> 0 </td>';
-                    }else {
-                      foreach($harga as $h){
-                        if($p['price_id'] == $h['price_id']){
-                          $price = $h['price_amount'];
-                          break;
-                        }else{
-                          $price = 0;
+                    }else{
+                      echo '<td> Penyesuaian Stock </td>';
+                      if($p['stock_qty'] == '0'){
+                        echo '<td> 0 </td>';
+                        echo '<td> 0 </td>';
+                        echo '<td> 0 </td>';
+                      }else{
+                        $price=0;
+                        foreach($harga as $h){
+                          if($p['price_id'] == $h['price_id']){
+                            $price = $h['price_amount'];
+                            break;
+                          }else{
+                            $price = 0;
+                          }
                         }
+                        echo '<td>'. $price .'</td>';
                       }
-                      echo '<td>'. $price .'</td>';
+                      if($p['stock_qty'] > $index){
+                        echo '<td>'. $p['stock_qty'] - $index .'</td>';
+                        echo '<td> - </td>';
+                      }else if ($p['stock_qty'] < $index){
+                        echo '<td> - </td>';
+                        echo '<td>'. $index - $p['stock_qty'] .'</td>';
+                      }
                     }
-                    if($p['stock_qty'] > $index){
-                      echo '<td>'. $p['stock_qty'] - $index .'</td>';
-                      echo '<td> - </td>';
-                    }else if ($p['stock_qty'] < $index){
-                      echo '<td> - </td>';
-                      echo '<td>'. $index - $p['stock_qty'] .'</td>';
-                    }
+                    
                   }else if ($p['stock_type'] == 'I'){
                     echo '<td> Pembelian </td>';
                     echo '<td>'. $p['item_price'] .'</td>';
                     echo '<td>' . $p['stock_qty'] - $index . '</td>';
                     echo '<td> - </td>';
-                  }else{
+                  }else {
                     echo '<td> Penjualan </td>';
                     echo '<td>'. $p['item_price'] .'</td>';
                     echo '<td> - </td>';  
                     echo '<td></td>';
                   }
                 ?>
-
-                
                 <td><?= $p['stock_qty']; ?></td> 
               </tr>
               <?php $index = $p['stock_qty']; ?>
@@ -159,7 +166,7 @@
         "paging": true,
         "lengthChange": false,
         "searching": false,
-        "ordering": true,
+        "ordering": false,
         "info": true,
         "autoWidth": false,
         "responsive": true,
