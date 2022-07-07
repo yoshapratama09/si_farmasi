@@ -8,28 +8,80 @@ class DataModel extends Model
 {
     protected $table      = 'supplier';
     protected $primaryKey = 'supplier_id';
-    protected $allowedFields = ['supplier_name', 'supplier_address', 'supplier_phone', 'supplier_email', 'supplier_country'];
+    protected $allowedFields = ['supplier_id', 'supplier_name', 'supplier_address', 'supplier_phone', 'supplier_email', 'supplier_country'];
     protected $useTimestamps = true;
 
-    // public function getSupplier(){
-    //     $db = db_connect();
-    //     $sql = "SELECT * FROM supplier";
-    //     $query = $db->query($sql);
-    //     $result = $query->getRow();     
-    // }
+    protected $table1      = 'dokter';
+    protected $primaryKey1 = 'dokter_id';
+    protected $allowedFields1 = ['dokter_id', 'dokter_nama', 'dokter_alamat', 'dokter_kontak', 'jabatan', 'status_update'];
+    protected $useTimestamps1 = true;
 
-    public function getSupName($name)
+    protected $table2      = 'pasien';
+    protected $primaryKey2 = 'pasien_id';
+    protected $allowedFields2 = ['pasien_id', 'pasien_nama', 'pasien_dob', 'pasien_gender', 'pasien_address', 'pasien_phone'];
+    protected $useTimestamps2 = true;
+
+    protected $table3      = 'rumahsakit';
+    protected $primaryKey3 = 'no_RS';
+    protected $allowedFields3 = ['no_RS', 'nama_RS', 'alamat_RS', 'kategori_RS', 'kontak_RS'];
+    protected $useTimestamps3 = true;
+
+    function supplier()
     {
-        $query = $this->db->query("SELECT * FROM supplier where supplier_name ='$name'");
+        $query = $this->db->query("SELECT * FROM supplier");
 
         $row = $query->getResultArray();
 
         return $row;
     }
 
-    public function getSupNameById($id)
+    function pasien()
     {
-        $query = $this->db->query("SELECT supplier_name FROM supplier where supplier_id =$id");
+        $query = $this->db->query("SELECT * FROM pasien");
+
+        $row = $query->getResultArray();
+
+        return $row;
+    }
+
+    function dokter()
+    {
+        $query = $this->db->query("SELECT * FROM dokter");
+        $row = $query->getResultArray();
+
+        return $row;
+    }
+
+    function sales()
+    {
+        $query = $this->db->query("SELECT * FROM sales");
+
+        $row = $query->getResultArray();
+
+        return $row;
+    }
+
+    function rumahsakit()
+    {
+        $query = $this->db->query("SELECT * FROM rumahsakit");
+
+        $row = $query->getResultArray();
+
+        return $row;
+    }
+
+    function asuransi()
+    {
+        $query = $this->db->query("SELECT * FROM asuransi");
+
+        $row = $query->getResultArray();
+
+        return $row;
+    }
+
+    function employee()
+    {
+        $query = $this->db->query("SELECT * FROM employee");
 
         $row = $query->getResultArray();
 

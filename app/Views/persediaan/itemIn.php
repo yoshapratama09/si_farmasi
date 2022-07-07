@@ -31,10 +31,10 @@
             <button type="submit" class="btn btn-danger" id="clearBtn" >Clear</button>
           </div>
         </div>
-        <div class="col-sm-6 my-1 ms-1">
+        <!-- <div class="col-sm-6 my-1 ms-1">
             <input type="checkbox" class="form-check-input" id="filter" name="filter">
             <label class="form-check-label" for="exampleCheck1">Filter Berdasarkan Nama</label>
-        </div>
+        </div> -->
       </form>
 
       <table id="tableData" class="table table-hover">
