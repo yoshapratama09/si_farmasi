@@ -36,7 +36,6 @@
             </svg>
             <p>
               Master Data
-              <i class="fas fa-angle-right right"></i>
             </p>
           </a>
         </li>

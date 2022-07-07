@@ -5,7 +5,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div>
-          <h1 class="title-form tf1 text-right">Master Data</h1>
+          <h1 class="title-form tf1 text-right">MASTER DATA</h1>
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
