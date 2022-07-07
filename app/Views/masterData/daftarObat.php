@@ -37,7 +37,6 @@
             <th scope="col">Tipe</th>
             <th scope="col">Kategori</th>
             <th scope="col">Stok</th>
-            <th scope="col">Harga Jual</th>
             <th scope="col" class="action">Action</th>
           </tr>
         </thead>
@@ -46,10 +45,9 @@
             <tr>
               <th scope="row"><?= $m['medicine_id']; ?></th>
               <td><?= $m['medicine_name']; ?></td>
-              <td><?= $m['medicine_type']; ?></td>
-              <td><?= $m['medicine_category']; ?></td>
+              <td id="tdF"><?= $m['medicine_type']; ?></td>
+              <td id="tdF"><?= $m['medicine_category']; ?></td>
               <td><?= $m['stock_qty']; ?></td>
-              <td><?= $m['price_amount']; ?></td>
               <td class="action">
                 <div class="row justify-content-center">
                   <div class="col-lg-4">
@@ -170,6 +168,12 @@
       "info": true,
       "autoWidth": false,
       "responsive": true,
+      rowReorder: true,
+      columnDefs: [{
+        orderable: false,
+        className: 'reorder',
+        targets: 5
+      }]
     });
   });
 

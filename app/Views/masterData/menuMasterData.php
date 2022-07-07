@@ -19,10 +19,7 @@
                                     <p>Daftar Obat</p>
                                 </div>
 
-                                <div class="icon icon-md">
-                                    <!-- <i class="ion ion-bag"></i> -->
-                                    <img src="<?= base_url('template/img/tablet.svg'); ?>" alt="">
-                                </div>
+                                
 
                             </div>
                         </div>
@@ -35,11 +32,7 @@
 
                                     <p>Kategori Obat</p>
                                 </div>
-                                <div class="icon icon-md">
-                                    <!-- <i class="ion ion-stats-bars"></i> -->
-                                    <img src="<?= base_url('template/img/hand-truck.svg'); ?>" alt="">
-
-                                </div>
+                                
                             </div>
                         </div>
                         <!-- ./col -->
@@ -51,10 +44,7 @@
 
                                     <p>Tipe Obat</p>
                                 </div>
-                                <div class="icon icon-md">
-                                    <!-- <i class="ion ion-bag"></i> -->
-                                    <img src="<?= base_url('template/img/stethoscope.svg'); ?>" alt="">
-                                </div>
+                                
                             </div>
                         </div>
                         <!-- ./col -->

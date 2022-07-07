@@ -19,12 +19,13 @@ tr .action {
 }
 
 .bg-form {
-    width: 950px;
+    width: 98%;
     height: auto;
     background-color: white;
-    margin: 0px 20px 10px 10px;
+    margin: 0px 20px 40px 10px;
     box-sizing: border-box;
     padding: 30px;
+    border-radius: 10px;
 }
 
 .title-form {

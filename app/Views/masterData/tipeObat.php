@@ -76,6 +76,12 @@
             "info": true,
             "autoWidth": false,
             "responsive": true,
+            rowReorder: true,
+            columnDefs: [{
+                orderable: false,
+                className: 'reorder',
+                targets: 2
+            }]
         });
     });
 </script>
