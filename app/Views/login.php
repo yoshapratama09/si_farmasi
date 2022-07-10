@@ -38,7 +38,7 @@
                             </div>
                             <?php endif;?>
                             
-                            <form action="<?php echo base_url(); ?>/login/loginAuth" method="post">
+                            <form action="<?php echo base_url(); ?>/login" method="post">
                                 <div class="input-group mb-3">
                                     <input type="text" name="username" class="form-control text-center rounded-lg shadow <?= ($validation->hasError('username')) ? 'is-invalid' : ''; ?>" placeholder="Username">
                                     <div class="invalid-feedback">
