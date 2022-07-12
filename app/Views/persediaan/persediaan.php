@@ -19,7 +19,7 @@
       <div class="row">
         <div class="col-lg-6 col-sm-12">
           <!-- small box -->
-          <div class="small-box boxQC boxQC1" onclick="location.href='/Obat'">
+          <div class="small-box boxQC boxQC1" onclick="location.href='/persediaan/opname'">
             <div class="inner">
               <p>Opname Stok</p>
             </div>
@@ -32,7 +32,7 @@
         <!-- ./col -->
         <div class="col-lg-6 col-sm-12">
           <!-- small box -->
-          <div class="small-box boxQC boxQC2" onclick="location.href='/supplier'">
+          <div class="small-box boxQC boxQC2" onclick="location.href='/persediaan/pStock'">
             <div class="inner">
               <p>Penyesuaian Stok</p>
             </div>
@@ -48,7 +48,7 @@
         <!-- ./col -->
         <div class="col-lg-6 col-sm-12">
           <!-- small box -->
-          <div class="small-box boxQC boxQC3" onclick="location.href='/persediaan/opname'">
+          <div class="small-box boxQC boxQC3" onclick="location.href='/persediaan/pHarga'">
             <div class="inner">
               <p>Penyesuaian Harga</p>
             </div>
@@ -61,7 +61,7 @@
         <!-- ./col -->
         <div class="col-lg-6 col-sm-12">
           <!-- small box -->
-          <div class="small-box boxQC boxQC4">
+          <div class="small-box boxQC boxQC4" onclick="location.href='/persediaan/dataExp'">
             <div class="inner">
               <p>Daftar Expire</p>
             </div>
@@ -78,7 +78,7 @@
       <div class="row">
         <div class="col-lg-6 col-sm-12">
           <!-- small box -->
-          <div class="small-box boxQC boxQC5">
+          <div class="small-box boxQC boxQC5" onclick="location.href='/persediaan/itemIn'">
             <div class="inner">
               <p>Item In</p>
             </div>
@@ -91,7 +91,7 @@
         <!-- ./col -->
         <div class="col-lg-6 col-sm-12">
           <!-- small box -->
-          <div class="small-box boxQC boxQC6">
+          <div class="small-box boxQC boxQC6" onclick="location.href='/persediaan/itemOut'">
             <div class="inner">
               <p>Item Out</p>
             </div>
