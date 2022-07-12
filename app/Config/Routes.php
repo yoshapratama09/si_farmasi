@@ -111,7 +111,7 @@ $routes->post('/Update', 'Medicine::updateObat');
 
 $routes->post('/updObat/(:num)', 'Medicine::UpdateObat/$1');
 $routes->get('/login', 'Login::index');
-$routes->post('/login/loginAuth', 'Login::loginAuth');
+$routes->post('/login', 'Login::index');
 $routes->get('/logout', 'Login::logout');
 
 $routes->get('/persediaan/opname', 'Persediaan::index');
