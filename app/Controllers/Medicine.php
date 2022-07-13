@@ -101,7 +101,13 @@ class Medicine extends BaseController
                         'is_unique' => 'Obat dengan Id ini sudah tersedia'
                     ]
                 ],
-                'namaObat' => 'required',
+                'namaObat' => [
+                    'rules' => 'required|is_unique[medicine.medicine_name]',
+                    'errors' => [
+                        'required' => 'Nama obat harus diisi',
+                        'is_unique' => 'Obat dengan nama ini sudah tersedia'
+                    ]
+                ],
                 'mfdObat' => 'required',
                 'expObat' => 'required',
                 'stokObat' => [
@@ -169,6 +175,7 @@ class Medicine extends BaseController
                 $statusNew = 1;
                 //0(modal) 1 (jual)
                 $typeModal = 0;
+                $typeJual = 1;
                 //type = P = penyesuaian, I = pembelian, O = penjualan
                 $stockType = 'I';
 
@@ -191,21 +198,32 @@ class Medicine extends BaseController
 
                     $dataPrice = [
 
-                        'medicine_id' => $this->request->getVar('idObat'),
-                        'price_amount' => $this->request->getVar('modalObat'),
-                        'price_type' => $typeModal,
-                        'price_status' => $statusNew
+                        [
+                            'medicine_id' => $this->request->getVar('idObat'),
+                            'price_amount' => $this->request->getVar('modalObat'),
+                            'price_type' => $typeModal,
+                            'price_status' => $statusNew
+                        ],
+                        [
+                            'medicine_id' => $this->request->getVar('idObat'),
+                            'price_amount' => 0,
+                            'price_type' => $typeJual,
+                            'price_status' => $statusNew
+                        ]
                     ];
 
-                    $builder1->insert($dataPrice);
+                    $builder1->insertBatch($dataPrice);
 
+                    $priceID = $this->persediaanModel->getPriceId($this->request->getVar('idObat'))[0];
+                    // dd($priceID);
                     $dataStock = [
                         'medicine_id' => $this->request->getVar('idObat'),
                         'stock_qty' => $this->request->getVar('stokObat'),
                         'stock_status' => $statusNew,
                         'stock_mfd' => $this->request->getVar('mfdObat'),
                         'stock_exp' => $this->request->getVar('expObat'),
-                        'stock_type' => $stockType
+                        'stock_type' => $stockType,
+                        'price_id' => $priceID
                     ];
 
                     $builder2->insert($dataStock);
@@ -228,8 +246,9 @@ class Medicine extends BaseController
         } else {
             $cekChildHarga = $this->persediaanModel->cekChildMedHarga($id);
             $cekChildStock = $this->persediaanModel->cekChildMedStock($id);
+            // dd($cekChildStock);
 
-            if ($cekChildHarga >= 1 || $cekChildStock <= 0) {
+            if ($cekChildHarga >= 1 && $cekChildStock <= 0) {
                 $db = db_connect('default');
                 $builder = $db->table('pricemed');
                 $builder->where(['medicine_id' => $id])->delete();
@@ -237,7 +256,7 @@ class Medicine extends BaseController
                 $this->medicineModel->delete($id);
                 session()->setFlashdata('Pesan', 'hapus');
                 return redirect()->to(base_url('/Obat'));
-            } else if ($cekChildHarga <= 0 || $cekChildStock >= 1) {
+            } else if ($cekChildHarga <= 0 && $cekChildStock >= 1) {
                 $db = db_connect('default');
                 $builder = $db->table('stockmed');
                 $builder->where(['medicine_id' => $id])->delete();
@@ -245,7 +264,7 @@ class Medicine extends BaseController
                 $this->medicineModel->delete($id);
                 session()->setFlashdata('Pesan', 'hapus');
                 return redirect()->to(base_url('/Obat'));
-            } else if ($cekChildHarga >= 1 || $cekChildStock >= 1) {
+            } else if ($cekChildHarga >= 1 && $cekChildStock >= 1) {
                 $db = db_connect('default');
                 $builder = $db->table('pricemed');
                 $builder->where(['medicine_id' => $id])->delete();

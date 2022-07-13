@@ -32,7 +32,7 @@
                             <label for="namaObat" class="col-sm-2 col-form-label">Nama Obat</label>
                             <div class="col-sm-10">
                                 <input type="text" class="form-control <?= ($validation->hasError('namaObat')) ? 'is-invalid' : ''; ?>" id="namaObat" name="namaObat" value="<?= old('namaObat'); ?>">
-                                <div class="invalid-feedback">Nama obat harus diisi</div>
+                                <div class="invalid-feedback"> <?= $validation->getError('namaObat'); ?></div>
                             </div>
                         </div>
                         <div class="row mb-3">
