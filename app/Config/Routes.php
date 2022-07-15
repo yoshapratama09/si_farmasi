@@ -74,6 +74,7 @@ $routes->post('/updateRumahsakit/(:num)', 'Data::UpdateRumahsakit/$1');
 
 
 $routes->get('/Obat', 'Medicine::index');
+$routes->get('/Obat/Print', 'Laporan::index');
 
 $routes->post('/tambahObat', 'Medicine::tambahObat');
 $routes->get('/Obat/Tambah', 'Medicine::halamanTambahObat');

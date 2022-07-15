@@ -16,9 +16,8 @@
     <div class="col">
       <h3 class="title-form tf2">Daftar Obat</h3>
       <div hidden class="alert" data-flashdata="<?= session()->getFlashdata('Pesan') ?>"></div>
-      <button type="button" class="float-end col-lg-3 btn btn-block btn-success mb-2 btnTambahObat" id="btnTambahObat" onclick="location.href='/Obat/Tambah'">
+      <button type="button" class="float-end col-lg-1 btn btn-block btn-success mb-2 btnTambahObat" id="btnTambahObat" onclick="location.href='/Obat/Tambah'">
         <i class="fas fa-plus"></i>
-        Tambah Obat
       </button>
       <form action="/Obat/Cari" method="post" class="mb-2">
         <div class="input-group inputCari w-25 float-start">
@@ -29,6 +28,9 @@
       <br>
       <br>
       <br>
+      <button type="button" class="col-lg-2 btn btn-block btn-outline-success btn-sm mb-2" id="btnPDF" onclick="window.open('/Obat/Print')">
+        Print PDF
+      </button>
       <table class="table" id="myTable" class="table table-bordered table-hover">
         <thead>
           <tr>
@@ -160,6 +162,7 @@
 <script src="<?= base_url('template/js/alertTambah.js'); ?>"></script>
 <script>
   $(function() {
+
     $('#myTable').DataTable({
       "paging": true,
       "lengthChange": false,
@@ -168,6 +171,17 @@
       "info": true,
       "autoWidth": false,
       "responsive": true,
+      // dom: 'Bfrtip',
+      // buttons: [{
+      //   extend: 'pdf',
+      //   title: "Daftar Obat",
+      //   exportOptions: {
+      //     columns: [0, 1, 2, 3, 4]
+      //   },
+      //   customize: function(doc) {
+      //     doc.content[1].margin = [50, 0, 100, 0] //left, top, right, bottom
+      //   }
+      // }],
       rowReorder: true,
       columnDefs: [{
         orderable: false,
