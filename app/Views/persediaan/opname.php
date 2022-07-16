@@ -161,17 +161,17 @@
 <script src="<?= base_url('template/js/persediaan.js'); ?>"></script>
 
 <script>
-  $(function() {
-    $('#tableData').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": false,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-    });
-  });
+  // $(function() {
+  //   $('#tableData').DataTable({
+  //       "paging": true,
+  //       "lengthChange": false,
+  //       "searching": false,
+  //       "ordering": false,
+  //       "info": true,
+  //       "autoWidth": false,
+  //       "responsive": true,
+  //   });
+  // });
   
 
 </script>

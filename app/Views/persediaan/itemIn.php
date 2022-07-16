@@ -4,7 +4,7 @@
       <h2 class="mb-2">Item In</h2>
       
       <form class="mt-4 mb-4" method="POST" id="formDataExp" action="/persediaan/itemIn">
-        <label class=" col-form-label" for="">Cari Berdasarkan ID Obat</label>
+        <label class="col-form-label" for="">Cari Berdasarkan ID Obat</label>
         <?php 
             if(session()->getFlashdata('msg') != NULL):       
           ?>
@@ -36,6 +36,23 @@
             <label class="form-check-label" for="exampleCheck1">Filter Berdasarkan Nama</label>
         </div> -->
       </form>
+
+      <div id="date_filter">
+        <div class="row justify-content-end">
+          <div class="col-sm-3 my-1">
+            <div class="input-group">
+              <label class="me-2 col-sm-3" for="minDate">Dari</label>
+              <input type="date" class="form-control col-sm-8 rounded" id="min" placeholder="Dari" name="min" value="<?= date('Y-m-01', strtotime('this month')); ?>">
+            </div>
+          </div>
+          <div class="col-sm-3 my-1">
+            <div class="input-group">
+              <label class="me-2 col-sm-3" for="maxDate">Sampai</label>
+              <input type="date" class="form-control col-sm-8 rounded" id="max" placeholder="Sampai" name="max" value="<?= date('Y-m-t', strtotime('this month')); ?>">
+            </div>
+          </div>
+        </div>
+      </div>
 
       <table id="tableData" class="table table-hover">
         <thead>
@@ -111,18 +128,19 @@
 </div>
 
 <script src="<?= base_url('template/js/persediaan.js'); ?>"></script>
+<script src="<?= base_url('template/js/itemIn.js'); ?>"></script>
 
 <script>
-  $(function() {
-    $('#tableData').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-    });
-  });
+  // $(function() {
+  //   $('#tableData').DataTable({
+  //       "paging": true,
+  //       "lengthChange": false,
+  //       "searching": false,
+  //       "ordering": true,
+  //       "info": true,
+  //       "autoWidth": false,
+  //       "responsive": true,
+  //   });
+  // });
 
 </script>

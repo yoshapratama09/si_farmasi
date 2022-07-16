@@ -132,18 +132,18 @@
 <script src="<?= base_url('template/js/persediaan.js'); ?>"></script>
 
 <script>
-  $(function() {
-    $('#tableData').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-    });
+  // $(function() {
+  //   $('#tableData').DataTable({
+  //       "paging": true,
+  //       "lengthChange": false,
+  //       "searching": false,
+  //       "ordering": true,
+  //       "info": true,
+  //       "autoWidth": false,
+  //       "responsive": true,
+  //   });
 
-  });
+  // });
 
   for(var i = 1; i < tablePH.rows.length; i++)
   {

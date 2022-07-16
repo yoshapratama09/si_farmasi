@@ -37,6 +37,23 @@
         </div> -->
       </form>
 
+      <div id="date_filter">
+        <div class="row justify-content-end">
+          <div class="col-sm-3 my-1">
+            <div class="input-group">
+              <label class="me-2 col-sm-3" for="minDate">Dari</label>
+              <input type="date" class="form-control col-sm-8 rounded" id="min" placeholder="Dari" name="min" value="<?= date('Y-m-01', strtotime('this month')); ?>">
+            </div>
+          </div>
+          <div class="col-sm-3 my-1">
+            <div class="input-group">
+              <label class="me-2 col-sm-3" for="maxDate">Sampai</label>
+              <input type="date" class="form-control col-sm-8 rounded" id="max" placeholder="Sampai" name="max" value="<?= date('Y-m-t', strtotime('this month')); ?>">
+            </div>
+          </div>
+        </div>
+      </div>
+
       <table id="tableData" class="table table-hover">
         <thead>
           <tr>
@@ -113,17 +130,17 @@
 <script src="<?= base_url('template/js/persediaan.js'); ?>"></script>
 
 <script>
-  $(function() {
-    $('#tableData').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-    });
-  });
+  // $(function() {
+  //   $('#tableData').DataTable({
+  //       "paging": true,
+  //       "lengthChange": false,
+  //       "searching": false,
+  //       "ordering": true,
+  //       "info": true,
+  //       "autoWidth": false,
+  //       "responsive": true,
+  //   });
+  // });
 
   // for(var i = 1; i < table.rows.length; i++)
   //   {
