@@ -69,7 +69,14 @@ class DataModel extends Model
 
         return $row;
     }
+    public function cekSup($id)
+    {
+        $query = $this->db->query("SELECT * FROM supplier WHERE supplier_id = $id");
 
+        $row = $query->getNumRows();
+
+        return $row;
+    }
     function asuransi()
     {
         $query = $this->db->query("SELECT * FROM asuransi");

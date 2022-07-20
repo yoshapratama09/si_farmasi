@@ -48,6 +48,8 @@ $routes->get('/hapus_supplier/(:num)', 'Data::hapus_supplier/$1');
 $routes->get('/editsupplier/(:num)', 'Data::halamanUpdateSupplier/$1');
 $routes->post('/updateSupplier/(:num)', 'Data::UpdateSupplier/$1');
 $routes->post('/tambahSupplier', 'Data::tambahSupplier');
+$routes->get('/supplier/Tambah', 'Data::halamanTambahSup');
+$routes->post('/supplier/Cari', 'Data::cariSupplier');
 
 //dokter
 $routes->get('/dokter', 'Data::dokter');

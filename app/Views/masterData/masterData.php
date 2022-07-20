@@ -79,9 +79,9 @@
         <!-- ./col -->
         <div class="col-lg-6 col-sm-12">
           <!-- small box -->
-          <div class="small-box boxQC boxQC6" onclick="location.href='/rumahsakit'">
+          <div class="small-box boxQC boxQC6" onclick="location.href='#'">
             <div class="inner">
-              <p>Daftar Rumah Sakit</p>
+              <p>LAPORAN</p>
             </div>
             <div class="icon">
               <!-- <i class="ion ion-stats-bars"></i> -->
