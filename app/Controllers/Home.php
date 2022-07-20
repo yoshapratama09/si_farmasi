@@ -67,4 +67,23 @@ class Home extends BaseController
         echo view('persediaan/persediaan', $data);
         echo view('layout/footer');
     }
+
+    public function pembelian()
+    {
+        if (!isset($_SESSION['id'])) {
+            return redirect()->to(base_url('/login'));
+        }
+
+        $medicine = $this->medicineModel->findAll();
+
+        $data = [
+            'medicine' => $medicine
+        ];
+
+
+        echo view('layout/header');
+        echo view('layout/sidebar');
+        echo view('pembelian/pembelian', $data);
+        echo view('layout/footer');
+    }
 }

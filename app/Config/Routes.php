@@ -38,6 +38,7 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/MasterData', 'Home::masterData');
 $routes->get('/Persediaan', 'Home::persediaan');
+$routes->get('/Pembelian', 'Home::pembelian');
 
 
 $routes->get('/data', 'Data::index');
@@ -117,24 +118,25 @@ $routes->get('/logout', 'Login::logout');
 
 $routes->get('/persediaan/opname', 'Persediaan::index');
 $routes->post('/persediaan/opname', 'Persediaan::index');
-// $routes->post('/persediaan/getOpname', 'Persediaan::getOpname');
+
 $routes->get('/persediaan/pHarga', 'Persediaan::penyesuaianHarga');
 $routes->post('/persediaan/pHarga', 'Persediaan::penyesuaianHarga');
-// $routes->post('/persediaan/getPHarga', 'Persediaan::getPHarga');
 $routes->post('/persediaan/updateHarga', 'Persediaan::updateHarga');
+
 $routes->get('/persediaan/dataExp', 'Persediaan::dataExp');
 $routes->post('/persediaan/dataExp', 'Persediaan::dataExp');
-// $routes->post('/persediaan/getDataExp', 'Persediaan::getDataExp');
+
 $routes->get('/persediaan/pStock', 'Persediaan::penyesuaianStok');
 $routes->post('/persediaan/pStock', 'Persediaan::penyesuaianStok');
-// $routes->post('/persediaan/getPStock', 'Persediaan::getPStock');
 $routes->post('/persediaan/updateStock', 'Persediaan::updateStock');
+
 $routes->get('/persediaan/itemIn', 'Persediaan::itemIn');
 $routes->post('/persediaan/itemIn', 'Persediaan::itemIn');
-// $routes->post('/persediaan/getItemIn', 'Persediaan::getItemIn');
+
 $routes->get('/persediaan/itemOut', 'Persediaan::itemOut');
 $routes->post('/persediaan/itemOut', 'Persediaan::itemOut');
-// $routes->post('/persediaan/getItemOut', 'Persediaan::getItemOut');
+
+
 
 /*
  * --------------------------------------------------------------------
