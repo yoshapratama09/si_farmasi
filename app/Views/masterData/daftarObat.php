@@ -105,31 +105,31 @@
       </div>
       <div class="modal-body">
         <div class="row mb-3">
-          <h4 for="namaObatM" class="col-sm-5 col-form-label">Nama Obat</h4>
+          <h4 for="namaObatM" class="col-sm-5 col-form-label font-weight-bold">Nama Obat</h4>
           <div class="col-sm-7">
             <h6 id="namaObatM"></h6>
           </div>
         </div>
         <div class="row mb-3">
-          <h4 for="tipeObatM" class="col-sm-5 col-form-label">Tipe Obat</h4>
+          <h4 for="tipeObatM" class="col-sm-5 col-form-label font-weight-bold">Tipe Obat</h4>
           <div class="col-sm-7">
             <h6 id="tipeObatM"></h6>
           </div>
         </div>
         <div class="row mb-3">
-          <h4 for="kategoriObatM" class="col-sm-5 col-form-label">Kategori Obat</h4>
+          <h4 for="kategoriObatM" class="col-sm-5 col-form-label font-weight-bold">Kategori Obat</h4>
           <div class="col-sm-7">
             <h6 id="kategoriObatM"></h6>
           </div>
         </div>
         <div class="row mb-3">
-          <h4 for="kompObatM" class="col-sm-5 col-form-label">Komposisi Obat</h4>
+          <h4 for="kompObatM" class="col-sm-5 col-form-label font-weight-bold">Komposisi Obat</h4>
           <div class="col-sm-7">
             <h6 id="kompObatM"></h6>
           </div>
         </div>
         <div class="row mb-3">
-          <h4 for="funcObatM" class="col-sm-5 col-form-label">Fungsi Obat</h4>
+          <h4 for="funcObatM" class="col-sm-5 col-form-label font-weight-bold">Fungsi Obat</h4>
           <div class="col-sm-7">
             <h6 id="funcObatM"></h6>
           </div>

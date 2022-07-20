@@ -2,17 +2,17 @@
   <div class="row ms-1">
     <div class="col">
       <h2 class="mb-2">Item Out</h2>
-      
+
       <form class="mt-4 mb-4" method="POST" id="formDataExp" action="/persediaan/itemOut">
         <label class=" col-form-label" for="">Cari Berdasarkan ID Obat</label>
-        <?php 
-            if(session()->getFlashdata('msg') != NULL):       
-          ?>
+        <?php
+        if (session()->getFlashdata('msg') != NULL) :
+        ?>
           <div class="col-sm-3 my-1">
             <label class="sr-only" for="hidden">Hidden</label>
             <input type="hidden" class="form-control alert" id="msg" name="msg" placeholder="Message" value="<?= session()->getFlashdata('msg'); ?>">
           </div>
-        <?php endif;?>
+        <?php endif; ?>
         <div class="form-row align-items-center">
           <div class="col-sm-3 my-1">
             <label class="sr-only" for="medId">ID</label>
@@ -21,14 +21,14 @@
           <div class="col-sm-3 my-1">
             <label class="sr-only" for="medName">Nama Obat</label>
             <div class="input-group">
-                <input type="text" class="form-control" id="medName" placeholder="Nama Obat" name="medName" >
+              <input type="text" class="form-control" id="medName" placeholder="Nama Obat" name="medName">
             </div>
           </div>
           <div class="col-auto my-1">
             <button type="submit" class="btn btn-primary msg" name="submitDataExp">Submit</button>
           </div>
           <div class="col-auto my-1">
-            <button type="submit" class="btn btn-danger" id="clearBtn" >Clear</button>
+            <button type="submit" class="btn btn-danger" id="clearBtn">Clear</button>
           </div>
         </div>
         <!-- <div class="col-sm-6 my-1 ms-1">
@@ -37,22 +37,7 @@
         </div> -->
       </form>
 
-      <div id="date_filter">
-        <div class="row justify-content-end">
-          <div class="col-sm-3 my-1">
-            <div class="input-group">
-              <label class="me-2 col-sm-3" for="minDate">Dari</label>
-              <input type="date" class="form-control col-sm-8 rounded" id="min" placeholder="Dari" name="min" value="<?= date('Y-m-01', strtotime('this month')); ?>">
-            </div>
-          </div>
-          <div class="col-sm-3 my-1">
-            <div class="input-group">
-              <label class="me-2 col-sm-3" for="maxDate">Sampai</label>
-              <input type="date" class="form-control col-sm-8 rounded" id="max" placeholder="Sampai" name="max" value="<?= date('Y-m-t', strtotime('this month')); ?>">
-            </div>
-          </div>
-        </div>
-      </div>
+
 
       <table id="tableData" class="table table-hover">
         <thead>
@@ -65,24 +50,24 @@
             <th scope="col">Modal</th>
             <th scope="col">Action</th>
           </tr>
-          </thead>
-          <tbody>
-            <?php foreach ($data as $p) : ?>
-              <tr>
-                <th scope="row"><?= $p['item_date']; ?></th>
-                <td><?= $p['item_invoice']; ?></td>
-                <td><?= $p['medicine_id']; ?></td>
-                <td><?= $p['medicine_name']; ?></td>
-                <td><?= $p['item_qty']; ?></td>
-                <td><?= $p['item_price']; ?></td>
-                <td>
-                <?php 
-                    
+        </thead>
+        <tbody>
+          <?php foreach ($data as $p) : ?>
+            <tr>
+              <th scope="row"><?= $p['item_date']; ?></th>
+              <td><?= $p['item_invoice']; ?></td>
+              <td><?= $p['medicine_id']; ?></td>
+              <td><?= $p['medicine_name']; ?></td>
+              <td><?= $p['item_qty']; ?></td>
+              <td><?= $p['item_price']; ?></td>
+              <td>
+                <?php
+
                 ?>
-                </td>
-              </tr>
-            <?php endforeach; ?>
-          </tbody>
+              </td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
         </tfoot>
       </table>
     </div>
@@ -101,30 +86,30 @@
       </div>
       <div class="modal-body">
         <table id="table" class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">ID Obat</th>
-                    <th scope="col">Nama Obat</th>
-                    <th scope="col">Qty</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($stock as $s) : ?>
-                    <tr data-dismiss="modal">
-                        <th scope="row"><?= $s['medicine_id']; ?></th>
-                        <td><?= $s['medicine_name']; ?></td>
-                        <td><?= $s['stock_qty']; ?></td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-            </tfoot>    
+          <thead>
+            <tr>
+              <th scope="col">ID Obat</th>
+              <th scope="col">Nama Obat</th>
+              <th scope="col">Qty</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php foreach ($stock as $s) : ?>
+              <tr data-dismiss="modal">
+                <th scope="row"><?= $s['medicine_id']; ?></th>
+                <td><?= $s['medicine_name']; ?></td>
+                <td><?= $s['stock_qty']; ?></td>
+              </tr>
+            <?php endforeach; ?>
+          </tbody>
+          </tfoot>
         </table>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
-  </div> 
+  </div>
 </div>
 
 <script src="<?= base_url('template/js/persediaan.js'); ?>"></script>
@@ -151,5 +136,4 @@
   //           table.rows[i].className.add('table-active');
   //   };
   //   } 
-  
 </script>
