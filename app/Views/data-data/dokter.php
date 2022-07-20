@@ -10,7 +10,7 @@
                         <div class="col">
                             <h1 class="mb-2">Daftar Dokter</h1>
                             <div class="alert" data-flashdata="<?= session()->getFlashdata('Pesan') ?>"></div>
-                            <form action="/Obat/Cari" method="post" class="mb-2">
+                            <form action="/dokter/cari" method="post" class="mb-2">
                                 <div class="input-group inputCari w-25 float-end">
                                     <input name="cari" id="cari" placeholder="Nama Dokter" type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
                                     <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Cari</button>

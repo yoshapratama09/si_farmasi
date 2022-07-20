@@ -332,6 +332,23 @@ class Data extends BaseController
         return redirect()->to(base_url('/supplier'));
     }
 
+    public function cariDokter()
+    {
+        $session = session();
+        if (!isset($_SESSION['id'])) {
+            return redirect()->to(base_url('/login'));
+        } else {
+            $cari = $this->dataModel->searchDokter($this->request->getVar('cari'));
+            // dd($cari);
+            $data = [
+                'dokter' => $cari,
+            ];
+        }
+        echo view('layout/header');
+        echo view('layout/sidebar');
+        echo view('data-data/dokter', $data);
+        echo view('layout/footer');
+    }
 
     public function halamanUpdateDokter($id)
     {

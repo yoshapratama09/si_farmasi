@@ -51,6 +51,12 @@ class DataModel extends Model
 
         return $row;
     }
+    function searchDokter($nama)
+    {
+        $query = $this->db->query("SELECT * FROM dokter where dokter_nama LIKE '%$nama%'");
+        $row = $query->getResultArray();
+        return $row;
+    }
 
     function sales()
     {

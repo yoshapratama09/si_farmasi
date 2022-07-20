@@ -75,26 +75,26 @@
       </div>
       <!-- /.row -->
 
-      <div class="row">
-        <!-- ./col -->
-        <div class="col-lg-6 col-sm-12">
-          <!-- small box -->
-          <div class="small-box boxQC boxQC6" onclick="location.href='#'">
-            <div class="inner">
-              <p>LAPORAN</p>
-            </div>
-            <div class="icon">
-              <!-- <i class="ion ion-stats-bars"></i> -->
-              <img src="<?= base_url('template/img/laporan.png'); ?>" alt="">
-            </div>
-          </div>
-        </div>
-        <!-- ./col -->
-      </div>
-      <!-- /.row -->
-    </div><!-- /.container-fluid -->
-  </section>
-  <!-- /.content -->
+      <!-- <div class="row">
+        ./col -->
+      <!-- <div class="col-lg-6 col-sm-12">
+          small box -->
+      <!-- <div class="small-box boxQC boxQC6" onclick="location.href='#'"> -->
+      <!-- <div class="inner"> -->
+      <!-- <p>LAPORAN</p> -->
+      <!-- </div> -->
+      <!-- <div class="icon"> -->
+      <!-- <i class="ion ion-stats-bars"></i> -->
+      <!-- <img src="<?= base_url('template/img/laporan.png'); ?>" alt=""> -->
+      <!-- </div> -->
+      <!-- </div> -->
+      <!-- </div> -->
+      <!-- ./col -->
+    </div>
+    <!-- /.row -->
+</div><!-- /.container-fluid -->
+</section>
+<!-- /.content -->
 
 </div>
 <!-- /.content-wrapper -->
