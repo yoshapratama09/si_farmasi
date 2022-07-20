@@ -50,13 +50,14 @@
           <tbody>
             <?php foreach ($data as $p) : ?>
               <tr>
+
                   <th scope="row"><?= $p['medicine_id']; ?></th>
                   <td><?= $p['medicine_name']; ?></td>
-                  <td><?= $p['stock_qty']; ?></td>
-                  <td><?= $p['stock_exp']; ?></td>
+                  <td><?= $p['data_qty']; ?></td>
+                  <td><?= $p['exp_date']; ?></td>
                   <td>
                     <?php 
-                      if( strtotime($p['stock_exp']) < strtotime(date("Y-m-d"))){
+                      if(strtotime($p['exp_date']) < strtotime(date("Y-m-d"))){
                         echo "Expired";
                       }else{
                         echo "Active";
@@ -113,15 +114,15 @@
 <script src="<?= base_url('template/js/persediaan.js'); ?>"></script>
 
 <script>
-  $(function() {
-    $('#tableData').DataTable({
-        "paging": true,
-        "lengthChange": false,
-        "searching": false,
-        "ordering": true,
-        "info": true,
-        "autoWidth": false,
-        "responsive": true,
-    });
-  });
+  // $(function() {
+  //   $('#tableData').DataTable({
+  //       "paging": true,
+  //       "lengthChange": false,
+  //       "searching": false,
+  //       "ordering": true,
+  //       "info": true,
+  //       "autoWidth": false,
+  //       "responsive": true,
+  //   });
+  // });
 </script>

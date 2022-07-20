@@ -190,7 +190,8 @@ class Persediaan extends BaseController
         if (!isset($_SESSION['id'])) {
             return redirect()->to(base_url('/login'));
         }else{
-            $allData = $this->persediaanModel->getDataExp();
+            $allData = $this->persediaanModel->get('','dataExp');
+            $medicine = $this->persediaanModel->get();
 
             $topData = [
                 'itemIn' =>  $this->persediaanModel->getCountItemIn(),
@@ -201,7 +202,7 @@ class Persediaan extends BaseController
             if(empty($this->request->getPost())){
                 $data = [
                     'data' => $allData,
-                    'medicine' => $allData
+                    'medicine' => $medicine
                 ];
                 $session->setFlashData('msg', 'Success');
             }else{
@@ -210,34 +211,32 @@ class Persediaan extends BaseController
 
                 if ($filter == "1") {
                     $name = $this->request->getVar('medName');
-                    $getSearch = $this->persediaanModel->getSearch($name);
+                    $getSearch = $this->persediaanModel->get('','dataExp', $name);
                     if (empty($getSearch)) {
                         $data = [
                             'data' => $allData,
-                            'medicine' => $allData
+                            'medicine' => $medicine
                         ];
                         $session->setFlashData('msg', 'Obat tidak ditemukan');
                     } else {
                         $data = [
                             'data' => $getSearch,
-                            'medicine' => $allData
+                            'medicine' => $medicine
                         ];
                         $session->setFlashData('msg', 'Success');
                     }
                 } else {
-                    $getMedicine = $this->persediaanModel->getMedicine($id);
+                    $getMedicine = $this->persediaanModel->get(['e.medicine_id' => $id], 'dataExp');
                     if (empty($getMedicine)) {
                         $data = [
-                            'data' => $allData,
-                            'medicine' => $allData
+                            'data' => $getMedicine,
+                            'medicine' => $medicine
                         ];
-                        $session->setFlashData('msg', 'Obat tidak ditemukan');
                     } else {
                         $data = [
                             'data' => $getMedicine,
-                            'medicine' => $allData
+                            'medicine' => $medicine
                         ];
-                        $session->setFlashData('msg', 'Success');
                     }
                 }
             }

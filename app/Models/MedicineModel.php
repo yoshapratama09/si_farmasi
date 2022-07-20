@@ -25,7 +25,7 @@ class MedicineModel extends Model
 
     public function getDaftarObat()
     {
-        $query = $this->db->query("SELECT * FROM medicine as med JOIN stockmed AS sm ON med.medicine_id = sm.medicine_id WHERE sm.stock_status=1");
+        $query = $this->db->query("SELECT * FROM medicine as med JOIN stockmed AS sm ON med.medicine_id = sm.medicine_id WHERE sm.stock_status=1 ORDER BY med.medicine_id");
 
         $row = $query->getResultArray();
 

@@ -25,13 +25,33 @@ class Data extends BaseController
     public function supplier()
     {
         $supplier = $this->dataModel->supplier();
-
         $data = [
-            'data' => $supplier
+            'data' => $supplier,
+            'validation' => \Config\Services::validation()
         ];
         echo view('layout/header');
         echo view('layout/sidebar');
         echo view('data-data/supplier', $data);
+        echo view('layout/footer');
+    }
+
+    public function halamanTambahSup()
+    {
+        $session = session();
+        if (!isset($_SESSION['id'])) {
+            return redirect()->to(base_url('/login'));
+        } else {
+            $supplier = $this->dataModel->supplier();
+            $data = [
+                'data' => $supplier,
+                'validation' => \Config\Services::validation()
+            ];
+        }
+        echo view('layout/header');
+        echo view('layout/sidebar');
+        // echo view('masterData/menuMasterData');
+        // echo view('masterData/menuObat');
+        echo view('data-data/tambahSup', $data);
         echo view('layout/footer');
     }
 
@@ -76,19 +96,102 @@ class Data extends BaseController
 
     public function tambahSupplier()
     {
+        $session = session();
+        if (!$this->validate([
+            'idSup' => [
+                'rules' => 'required|numeric|is_unique[supplier.supplier_id]',
+                'errors' => [
+                    'required' => 'Id Supplier harus diisi',
+                    'is_unique' => 'Supplier dengan Id ini sudah tersedia'
+                ]
+            ],
+            'namaSup' => [
+                'rules' =>  'required|alpha_space|is_unique[supplier.supplier_name]',
+                'errors' => [
+                    'required' => 'Nama Supplier harus diisi',
+                    'is_unique' => 'Supplier dengan nama ini sudah tersedia',
+                    'alpha' => 'Nama harus berupa karakter tanpa angka'
+                ]
+            ],
+            'alamatSup' => [
+                'rules' =>  'required',
+                'errors' => [
+                    'required' => 'Alamat Supplier harus diisi',
+                ]
+            ],
+            'kotaSup' => [
+                'rules' =>  'required',
+                'errors' => [
+                    'required' => 'Kota Supplier harus diisi',
+                ]
+            ],
+            'provSup' => [
+                'rules' =>  'required',
+                'errors' => [
+                    'required' => 'Provinsi Supplier harus diisi',
+                ]
+            ],
+            'posSup' => [
+                'rules' =>  'required|numeric|trim|max_length[5]',
+                'errors' => [
+                    'required' => 'Kode Pos Supplier harus diisi',
+                    'max_length' => 'nomor maksimal 5 digit'
+                ]
+            ],
+            'faxSup' => [
+                'rules' =>  'required|numeric',
+                'errors' => [
+                    'required' => 'Fax Supplier harus diisi',
+                ]
+            ],
+            'jenisSup' => [
+                'rules' =>  'required',
+                'errors' => [
+                    'required' => 'Jenis Supplier harus diisi',
+                ]
+            ],
+            'emailSup' => [
+                'rules' =>  'required|trim|valid_email|is_unique[supplier.supplier_email]',
+                'errors' => [
+                    'required' => 'Email Supplier harus diisi',
+                ]
+            ],
+            'phoneSup' => [
+                'rules' =>  'required|numeric|trim|max_length[12]',
+                'errors' => [
+                    'required' => 'No.Telp Supplier harus diisi',
+                    'max_length' => 'nomor maksimal 12 digit'
+                ]
+            ]
+
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->to('/supplier/Tambah',)->withInput()->with('validation', $validation);;
+        }
+        $id = $this->request->getVar('idSup');
+        $cek = $this->dataModel->cekSup($id);
         $db = db_connect('default');
         $builder = $db->table('supplier');
-        $data = [
-            'supplier_id' => $this->request->getVar('idSup'),
-            'supplier_name' => $this->request->getVar('namaSup'),
-            'supplier_address' => $this->request->getVar('alamatSup'),
-            'supplier_phone' => $this->request->getVar('phoneSup'),
-            'supplier_email' => $this->request->getVar('emailSup'),
-            'supplier_country' => $this->request->getVar('negaraSup')
-        ];
-        $builder->insert($data);
-        session()->setFlashdata('Pesan', 'Data Supplier Ditambahkan');
-        return redirect()->to('/supplier');
+        if ($cek <= 0) {
+            $data = [
+                'supplier_id' => $this->request->getVar('idSup'),
+                'supplier_name' => $this->request->getVar('namaSup'),
+                'supplier_address' => $this->request->getVar('alamatSup'),
+                'supplier_kota' => $this->request->getVar('kotaSup'),
+                'supplier_prov' => $this->request->getVar('provSup'),
+                'supplier_pos' => $this->request->getVar('posSup'),
+                'supplier_fax' => $this->request->getVar('faxSup'),
+                'supplier_jenis' => $this->request->getVar('jenisSup'),
+                'supplier_email' => $this->request->getVar('emailSup'),
+                'supplier_phone' => $this->request->getVar('phoneSup')
+            ];
+            $builder->insert($data);
+            session()->setFlashdata('Pesan', 'Tambah');
+            return redirect()->to(base_url('/supplier'));
+        } else {
+            session()->setFlashdata('Pesan', 'gagalTambah');
+            return redirect()->to('/supplier/Tambah');
+        }
     }
 
     public function tambahDokter()
@@ -191,6 +294,22 @@ class Data extends BaseController
 
     public function UpdateSupplier($id)
     {
+        $session = session();
+        if (!$this->validate([
+            'idSup' => 'required',
+            'namaSup' => 'required',
+            'alamatSup' => 'required',
+            'kotaSup' => 'required',
+            'provSup' => 'required',
+            'posSup' => 'required',
+            'faxSup' => 'required',
+            'jenisSup' => 'required',
+            'emailSup' => 'required',
+            'phoneSup' => 'required',
+        ])) {
+            $validation = \Config\Services::validation();
+            return redirect()->back()->withInput()->with('validation', $validation);
+        }
         $id = $this->request->getVar('idSup');
         $supplier = $this->dataModel->where(['supplier_id' => $id])->first();
         $db = db_connect('default');
@@ -199,13 +318,36 @@ class Data extends BaseController
             'supplier_id' => $this->request->getVar('idSup'),
             'supplier_name' => $this->request->getVar('namaSup'),
             'supplier_address' => $this->request->getVar('alamatSup'),
-            'supplier_phone' => $this->request->getVar('phoneSup'),
+            'supplier_kota' => $this->request->getVar('kotaSup'),
+            'supplier_prov' => $this->request->getVar('provSup'),
+            'supplier_pos' => $this->request->getVar('posSup'),
+            'supplier_fax' => $this->request->getVar('faxSup'),
+            'supplier_jenis' => $this->request->getVar('jenisSup'),
             'supplier_email' => $this->request->getVar('emailSup'),
-            'supplier_country' => $this->request->getVar('negaraSup')
+            'supplier_phone' => $this->request->getVar('phoneSup')
         ];
         $builder->where('supplier_id', $id);
         $builder->update($data);
+        session()->setFlashdata('Pesan', 'Update');
         return redirect()->to(base_url('/supplier'));
+    }
+
+    public function cariDokter()
+    {
+        $session = session();
+        if (!isset($_SESSION['id'])) {
+            return redirect()->to(base_url('/login'));
+        } else {
+            $cari = $this->dataModel->searchDokter($this->request->getVar('cari'));
+            // dd($cari);
+            $data = [
+                'dokter' => $cari,
+            ];
+        }
+        echo view('layout/header');
+        echo view('layout/sidebar');
+        echo view('data-data/dokter', $data);
+        echo view('layout/footer');
     }
 
     public function halamanUpdateDokter($id)

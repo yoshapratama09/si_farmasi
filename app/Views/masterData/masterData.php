@@ -48,7 +48,7 @@
         <!-- ./col -->
         <div class="col-lg-6 col-sm-12">
           <!-- small box -->
-          <div class="small-box boxQC boxQC3" onclick="location.href='/persediaan/opname'">
+          <div class="small-box boxQC boxQC3" onclick="location.href='/pasien'">
             <div class="inner">
               <p>Daftar Pasien</p>
             </div>
@@ -61,7 +61,7 @@
         <!-- ./col -->
         <div class="col-lg-6 col-sm-12">
           <!-- small box -->
-          <div class="small-box boxQC boxQC4">
+          <div class="small-box boxQC boxQC4" onclick="location.href='/dokter'">
             <div class="inner">
               <p>Daftar Dokter</p>
             </div>
@@ -76,24 +76,12 @@
       <!-- /.row -->
 
       <div class="row">
-        <div class="col-lg-6 col-sm-12">
-          <!-- small box -->
-          <div class="small-box boxQC boxQC5">
-            <div class="inner">
-              <p>Daftar Dokter Spesialis</p>
-            </div>
-            <div class="icon">
-              <!-- <i class="ion ion-bag"></i> -->
-              <img src="<?= base_url('template/img/penjualanObat.png'); ?>" alt="">
-            </div>
-          </div>
-        </div>
         <!-- ./col -->
         <div class="col-lg-6 col-sm-12">
           <!-- small box -->
-          <div class="small-box boxQC boxQC6">
+          <div class="small-box boxQC boxQC6" onclick="location.href='#'">
             <div class="inner">
-              <p>Daftar Asuransi</p>
+              <p>LAPORAN</p>
             </div>
             <div class="icon">
               <!-- <i class="ion ion-stats-bars"></i> -->
@@ -101,37 +89,6 @@
             </div>
           </div>
         </div>
-        <!-- ./col -->
-      </div>
-      <!-- /.row -->
-
-      <div class="row">
-        <div class="col-lg-6 col-sm-12">
-          <!-- small box -->
-          <div class="small-box boxQC boxQC5">
-            <div class="inner">
-              <p>Daftar Sales</p>
-            </div>
-            <div class="icon">
-              <!-- <i class="ion ion-bag"></i> -->
-              <img src="<?= base_url('template/img/penjualanObat.png'); ?>" alt="">
-            </div>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-6 col-sm-12">
-          <!-- small box -->
-          <div class="small-box boxQC boxQC6">
-            <div class="inner">
-              <p>Daftar Rumah Sakit</p>
-            </div>
-            <div class="icon">
-              <!-- <i class="ion ion-stats-bars"></i> -->
-              <img src="<?= base_url('template/img/laporan.png'); ?>" alt="">
-            </div>
-          </div>
-        </div>
-        <!-- ./col -->
       </div>
       <!-- /.row -->
     </div><!-- /.container-fluid -->

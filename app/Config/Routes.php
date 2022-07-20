@@ -38,6 +38,7 @@ $routes->set404Override();
 $routes->get('/', 'Home::index');
 $routes->get('/MasterData', 'Home::masterData');
 $routes->get('/Persediaan', 'Home::persediaan');
+$routes->get('/Pembelian', 'Home::pembelian');
 
 
 $routes->get('/data', 'Data::index');
@@ -48,6 +49,8 @@ $routes->get('/hapus_supplier/(:num)', 'Data::hapus_supplier/$1');
 $routes->get('/editsupplier/(:num)', 'Data::halamanUpdateSupplier/$1');
 $routes->post('/updateSupplier/(:num)', 'Data::UpdateSupplier/$1');
 $routes->post('/tambahSupplier', 'Data::tambahSupplier');
+$routes->get('/supplier/Tambah', 'Data::halamanTambahSup');
+
 
 //dokter
 $routes->get('/dokter', 'Data::dokter');
@@ -55,6 +58,7 @@ $routes->get('/hapus_dokter/(:num)', 'Data::hapus_dokter/$1');
 $routes->post('/tambahDokter', 'Data::tambahDokter');
 $routes->get('/editdokter/(:num)', 'Data::halamanUpdateDokter/$1');
 $routes->post('/updateDokter/(:num)', 'Data::UpdateDokter/$1');
+$routes->post('/dokter/cari', 'Data::cariDokter');
 
 //pasien
 $routes->get('/pasien', 'Data::pasien');
@@ -74,6 +78,7 @@ $routes->post('/updateRumahsakit/(:num)', 'Data::UpdateRumahsakit/$1');
 
 
 $routes->get('/Obat', 'Medicine::index');
+$routes->get('/Obat/Print', 'Laporan::index');
 
 $routes->post('/tambahObat', 'Medicine::tambahObat');
 $routes->get('/Obat/Tambah', 'Medicine::halamanTambahObat');
@@ -116,24 +121,25 @@ $routes->get('/logout', 'Login::logout');
 
 $routes->get('/persediaan/opname', 'Persediaan::index');
 $routes->post('/persediaan/opname', 'Persediaan::index');
-// $routes->post('/persediaan/getOpname', 'Persediaan::getOpname');
+
 $routes->get('/persediaan/pHarga', 'Persediaan::penyesuaianHarga');
 $routes->post('/persediaan/pHarga', 'Persediaan::penyesuaianHarga');
-// $routes->post('/persediaan/getPHarga', 'Persediaan::getPHarga');
 $routes->post('/persediaan/updateHarga', 'Persediaan::updateHarga');
+
 $routes->get('/persediaan/dataExp', 'Persediaan::dataExp');
 $routes->post('/persediaan/dataExp', 'Persediaan::dataExp');
-// $routes->post('/persediaan/getDataExp', 'Persediaan::getDataExp');
+
 $routes->get('/persediaan/pStock', 'Persediaan::penyesuaianStok');
 $routes->post('/persediaan/pStock', 'Persediaan::penyesuaianStok');
-// $routes->post('/persediaan/getPStock', 'Persediaan::getPStock');
 $routes->post('/persediaan/updateStock', 'Persediaan::updateStock');
+
 $routes->get('/persediaan/itemIn', 'Persediaan::itemIn');
 $routes->post('/persediaan/itemIn', 'Persediaan::itemIn');
-// $routes->post('/persediaan/getItemIn', 'Persediaan::getItemIn');
+
 $routes->get('/persediaan/itemOut', 'Persediaan::itemOut');
 $routes->post('/persediaan/itemOut', 'Persediaan::itemOut');
-// $routes->post('/persediaan/getItemOut', 'Persediaan::getItemOut');
+
+
 
 /*
  * --------------------------------------------------------------------

@@ -51,6 +51,12 @@ class DataModel extends Model
 
         return $row;
     }
+    function searchDokter($nama)
+    {
+        $query = $this->db->query("SELECT * FROM dokter where dokter_nama LIKE '%$nama%'");
+        $row = $query->getResultArray();
+        return $row;
+    }
 
     function sales()
     {
@@ -69,7 +75,14 @@ class DataModel extends Model
 
         return $row;
     }
+    public function cekSup($id)
+    {
+        $query = $this->db->query("SELECT * FROM supplier WHERE supplier_id = $id");
 
+        $row = $query->getNumRows();
+
+        return $row;
+    }
     function asuransi()
     {
         $query = $this->db->query("SELECT * FROM asuransi");

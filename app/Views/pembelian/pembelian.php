@@ -5,7 +5,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div>
-          <h1 class="title-form tf1 text-right">PERSEDIAAN</h1>
+          <h1 class="title-form tf1 text-right">PEMBELIAN</h1>
         </div><!-- /.col -->
       </div><!-- /.row -->
     </div><!-- /.container-fluid -->
@@ -19,9 +19,9 @@
       <div class="row">
         <div class="col-lg-6 col-sm-12">
           <!-- small box -->
-          <div class="small-box boxQC boxQC1" onclick="location.href='/persediaan/opname'">
+          <div class="small-box boxQC boxQC1" onclick="location.href=''">
             <div class="inner">
-              <p>Opname Stok</p>
+              <p>Data Pembelian</p>
             </div>
             <div class="icon">
               <!-- <i class="fas fa-solid fa-pills"></i> -->
@@ -32,9 +32,9 @@
         <!-- ./col -->
         <div class="col-lg-6 col-sm-12">
           <!-- small box -->
-          <div class="small-box boxQC boxQC2" onclick="location.href='/persediaan/pStock'">
+          <div class="small-box boxQC boxQC2" onclick="location.href=''">
             <div class="inner">
-              <p>Penyesuaian Stok</p>
+              <p>Pesanan Pembelian</p>
             </div>
             <div class="icon">
               <!-- <i class="fas fa-solid fa-users-gear"></i> -->
@@ -48,9 +48,9 @@
         <!-- ./col -->
         <div class="col-lg-6 col-sm-12">
           <!-- small box -->
-          <div class="small-box boxQC boxQC3" onclick="location.href='/persediaan/pHarga'">
+          <div class="small-box boxQC boxQC3" onclick="location.href=''">
             <div class="inner">
-              <p>Penyesuaian Harga</p>
+              <p>Faktur Pembelian</p>
             </div>
             <div class="icon">
               <!-- <i class="fas fa-solid fa-user-doctor"></i> -->
@@ -58,46 +58,17 @@
             </div>
           </div>
         </div>
+
         <!-- ./col -->
         <div class="col-lg-6 col-sm-12">
           <!-- small box -->
-          <div class="small-box boxQC boxQC4" onclick="location.href='/persediaan/dataExp'">
+          <div class="small-box boxQC boxQC4" onclick="location.href=''">
             <div class="inner">
-              <p>Daftar Expire</p>
+              <p>Retur Barang</p>
             </div>
             <div class="icon">
               <!-- <i class="fas fa-solid fa-users"></i> -->
               <img src="<?= base_url('template/img/pembelianObat.png'); ?>" alt="">
-            </div>
-          </div>
-        </div>
-        <!-- ./col -->
-      </div>
-      <!-- /.row -->
-
-      <div class="row">
-        <div class="col-lg-6 col-sm-12">
-          <!-- small box -->
-          <div class="small-box boxQC boxQC5" onclick="location.href='/persediaan/itemIn'">
-            <div class="inner">
-              <p>Item In</p>
-            </div>
-            <div class="icon">
-              <!-- <i class="ion ion-bag"></i> -->
-              <img src="<?= base_url('template/img/penjualanObat.png'); ?>" alt="">
-            </div>
-          </div>
-        </div>
-        <!-- ./col -->
-        <div class="col-lg-6 col-sm-12">
-          <!-- small box -->
-          <div class="small-box boxQC boxQC6" onclick="location.href='/persediaan/itemOut'">
-            <div class="inner">
-              <p>Item Out</p>
-            </div>
-            <div class="icon">
-              <!-- <i class="ion ion-stats-bars"></i> -->
-              <img src="<?= base_url('template/img/laporan.png'); ?>" alt="">
             </div>
           </div>
         </div>

@@ -29,6 +29,12 @@ class PersediaanModel extends Model
     protected $useTimestamps4 = true;
     protected $createdField4  = 'created_at';
 
+    protected $table5      = 'dataexp';
+    protected $primaryKey5 = 'exp_id';
+    protected $allowedFields5 = ['exp_id', 'exp_date', 'mfd_date', 'invoice_id', 'medicine_id', 'data_qty'];
+    protected $useTimestamps5 = true;
+    protected $createdField5  = 'created_at';
+
     public function getMedicine($id)
     {
         $query = $this->db->query("SELECT * FROM medicine as med JOIN stockmed as sm ON med.medicine_id = sm.medicine_id JOIN pricemed as pm ON med.medicine_id = pm.medicine_id WHERE med.medicine_id = $id AND stock_status = 1 AND price_status = 1 AND price_type = 1");
@@ -38,7 +44,8 @@ class PersediaanModel extends Model
         return $row;
     }
 
-    public function getMed($id){
+    public function getMed($id)
+    {
         $query = $this->db->query("SELECT * FROM medicine as med JOIN stockmed as sm ON med.medicine_id = sm.medicine_id WHERE med.medicine_id = '$id' AND sm.stock_status = 1");
 
         $row = $query->getResultArray();
@@ -58,15 +65,6 @@ class PersediaanModel extends Model
     public function getStock($id)
     {
         $query = $this->db->query("SELECT * FROM stockmed WHERE stock_id = $id AND stock_status = 1");
-
-        $row = $query->getResultArray();
-
-        return $row;
-    }
-
-    public function getDataExp()
-    {
-        $query = $this->db->query("SELECT * FROM medicine as med JOIN stockmed as sm ON med.medicine_id = sm.medicine_id WHERE stock_status = 1 ORDER BY stock_exp DESC");
 
         $row = $query->getResultArray();
 
@@ -205,27 +203,30 @@ class PersediaanModel extends Model
         $query = $this->db->query("SELECT * FROM stockmed as sm JOIN medicine as med ON med.medicine_id = sm.medicine_id JOIN item AS itm ON sm.medicine_id = itm.medicine_id WHERE med.medicine_id LIKE '%$name%'");
 
         $row = $query->getResultArray();
-        
+
         return $row;
     }
 
-    public function getHarga($id){
+    public function getHarga($id)
+    {
         $query = $this->db->query("SELECT * FROM pricemed WHERE medicine_id LIKE '$id'");
 
         $row = $query->getResultArray();
-        
+
         return $row;
     }
 
-    public function getStockMed($id){
+    public function getStockMed($id)
+    {
         $query = $this->db->query("SELECT * FROM medicine as med JOIN stockmed as sm ON med.medicine_id = sm.medicine_id WHERE sm.medicine_id = '$id'");
 
         $row = $query->getResultArray();
-        
+
         return $row;
     }
 
-    public function getCountItemIn(){
+    public function getCountItemIn()
+    {
         $query = $this->db->query("SELECT SUM(item_qty) FROM item WHERE item_type = 1 AND MONTH(item_date) = MONTH(CURDATE())");
 
         $row = $query->getRow();
@@ -233,19 +234,52 @@ class PersediaanModel extends Model
         return $row;
     }
 
-    public function getCountItemOut(){
+    public function getCountItemOut()
+    {
         $query = $this->db->query("SELECT SUM(item_qty) FROM item WHERE item_type = 0 AND MONTH(item_date) = MONTH(CURDATE())");
 
         $row = $query->getRow();
-        
+
         return $row;
     }
 
-    public function getCountExp(){
+    public function getCountExp()
+    {
         $query = $this->db->query("SELECT * FROM stockmed WHERE stock_exp < CURDATE() AND stock_status = 1");
 
         $row = $query->getNumRows();
-        
+
         return $row;
+    }
+
+    public function getPriceId($id)
+    {
+        $query = $this->db->query("SELECT price_id FROM pricemed WHERE medicine_id = '$id' AND price_type = 1");
+
+        $row = $query->getResultArray();
+
+        return $row;
+    }
+
+    public function get($where = null, $page = null, $like=null){
+        $builder = $this->db->table('medicine m');
+        $builder->select('*');
+        if($page == 'dataExp'){
+            $builder->join('dataexp e', 'm.medicine_id = e.medicine_id');
+            if(!empty($where)){
+                $query = $builder->where($where)->orderBy('e.exp_date', 'ASC')->get();
+            }else if (!empty($like)){
+                $query = $builder->like('medicine_name', $like)->orderBy('e.exp_date', 'DESC')->get();
+            }else{
+                $query = $builder->orderBy('e.exp_date', 'ASC')->get();
+            }
+        }else if($page == 'stok'){
+
+        }else{
+            $builder->join('stockmed s', 'm.medicine_id = s.medicine_id');
+            $query = $builder->where('stock_status', 1)->get();
+        }
+        
+        return $query->getResultArray();
     }
 }
